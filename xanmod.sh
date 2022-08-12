@@ -12,8 +12,6 @@ bash -x run-webhooks-aur.sh
 rm run-webhooks-aur.sh
 }
 
-curl -X POST -H "Accept: application/json" -H "Authorization: token ${{ inputs.chave }}" --data '{"event_type": "AUR/linux-xanmod", "client_payload": { "pkgbuild": "", "branch": "stable", "url": "https://aur.archlinux.org/$xanmod", "version": "1.2.3"}}' https://api.github.com/repos/BigLinux-Package-Build/build-package/dispatches
-
 ## STABLE ##
 major=$(curl -s https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=linux-xanmod | sed 's/<[^>]*>//g' | grep _major= | cut -d "=" -f2 | sed 's|\.||g' | sed 's|-||g')
 pkgver=$(curl -s https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=linux-xanmod | sed 's/<[^>]*>//g' | grep pkgver= | cut -d "=" -f2 | sed 's|\.||g' | sed 's|-||g' | cut -d "}" -f2)
