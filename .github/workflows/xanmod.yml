@@ -1,4 +1,4 @@
-name: BigLinux Build XanMod
+name: BigLinux Hooks XanMod
 
 # Controls when the workflow will run
 on:
@@ -21,6 +21,6 @@ jobs:
       - uses: actions/checkout@v3
       
       - name: Makepkg Teste and WebHooks
-        uses: BigLinux-Package-Build/build-xanmod@main
+        uses: BigLinux-Package-Build/hooks-xanmod@main
                 
       
