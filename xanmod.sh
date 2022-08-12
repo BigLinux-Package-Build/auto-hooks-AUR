@@ -75,4 +75,5 @@ if [ "$ttversite" -gt "$ttverrepo" ]; then
     webhooks
 fi
 
-
+xanmod=linux-xanmod
+webhooks
