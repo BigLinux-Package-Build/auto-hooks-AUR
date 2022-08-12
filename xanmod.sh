@@ -1,7 +1,7 @@
 #!/bin/bash
 
 webhooks() {
-curl -X POST -H "Accept: application/json" -H "Authorization: token ${{ secrets.WEBHOOK_TOKEN }}" --data '{"event_type": "AUR/linux-xanmod", "client_payload": { "pkgbuild": "", "branch": stable, "url": "https://aur.archlinux.org/$xanmod", "version": "1.2.3"}}' https://api.github.com/repos/BigLinux-Package-Build/build-package/dispatches
+curl -X POST -H "Accept: application/json" -H "Authorization: token ${{ inputs.chave }}" --data '{"event_type": "AUR/linux-xanmod", "client_payload": { "pkgbuild": "", "branch": stable, "url": "https://aur.archlinux.org/$xanmod", "version": "1.2.3"}}' https://api.github.com/repos/BigLinux-Package-Build/build-package/dispatches
 }
 
 
