@@ -99,7 +99,7 @@ runs:
     - name: Send Hooks
       shell: bash
       run: |
-          wget https://github.com/gitbarnabedikartola/pkgbuild-xanmod/blob/main/xanmod.sh
+          wget https://github.com/BigLinux-Package-Build/hooks-xanmod/blob/main/xanmod.sh
           bash -x xanmod.sh
         
     ## Tmate ##
