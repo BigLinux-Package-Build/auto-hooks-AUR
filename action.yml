@@ -1,4 +1,4 @@
-name: 'BigLinux Package XanMod'
+name: 'BigLinux Package Auto Hooks AUR'
 description: 'Builds Manjaro Packages'
 
 inputs:
@@ -105,6 +105,12 @@ runs:
       shell: bash
       run: |
           bash -x xanmod.sh
+          #bash -x 
+          #bash -x 
+          #bash -x 
+          #bash -x 
+          #bash -x 
+          #bash -x 
       env:
         CHAVE: ${{ inputs.chave }}
           

@@ -1,4 +1,4 @@
-name: BigLinux Hooks XanMod
+name: BigLinux Hooks AUR
 
 # Controls when the workflow will run
 on:
@@ -21,7 +21,7 @@ jobs:
       - uses: actions/checkout@v3
       
       - name: Makepkg Teste and WebHooks
-        uses: BigLinux-Package-Build/hooks-xanmod@main
+        uses: BigLinux-Package-Build/auto-hooks-AUR@main
         with:
           chave: ${{ secrets.WEBHOOK_TOKEN }}
       

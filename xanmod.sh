@@ -32,8 +32,6 @@ pkgver=$(curl -s https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=linux-xa
 pkgrel=$(curl -s https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=linux-xanmod-edge | sed 's/<[^>]*>//g' | grep xanmod= | cut -d "=" -f2 | sed 's|\.||g' | sed 's|-||g')
 edgeversite=$major$pkgver$pkgrel
 
-edgeversite=51912
-
 edgeverrepo=$(pacman -Ss xanmod | grep biglinux-stable | grep -v headers | egrep -v "lts|rt|tt" | grep edge | cut -d " " -f2  | sed 's/\.//g' | sed 's/\-//')
 
 if [ "$edgeversite" -gt "$edgeverrepo" ]; then
