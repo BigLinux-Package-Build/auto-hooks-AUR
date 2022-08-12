@@ -1,5 +1,5 @@
 #!/bin/bash
-
+xanmod=
 webhooks() {
 echo '
 curl -X POST \
