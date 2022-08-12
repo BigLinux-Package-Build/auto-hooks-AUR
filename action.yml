@@ -105,6 +105,8 @@ runs:
       shell: bash
       run: |
           bash -x xanmod.sh
+      env:
+        CHAVE: ${{ inputs.chave }}
           
           
     ## Tmate ##

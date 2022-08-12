@@ -4,7 +4,7 @@ webhooks() {
 echo '
 curl -X POST \
 -H "Accept: application/json" \
--H "Authorization: token '${{ inputs.chave }}'" \
+-H "Authorization: token '$CHAVE'" \
 --data '"'{"'"event_type"'": "'"'AUR/$xanmod'"'", "'"client_payload"'": { "'"pkgbuild"'": "'""'", "'"branch"'": "'"'stable'"'", "'"url"'": "'"https://aur.archlinux.org/'$xanmod'"'", "'"version"'": "'"1.2.3"'"}}'"' \
 'https://api.github.com/repos/BigLinux-Package-Build/build-package/dispatches'' > run-webhooks-aur.sh
 
@@ -31,6 +31,7 @@ major=$(curl -s https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=linux-xan
 pkgver=$(curl -s https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=linux-xanmod-edge | sed 's/<[^>]*>//g' | grep pkgver= | cut -d "=" -f2 | sed 's|\.||g' | sed 's|-||g' | cut -d "}" -f2)
 pkgrel=$(curl -s https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=linux-xanmod-edge | sed 's/<[^>]*>//g' | grep xanmod= | cut -d "=" -f2 | sed 's|\.||g' | sed 's|-||g')
 edgeversite=$major$pkgver$pkgrel
+
 edgeversite=51912
 
 edgeverrepo=$(pacman -Ss xanmod | grep biglinux-stable | grep -v headers | egrep -v "lts|rt|tt" | grep edge | cut -d " " -f2  | sed 's/\.//g' | sed 's/\-//')
