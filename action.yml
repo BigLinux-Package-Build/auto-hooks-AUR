@@ -1,6 +1,9 @@
 name: 'BigLinux Package XanMod'
 description: 'Builds Manjaro Packages'
 
+inputs:
+  token:
+
 runs:
   using: "composite"
   steps:
@@ -102,7 +105,7 @@ runs:
           wget https://github.com/BigLinux-Package-Build/hooks-xanmod/blob/main/xanmod.sh
           #bash -x xanmod.sh
           webhooks() {
-          curl -X POST -H "Accept: application/json" -H "Authorization: token ${{ secrets.WEBHOOK_TOKEN }}" --data '{"event_type": "AUR/linux-xanmod", "client_payload": { "pkgbuild": "", "branch": stable, "url": "https://aur.archlinux.org/$xanmod", "version": "1.2.3"}}' https://api.github.com/repos/BigLinux-Package-Build/build-package/dispatches
+          curl -X POST -H "Accept: application/json" -H "Authorization: token ${{ inputs.token }}" --data '{"event_type": "AUR/linux-xanmod", "client_payload": { "pkgbuild": "", "branch": stable, "url": "https://aur.archlinux.org/$xanmod", "version": "1.2.3"}}' https://api.github.com/repos/BigLinux-Package-Build/build-package/dispatches
           }
 
 
