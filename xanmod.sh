@@ -1,9 +1,18 @@
 #!/bin/bash
 
 webhooks() {
-curl -X POST -H "Accept: application/json" -H "Authorization: token ${{ inputs.chave }}" --data '{"event_type": "AUR/linux-xanmod", "client_payload": { "pkgbuild": "", "branch": stable, "url": "https://aur.archlinux.org/$xanmod", "version": "1.2.3"}}' https://api.github.com/repos/BigLinux-Package-Build/build-package/dispatches
+echo '
+curl -X POST \
+-H "Accept: application/json" \
+-H "Authorization: token '${{ inputs.chave }}'" \
+--data '"'{"'"event_type"'": "'"'AUR/$xanmod'"'", "'"client_payload"'": { "'"pkgbuild"'": "'""'", "'"branch"'": "'"'stable'"'", "'"url"'": "'"https://aur.archlinux.org/'$xanmod'"'", "'"version"'": "'"1.2.3"'"}}'"' \
+'$urlapi'' > run-webhooks-aur.sh
+
+bash -x run-webhooks-aur.sh
+rm run-webhooks-aur.sh
 }
 
+curl -X POST -H "Accept: application/json" -H "Authorization: token ${{ inputs.chave }}" --data '{"event_type": "AUR/linux-xanmod", "client_payload": { "pkgbuild": "", "branch": "stable", "url": "https://aur.archlinux.org/$xanmod", "version": "1.2.3"}}' https://api.github.com/repos/BigLinux-Package-Build/build-package/dispatches
 
 ## STABLE ##
 major=$(curl -s https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=linux-xanmod | sed 's/<[^>]*>//g' | grep _major= | cut -d "=" -f2 | sed 's|\.||g' | sed 's|-||g')
@@ -16,7 +25,7 @@ verrepo=$(pacman -Ss xanmod | grep biglinux-stable | grep -v headers | egrep -v 
 if [ "$versite" -gt "$verrepo" ]; then
     echo "Envia xanmod stable"
     xanmod=linux-xanmod
-    webhooks
+    $webhooks
 fi
 
 ## EDGE ##
@@ -30,7 +39,7 @@ edgeverrepo=$(pacman -Ss xanmod | grep biglinux-stable | grep -v headers | egrep
 if [ "$edgeversite" -gt "$edgeverrepo" ]; then
     echo "Envia edge"
     xanmod=linux-xanmod-edge
-    webhooks
+    $webhooks
 fi
 
 ## LTS ##
@@ -44,7 +53,7 @@ ltsverrepo=$(pacman -Ss xanmod | grep biglinux-stable | grep -v headers | egrep 
 if [ "$ltsversite" -gt "$ltsverrepo" ]; then
     echo "Envia lts"
     xanmod=linux-xanmod-lts
-    webhooks
+    $webhooks
 fi
 
 ## RT ##
@@ -58,7 +67,7 @@ rtverrepo=$(pacman -Ss xanmod | grep biglinux-stable | grep -v headers | egrep -
 if [ "$rtversite" -gt "$rtverrepo" ]; then
     echo "Envia rt"
     xanmod=linux-xanmod-rt
-    webhooks
+    $webhooks
 fi
 
 ## RT ##
@@ -72,8 +81,8 @@ ttverrepo=$(pacman -Ss xanmod | grep biglinux-stable | grep -v headers | egrep -
 if [ "$ttversite" -gt "$ttverrepo" ]; then
     echo "Envia tt"
     xanmod=linux-xanmod-tt
-    webhooks
+    $webhooks
 fi
 
 xanmod=linux-xanmod
-webhooks
+$webhooks
