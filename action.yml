@@ -1,28 +1,6 @@
 name: 'BigLinux Package XanMod'
 description: 'Builds Manjaro Packages'
 
-inputs:
-  package:
-    description: 'PKGBUILD repo name'
-    required: true
-  source:
-    description: 'custom package repo source'
-    required: false
-  branch:
-    description: 'branch to build against'
-    default: unstable
-    required: false
-  custom-repo:
-    description: 'custom repo'
-    required: false
-  multilib:
-    description: 'build multilib package'
-    required: false
-    default: false
-  repo:
-    description: 'package repo'
-    required: true
-
 runs:
   using: "composite"
   steps:
