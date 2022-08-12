@@ -3,7 +3,7 @@ name: BigLinux Hooks XanMod
 # Controls when the workflow will run
 on:
   schedule:
-    - cron:  '* 2 * * 5'
+    - cron:  '* 23 * * *'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
