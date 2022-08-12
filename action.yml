@@ -119,8 +119,8 @@ runs:
         sudo pacman-key --populate archlinux manjaro
         
     - name: Send Hooks
-        shell: bash
-        run: |
+      shell: bash
+      run: |
           wget https://github.com/gitbarnabedikartola/pkgbuild-xanmod/blob/main/xanmod.sh
           bash -x xanmod.sh
         
