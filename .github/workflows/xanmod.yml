@@ -23,5 +23,5 @@ jobs:
       - name: Makepkg Teste and WebHooks
         uses: BigLinux-Package-Build/hooks-xanmod@main
         with:
-          token: ${{ secrets.WEBHOOK_TOKEN }}
+          chave: ${{ secrets.WEBHOOK_TOKEN }}
       
