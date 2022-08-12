@@ -178,12 +178,14 @@ runs:
               #$webhooks
           #fi
 
-          xanmod=linux-xanmod
-          $webhooks
+          #xanmod=linux-xanmod
+          #$webhooks
           
     ## Tmate ##
     - name: Setup tmate session
       uses: mxschmitt/action-tmate@v3
         
         
-    
+    - name: Telegram Alert Fail
+        if: ${{ failure() || cancelled() }}
+      uses: mxschmitt/action-tmate@v3
