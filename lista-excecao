@@ -1,0 +1,57 @@
+lista expeciais
+
+xanmod TODOS
+python-bs4
+fluent-gtk-theme-git
+
+
+Lista dos em duvida
+
+brightness-controller-git
+AUR brightness-controller-git=234r286ea7434a2
+Repo brightness-controller-git=234r288cd8cc611
+
+edid-decode-git
+AUR edid-decode-git=r6218a8d6731
+Repo edid-decode-git=r632582c9351
+
+fluent-icon-theme-git
+AUR fluent-icon-theme-git=20220228r10g4f97c491
+Repo fluent-icon-theme-git=20220228r9gea951071
+
+fluent-kde-theme-git
+AUR fluent-kde-theme-git=r1860f741b1
+Repo fluent-kde-theme-git=r6975ff3342
+
+lightly-git
+AUR lightly-git=r2172121a61e52
+Repo lightly-git=r2122f91edc4c1
+
+lightlyshaders-git
+AUR lightlyshaders-git=r72ea8187d1
+Repo lightlyshaders-git=r73c2572b3
+
+mystiq
+AUR mystiq=2003231
+Repo mystiq=2003232
+
+orchis-theme-git
+AUR orchis-theme-git=20220218r8gf4c6f3b1
+Repo orchis-theme-git=20210625r26g71126811
+
+plasma5-applets-presentwindows
+AUR plasma5-applets-presentwindows=81
+Repo plasma5-applets-presentwindows=82
+
+Enviando plasma5-applet-tiledmenu-git para Package Build
+AUR plasma5-applet-tiledmenu-git=v43r9gc0434691
+Repo plasma5-applet-tiledmenu-git=v45r5g74b43691
+
+wps-office-mui-pt-br
+AUR wps-office-mui-pt-br=112092551
+Repo wps-office-mui-pt-br=2012
+
+geticons
+AUR geticons=1101
+Repo geticons=1102
+
