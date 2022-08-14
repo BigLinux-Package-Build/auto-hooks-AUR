@@ -45,3 +45,11 @@ uresourced
 vmtouch
 waydroid
 xf86-video-sis
+brightness-controller
+edid-decode-git
+plasma5-applet-tiledmenu-git
+
+
+mega-git
+lib32-mesa-git
+proton-ge-custom-bin

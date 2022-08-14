@@ -30,8 +30,12 @@ verrepo=$(pacman -Ss xanmod | grep biglinux-stable | grep -v headers | egrep -v 
 #se versão do site foi maior que a versão do repo local
 if [ "$versite" -gt "$verrepo" ]; then
     echo "Envia xanmod stable"
+    echo "AUR =$versite"
+    echo "Repo =$verrepo"
     xanmod=linux-xanmod
     webhooks
+else
+echo "Versão do xandmo stable é igual"
 fi
 
 ## EDGE ##
@@ -47,8 +51,12 @@ edgeverrepo=$(pacman -Ss xanmod | grep biglinux-stable | grep -v headers | egrep
 #se versão do site foi maior que a versão do repo local
 if [ "$edgeversite" -gt "$edgeverrepo" ]; then
     echo "Envia edge"
+    echo "AUR =$versite"
+    echo "Repo =$verrepo"
     xanmod=linux-xanmod-edge
     webhooks
+else
+echo "Versão do xandmo edge é igual"
 fi
 
 ## LTS ##
@@ -64,8 +72,12 @@ ltsverrepo=$(pacman -Ss xanmod | grep biglinux-stable | grep -v headers | egrep 
 #se versão do site foi maior que a versão do repo local
 if [ "$ltsversite" -gt "$ltsverrepo" ]; then
     echo "Envia lts"
+    echo "AUR =$versite"
+    echo "Repo =$verrepo"
     xanmod=linux-xanmod-lts
     webhooks
+else
+echo "Versão do xandmo lts é igual"
 fi
 
 ## RT ##
@@ -81,8 +93,12 @@ rtverrepo=$(pacman -Ss xanmod | grep biglinux-stable | grep -v headers | egrep -
 #se versão do site foi maior que a versão do repo local
 if [ "$rtversite" -gt "$rtverrepo" ]; then
     echo "Envia rt"
+    echo "AUR =$versite"
+    echo "Repo =$verrepo"
     xanmod=linux-xanmod-rt
     webhooks
+else
+echo "Versão do xandmo rt é igual"
 fi
 
 ## RT ##
@@ -98,7 +114,11 @@ ttverrepo=$(pacman -Ss xanmod | grep biglinux-stable | grep -v headers | egrep -
 #se versão do site foi maior que a versão do repo local
 if [ "$ttversite" -gt "$ttverrepo" ]; then
     echo "Envia tt"
+    echo "AUR =$versite"
+    echo "Repo =$verrepo"
     xanmod=linux-xanmod-tt
     webhooks
+else
+echo "Versão do xandmo tt é igual"
 fi
 
