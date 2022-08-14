@@ -48,8 +48,15 @@ xf86-video-sis
 brightness-controller
 edid-decode-git
 plasma5-applet-tiledmenu-git
-
-
 mega-git
 lib32-mesa-git
 proton-ge-custom-bin
+android-studio
+insync-dolphin
+spotify
+linux515-nvidia-340xx
+linux-hardened-nvidia-340xx
+lib32-nvidia-340xx-utils
+lib32-opencl-nvidia-340xx
+nvidia-340xx-utils
+opencl-nvidia-340xx
