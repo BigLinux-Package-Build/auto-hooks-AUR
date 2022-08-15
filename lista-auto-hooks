@@ -14,7 +14,6 @@ ideviceinstaller
 jamesdsp
 jdownloader2
 kazam
-kde-service-menu-reimage
 kde-servicemenus-officeconverter
 libgbinder
 libglibutil
@@ -37,7 +36,6 @@ python-bpylist2
 python-coloredlogs
 python-gbinder
 python-pyclip
-rustdesk-bin
 sc-controller
 start-stop-daemon
 systemd-oomd-defaults
@@ -48,15 +46,12 @@ xf86-video-sis
 brightness-controller
 edid-decode-git
 plasma5-applet-tiledmenu-git
-mega-git
 lib32-mesa-git
 proton-ge-custom-bin
 android-studio
+insync
 insync-dolphin
-spotify
 linux515-nvidia-340xx
 linux-hardened-nvidia-340xx
 lib32-nvidia-340xx-utils
-lib32-opencl-nvidia-340xx
 nvidia-340xx-utils
-opencl-nvidia-340xx
