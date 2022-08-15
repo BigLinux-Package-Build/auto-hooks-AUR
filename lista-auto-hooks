@@ -15,8 +15,6 @@ jamesdsp
 jdownloader2
 kazam
 kde-servicemenus-officeconverter
-libgbinder
-libglibutil
 libkipi
 libreoffice-extension-vero
 lightly-git
@@ -41,7 +39,6 @@ start-stop-daemon
 systemd-oomd-defaults
 uresourced
 vmtouch
-waydroid
 xf86-video-sis
 brightness-controller
 edid-decode-git
@@ -55,3 +52,5 @@ linux515-nvidia-340xx
 linux-hardened-nvidia-340xx
 lib32-nvidia-340xx-utils
 nvidia-340xx-utils
+goverlay-bin
+amdgpu-pro-installer
