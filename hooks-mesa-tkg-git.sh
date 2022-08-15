@@ -33,12 +33,11 @@ rm run-webhooks-aur.sh
 pkgname=mesa-git
 
 #versão online no site da AUR
-pkgver=$(curl -s https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=$pkgname | sed 's/<[^>]*>//g' | grep pkgver= | cut -d "=" -f2 | sed 's|\.||g' | sed 's|-||g' | cut -d "}" -f2)
-pkgrel=$(curl -s https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=$pkgname | sed 's/<[^>]*>//g' | grep pkgrel= | cut -d "=" -f2 | sed 's|\.||g' | sed 's|-||g')
-versite=$pkgver$pkgrel
+pkgver=$(curl -s https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=$pkgname | sed 's/<[^>]*>//g' | grep pkgver= | cut -d "=" -f2 | awk -F"_devel" '{print $1}' | sed 's|\.||g' | sed 's|-||g')
+versite=$pkgver
 
 #versão do repositorio do biglinux
-verrepo=$(pacman -Ss $pkgname | grep biglinux-stable | cut -d " " -f2  | sed 's/\.//g' | sed 's/\-//')
+verrepo=$(pacman -Ss $pkgname | grep biglinux-stable | grep -v "$pkgname-" | grep -v "\-$pkgname" | grep "$pkgname" | cut -d " " -f2 | awk -F"_devel" '{print $1}' | sed 's/\.//g' | sed 's/\-//')
 
 #se versão do site foi maior que a versão do repo local
 if [ "$versite" != "$verrepo" ]; then
@@ -47,6 +46,8 @@ if [ "$versite" != "$verrepo" ]; then
     echo "Repo ""$pkgname"="$verrepo"
     AUR=$pkgname
     webhooks
+else
+    echo "Versão do $pkgname é igual !"
 fi
 
 
