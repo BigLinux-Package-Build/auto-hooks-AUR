@@ -18,15 +18,18 @@ rm run-webhooks-aur.sh
 
 
 #nome do programa como está no pacman
-pkgname=
+pkgnameaur=amdgpu-pro-installer
+pkgnamerepo=vulkan-amdgpu-pro
+
+
 
 #versão online no site da AUR
-pkgver=$(curl -s https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=$pkgname | sed 's/<[^>]*>//g' | grep pkgver= | cut -d "=" -f2 | sed 's|\.||g' | sed 's|-||g' | cut -d "}" -f2  | sed 's/&quot;//g')
-pkgrel=$(curl -s https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=$pkgname | sed 's/<[^>]*>//g' | grep pkgrel= | cut -d "=" -f2 | sed 's|\.||g' | sed 's|-||g')
+pkgver=$(curl -s https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=$pkgnameaur | sed 's/<[^>]*>//g' | grep major= | cut -d "=" -f2 | sed 's|\.||g' | sed 's|-||g' | cut -d "}" -f2  | sed 's/&quot;//g')
+pkgrel=$(curl -s https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=$pkgnameaur | sed 's/<[^>]*>//g' | grep pkgrel= | cut -d "=" -f2 | sed 's|\.||g' | sed 's|-||g')
 versite=$pkgver$pkgrel
 
 #versão do repositorio do biglinux
-verrepo=$(pacman -Ss $pkgname | grep biglinux-stable | grep -v "$pkgname-" | grep -v "\-$pkgname" | grep "$pkgname" | cut -d " " -f2 | sed 's/\.//g' | sed 's/\-//')
+verrepo=$(pacman -Ss $pkgnamerepo | grep biglinux-stable | grep -v "$pkgnamerepo-" | grep -v "\-$pkgnamerepo" | grep "$pkgnamerepo" | cut -d " " -f2 | sed 's/\.//g' | sed 's/\-//' | cut -d "_" -f1)
 
 #se versão do site foi maior que a versão do repo local
 if [ "$versite" != "$verrepo" ]; then

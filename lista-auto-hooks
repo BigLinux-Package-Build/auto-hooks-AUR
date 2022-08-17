@@ -18,7 +18,6 @@ kde-servicemenus-officeconverter
 libkipi
 libreoffice-extension-vero
 lightly-git
-lightlyshaders-git
 mawk
 ocrmypdf
 openrgb
@@ -37,14 +36,7 @@ python-pyclip
 sc-controller
 start-stop-daemon
 systemd-oomd-defaults
-uresourced
 vmtouch
-xf86-video-sis
-brightness-controller
-edid-decode-git
-plasma5-applet-tiledmenu-git
-lib32-mesa-git
-proton-ge-custom-bin
 android-studio
 insync
 insync-dolphin
@@ -53,4 +45,6 @@ linux-hardened-nvidia-340xx
 lib32-nvidia-340xx-utils
 nvidia-340xx-utils
 goverlay-bin
-amdgpu-pro-installer
+taglib-extras
+amarok
+rtapp
