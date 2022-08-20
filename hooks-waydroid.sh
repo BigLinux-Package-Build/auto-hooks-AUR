@@ -20,7 +20,7 @@ for i in libglibutil libgbinder python-gbinder waydroid; do
     #verifica versão do pacote
     verificaver() {
     #atualizar lista pacman
-    pacman -Sy
+    sudo pacman -Sy
     #nome do programa como está no pacman
     pkgname=$i
     #versão online no site da AUR
@@ -41,7 +41,7 @@ for i in libglibutil libgbinder python-gbinder waydroid; do
         echo "Repo ""$pkgname"="$verrepo"
         AUR=$pkgname
         webhooks
-        sleep 60
+        sleep 600
         verificaver
     done
 
