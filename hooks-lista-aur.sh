@@ -21,6 +21,9 @@ rm run-webhooks-aur.sh
 
 
 for i in $(cat lista-auto-hooks); do pkgname=$i
+    if [ "$i" = "" ];then
+        exit
+    fi
     #versão online no site da AUR
     pkgver=$(curl -s https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=$pkgname | sed 's/<[^>]*>//g' | grep pkgver= | cut -d "=" -f2 | sed 's|\.||g' | sed 's|\_||g'| sed 's|-||g' | cut -d "}" -f2  | sed 's/&quot;//g' | sed 's|_||g')
     pkgrel=$(curl -s https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=$pkgname | sed 's/<[^>]*>//g' | grep pkgrel= | cut -d "=" -f2 | sed 's|\.||g' | sed 's|-||g')
