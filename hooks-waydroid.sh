@@ -41,7 +41,7 @@ for i in libglibutil libgbinder python-gbinder waydroid; do
         echo "Repo ""$pkgname"="$verrepo"
         AUR=$pkgname
         webhooks
-        sleep 600
+        sleep 60
         verificaver
     done
 
