@@ -35,7 +35,7 @@ if [ "$versite" -gt "$verrepo" ]; then
     xanmod=linux-xanmod
     webhooks
 else
-echo "Versão do xandmo stable é igual"
+echo "Versão do xanmod stable é igual"
 fi
 
 ## EDGE ##
@@ -56,7 +56,7 @@ if [ "$edgeversite" -gt "$edgeverrepo" ]; then
     xanmod=linux-xanmod-edge
     webhooks
 else
-echo "Versão do xandmo edge é igual"
+echo "Versão do xanmod edge é igual"
 fi
 
 ## LTS ##
@@ -77,7 +77,7 @@ if [ "$ltsversite" -gt "$ltsverrepo" ]; then
     xanmod=linux-xanmod-lts
     webhooks
 else
-echo "Versão do xandmo lts é igual"
+echo "Versão do xanmod lts é igual"
 fi
 
 ## RT ##
@@ -98,7 +98,7 @@ if [ "$rtversite" -gt "$rtverrepo" ]; then
     xanmod=linux-xanmod-rt
     webhooks
 else
-echo "Versão do xandmo rt é igual"
+echo "Versão do xanmod rt é igual"
 fi
 
 ## RT ##
@@ -119,6 +119,6 @@ if [ "$ttversite" -gt "$ttverrepo" ]; then
     xanmod=linux-xanmod-tt
     webhooks
 else
-echo "Versão do xandmo tt é igual"
+echo "Versão do xanmod tt é igual"
 fi
 
