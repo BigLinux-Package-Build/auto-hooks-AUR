@@ -47,7 +47,7 @@ for i in $(cat lista-auto-hooks); do pkgname=$i
         echo "AUR ""$pkgname"="$versite"
         echo "Repo ""$pkgname"="$verrepo"
         AUR=$pkgname
-#         webhooks
+        webhooks
     else
     echo "Versão do $pkgname é igual !"
     fi
