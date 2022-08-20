@@ -24,4 +24,4 @@ jobs:
         uses: BigLinux-Package-Build/auto-hooks-AUR@main
         with:
           chave: ${{ secrets.WEBHOOK_TOKEN }}
-      
+          repo: testing

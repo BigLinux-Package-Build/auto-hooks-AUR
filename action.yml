@@ -5,6 +5,9 @@ inputs:
   chave:
     description: 'token for webhooks'
     required: false
+  repo:
+    description: 'Repo testing or stable'
+    required: true
 
 runs:
   using: "composite"
@@ -31,6 +34,7 @@ runs:
       shell: bash
       env:
         PACMAN_VERSION: 6.0.1
+        REPO: ${{ inputs.repo }}
       run: |
         sudo git clone --depth 1 https://gitlab.manjaro.org/packages/core/pacman.git
         pushd pacman
@@ -64,6 +68,13 @@ runs:
         [biglinux-stable]
         SigLevel = PackageRequired
         Server = https://repo.biglinux.com.br/stable/$arch' | sudo tee -a /etc/pacman.conf
+        
+        if [ "$REPO" = "testing" ]; then
+        echo '
+        [biglinux-testing]
+        SigLevel = PackageRequired
+        Server = https://repo.biglinux.com.br/testing/$arch' | sudo tee -a /etc/pacman.conf
+        fi
         
         echo 'Server = https://manjaro.repo.cure.edu.uy/stable/$repo/$arch
         Server = http://mirror.datacenter.by/pub/mirrors/manjaro/stable/$repo/$arch
@@ -103,6 +114,8 @@ runs:
         
     - name: Send Hooks
       shell: bash
+      env:
+        REPO: ${{ inputs.repo }}
       run: |
           find -type f -iname "*.sh" -exec bash {} \;
       env:
