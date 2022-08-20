@@ -1,4 +1,4 @@
-name: BigLinux Hooks AUR
+name: BigLinux Hooks AUR TESTING
 
 # Controls when the workflow will run
 on:
