@@ -31,7 +31,6 @@ plasma5-applets-window-title
 pymobiledevice-git
 python-bpylist2
 python-coloredlogs
-python-gbinder
 python-pyclip
 sc-controller
 start-stop-daemon
@@ -49,6 +48,3 @@ taglib-extras
 amarok
 rtapp
 youtube-dl-gui
-libgbinder
-libglibutil
-waydroid
