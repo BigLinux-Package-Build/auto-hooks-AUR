@@ -27,15 +27,18 @@ curl -X POST \
 bash -x run-webhooks-aur.sh
 rm run-webhooks-aur.sh
 
+sleep 600
+
 #lib32-mesa-git
-AUR=
-webhooks() {
 echo '
 curl -X POST \
 -H "Accept: application/json" \
 -H "Authorization: token '$CHAVE'" \
 --data '"'{"'"event_type"'": "'"'AUR/lib32-mesa-git'"'", "'"client_payload"'": { "'"pkgbuild"'": "'""'", "'"branch"'": "'"'stable'"'", "'"url"'": "'"https://aur.archlinux.org/'lib32-mesa-git'"'", "'"version"'": "'"1.2.3"'"}}'"' \
 'https://api.github.com/repos/BigLinux-Package-Build/build-package/dispatches'' > run-webhooks-aur.sh
+
+bash -x run-webhooks-aur.sh
+rm run-webhooks-aur.sh
 
 }
 ##### NÃO Editar End #####

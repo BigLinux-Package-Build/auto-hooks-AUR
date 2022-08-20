@@ -40,9 +40,17 @@ for i in libglibutil libgbinder python-gbinder waydroid; do
         echo "AUR ""$pkgname"="$versite"
         echo "Repo ""$pkgname"="$verrepo"
         AUR=$pkgname
-        webhooks
-        sleep 600
-        verificaver
+        cont=$[$cont + 1]
+        if [ "$cont" = "1" ]; then
+            webhooks
+            sleep 600
+            verificaver
+        elif [ "$cont" -gt "1" -a "$cont" -lt "10" ];then 
+            sleep 60
+            verificaver
+        elif [ "$cont" -gt "10" ];then
+            exit 1
+        fi
     done
 
 done
