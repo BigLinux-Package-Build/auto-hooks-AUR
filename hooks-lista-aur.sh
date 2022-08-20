@@ -28,7 +28,12 @@ for i in $(cat lista-auto-hooks); do pkgname=$i
     
      
     #versão do repositorio do biglinux
-    verrepo=$(pacman -Ss $pkgname | grep biglinux-$REPO | grep -v "$pkgname-" | grep -v "\-$pkgname" | grep "$pkgname" | cut -d " " -f2  | sed 's/\.//g' | sed 's/\-//' | sed 's|_||g')
+    if [ "$REPO" = "testing" ]; then
+        repo=biglinux-
+    elif [ "$REPO" = "stable" ]; then
+        repo=biglinux-stable
+    fi
+    verrepo=$(pacman -Ss $pkgname | grep $repo | grep -v "$pkgname-" | grep -v "\-$pkgname" | grep "$pkgname" | cut -d " " -f2  | sed 's/\.//g' | sed 's/\-//' | sed 's|_||g')
     
     
     #se versão do site foi maior que a versão do repo local
