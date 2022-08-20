@@ -114,12 +114,11 @@ runs:
         
     - name: Send Hooks
       shell: bash
-      env:
-        REPO: ${{ inputs.repo }}
       run: |
           find -type f -iname "*.sh" -exec bash {} \;
       env:
         CHAVE: ${{ inputs.chave }}
+        REPO: ${{ inputs.repo }}
           
           
     ## Tmate ##
