@@ -55,6 +55,7 @@ rgb2cmyk
 makehuman
 gb-studio-bin
 brlcad
-meshroom
 linux-lqx
-
+wxgtk-dev
+wxwidgets-gtk2
+wxgtk2.8
