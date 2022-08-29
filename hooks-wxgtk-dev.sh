@@ -17,9 +17,10 @@ rm run-webhooks-aur.sh
 
 
 #nome do programa como está no pacman
-#pkgname=
 
-    pkgname=wxgtk3-dev
+
+    #nome no AUR
+    pkgname=wxgtk-dev
 
     #versão online no site da AUR
     pkgver=$(curl -s https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=$pkgname | sed 's/<[^>]*>//g' | grep pkgver= | cut -d "=" -f2 | sed 's|\.||g' | sed 's|\_||g'| sed 's|-||g' | cut -d "}" -f2  | sed 's/&quot;//g' | sed 's|_||g')
@@ -33,9 +34,13 @@ rm run-webhooks-aur.sh
     elif [ "$REPO" = "stable" ]; then
         repo=biglinux-stable
     fi
-    verrepo=$(pacman -Ss $pkgname | grep $repo | grep -v "$pkgname-" | grep -v "\-$pkgname" | grep "$pkgname" | cut -d " " -f2  | sed 's/\.//g' | sed 's/\-//' | sed 's|_||g')
+    
+    #nome no repo
+    pkgname=wxgtk3-dev
+    
+    verrepo=$(pacman -Ss $pkgname | grep $repo | grep -v "$pkgname-" | grep -v "\-$pkgname" | grep -w "$pkgname" | cut -d " " -f2  | sed 's/\.//g' | sed 's/\-//' | sed 's|_||g')
     if [ "$versite" != "$verrepo" ]; then
-        verrepo=$(pacman -Ss $pkgname | grep biglinux-stable | grep -v "$pkgname-" | grep -v "\-$pkgname" | grep "$pkgname" | cut -d " " -f2  | sed 's/\.//g' | sed 's/\-//' | sed 's|_||g')
+        verrepo=$(pacman -Ss $pkgname | grep biglinux-stable | grep -v "$pkgname-" | grep -v "\-$pkgname" | grep -w "$pkgname" | cut -d " " -f2  | sed 's/\.//g' | sed 's/\-//' | sed 's|_||g')
     fi
     
     #se versão do site foi maior que a versão do repo local
