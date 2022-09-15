@@ -1,27 +1,13 @@
 #!/bin/bash
 
 ##### Não Editar Start #####
-echo '
-curl -X POST \
--H "Accept: application/json" \
--H "Authorization: token '$CHAVE'" \
---data '"'{"'"event_type"'": "'"'AUR/$AUR'"'", "'"client_payload"'": { "'"pkgbuild"'": "'""'", "'"branch"'": "'"'stable'"'", "'"url"'": "'"https://aur.archlinux.org/'$AUR'"'", "'"version"'": "'"1.2.3"'"}}'"' \
-'https://api.github.com/repos/BigLinux-Package-Build/build-package/dispatches'' > run-webhooks-aur.sh
-
-bash -x run-webhooks-aur.sh
-rm run-webhooks-aur.sh
-
-sleep 2
-
-#mesa-git
-AUR=
 webhooks() {
-#mesa-tkg-git
+AUR=wine-tkg-git
 echo '
 curl -X POST \
 -H "Accept: application/json" \
 -H "Authorization: token '$CHAVE'" \
---data '"'{"'"event_type"'": "'"'TKG/$AUR'"'", "'"client_payload"'": { "'"pkgbuild"'": "'""'", "'"branch"'": "'"'stable'"'", "'"url"'": "'"https://github.com/Frogging-Family/'$AUR'"'", "'"version"'": "'"1.2.3"'"}}'"' \
+--data '"'{"'"event_type"'": "'"'TKG/wine'"'", "'"client_payload"'": { "'"pkgbuild"'": "'""'", "'"branch"'": "'"'stable'"'", "'"url"'": "'"https://github.com/Frogging-Family/'$AUR'"'", "'"version"'": "'"1.2.3"'"}}'"' \
 'https://api.github.com/repos/BigLinux-Package-Build/build-package/dispatches'' > run-webhooks-aur.sh
 
 bash -x run-webhooks-aur.sh
@@ -30,23 +16,22 @@ rm run-webhooks-aur.sh
 }
 ##### NÃO Editar End #####
 
+pkgname=wine-tkg-git
 
 #nome do programa como está no pacman
-pkgname=wine-staging-git
-
-#versão online no site da AUR
-pkgver=$(curl -s https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=$pkgname | sed 's/<[^>]*>//g' | grep pkgver= | cut -d "=" -f2 | awk -F"_devel" '{print $1}' | sed 's|\.||g' | sed 's|-||g')
+pkgnameaur=wine-staging
+pkgver=$(pacman -Ss $pkgnamerepo | grep -v "$pkgnamerepo-" | grep -v "\-$pkgnamerepo" | grep "$pkgnamerepo" | cut -d " " -f2 | awk -F"_devel" '{print $1}' | sed 's/\.//g' | sed 's/\-//')
 versite=$pkgver
 
+pkgnamerepo=wine-tkg-git
 #versão do repositorio do biglinux
-verrepo=$(pacman -Ss $pkgname | grep biglinux-stable | grep -v "$pkgname-" | grep -v "\-$pkgname" | grep "$pkgname" | cut -d " " -f2 | awk -F"_devel" '{print $1}' | sed 's/\.//g' | sed 's/\-//')
+verrepo=$(pacman -Ss $pkgnamerepo | grep biglinux-stable | grep -v "$pkgnamerepo-" | grep -v "\-$pkgnamerepo" | grep "$pkgnamerepo" | cut -d " " -f2 | awk -F"_devel" '{print $1}' | sed 's/\.//g' | sed 's/\-//')
 
 #se versão do site foi maior que a versão do repo local
 if [ "$versite" != "$verrepo" ]; then
     echo -e "Enviando \033[01;31m$pkgname\033[0m para Package Build"
     echo "AUR ""$pkgname"="$versite"
     echo "Repo ""$pkgname"="$verrepo"
-    AUR=$pkgname
     webhooks
 else
     echo "Versão do $pkgname é igual !"
