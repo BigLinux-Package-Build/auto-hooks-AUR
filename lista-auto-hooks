@@ -81,3 +81,21 @@ heroic-games-launcher
 #librist
 #flac-git
 #vlc-luajit
+
+#Proton-GE dependencias
+python-booleanoperations
+python-defcon
+python-fontmath
+python-fontparts
+python-fontpens
+python-ufonormalizer
+python-ufoprocessor
+python-pyclipper
+python-mutatormath
+afdko
+mingw-w64-tools
+psautohint
+
+
+
+
