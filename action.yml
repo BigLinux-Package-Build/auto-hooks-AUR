@@ -115,13 +115,14 @@ runs:
     - name: Send Hooks
       shell: bash
       run: |
+          sudo pacman -Sy
           find -type f -iname "*.sh" -exec bash {} \;
       env:
         CHAVE: ${{ inputs.chave }}
         REPO: ${{ inputs.repo }}
           
           
-    # Tmate ##
-    - name: Setup tmate session
-      uses: mxschmitt/action-tmate@v3
-        
+#     # Tmate ##
+#     - name: Setup tmate session
+#       uses: mxschmitt/action-tmate@v3
+#         
