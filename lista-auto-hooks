@@ -92,10 +92,9 @@ python-ufonormalizer
 python-ufoprocessor
 python-pyclipper
 python-mutatormath
-afdko
 mingw-w64-tools
 psautohint
 lib32-lzo
-
+proton-ge-custom
 
 
