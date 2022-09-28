@@ -28,7 +28,6 @@ for i in $(cat lista-auto-hooks); do pkgname=$i
     pkgver=$(curl -s https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=$pkgname | sed 's/<[^>]*>//g' | grep pkgver= | cut -d "=" -f2 | sed 's|\.||g' | sed 's|\_||g'| sed 's|-||g' | cut -d "}" -f2  | sed 's/&quot;//g' | sed 's|_||g')
     pkgrel=$(curl -s https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=$pkgname | sed 's/<[^>]*>//g' | grep pkgrel= | cut -d "=" -f2 | sed 's|\.||g' | sed 's|-||g')
     versite=$pkgver$pkgrel
-
      
     #versão do repositorio do biglinux
     if [ "$REPO" = "testing" ]; then
@@ -44,12 +43,12 @@ for i in $(cat lista-auto-hooks); do pkgname=$i
     #se versão do site foi maior que a versão do repo local
     if [ "$versite" != "$verrepo" ]; then
         echo -e "Enviando \033[01;31m$pkgname\033[0m para Package Build"
-        echo "AUR ""$pkgname"="$versite"
+        echo " AUR ""$pkgname"="$versite"
         echo "Repo ""$pkgname"="$verrepo"
         AUR=$pkgname
         webhooks
     else
-    echo "Versão do $pkgname é igual !"
+        echo "Versão do $pkgname é igual !"
     fi
 done
 
