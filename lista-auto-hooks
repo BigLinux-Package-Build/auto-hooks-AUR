@@ -72,9 +72,12 @@ jellyfin
 jellyfin-media-player
 remmina-plugin-rdesktop
 heroic-games-launcher-bin
-obs-studio-tytan652
-ffmpeg-obs
-libajantv2
-cef-minimal-bin
 
-
+#obs-studio-tytan652
+#ffmpeg-obs
+#libajantv2
+#cef-minimal-obs-bin 
+#ftl-sdk
+#librist
+#flac-git
+#vlc-luajit
