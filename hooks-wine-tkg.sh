@@ -19,7 +19,7 @@ rm run-webhooks-aur.sh
 pkgname=wine-tkg-git
 
 #nome do programa como está no pacman
-pkgnameaur=wine-staging
+pkgnameaur=wine-staging #está certo, proton é baseado no wine
 pkgver=$(pacman -Ss $pkgnameaur | grep -v "$pkgnameaur-" | grep -v "\-$pkgnameaur" | grep "$pkgnameaur" | cut -d " " -f2 | awk -F"_devel" '{print $1}' | sed 's/\.//g' | sed 's/\-//')
 versite=$pkgver
 
