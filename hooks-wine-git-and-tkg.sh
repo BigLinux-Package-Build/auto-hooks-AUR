@@ -20,7 +20,7 @@ pkgname=wine-tkg-git
 
 #nome do programa como está no pacman
 pkgnameaur=wine-staging
-pkgver=$(pacman -Ss $pkgnamerepo | grep -v "$pkgnamerepo-" | grep -v "\-$pkgnamerepo" | grep "$pkgnamerepo" | cut -d " " -f2 | awk -F"_devel" '{print $1}' | sed 's/\.//g' | sed 's/\-//')
+pkgver=$(pacman -Ss $pkgnameaur | grep -v "$pkgnameaur-" | grep -v "\-$pkgnameaur" | grep "$pkgnameaur" | cut -d " " -f2 | awk -F"_devel" '{print $1}' | sed 's/\.//g' | sed 's/\-//')
 versite=$pkgver
 
 pkgnamerepo=wine-tkg-git
