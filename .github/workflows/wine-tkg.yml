@@ -17,8 +17,9 @@ jobs:
           echo -e "[multilib]\nInclude = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf
           pacman -Syu --noconfirm base-devel sudo git
           git clone https://github.com/Frogging-Family/wine-tkg-git.git
+          
           useradd user -G wheel && echo "user ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
-          chown user -R . && cd wine-tkg-git
+          chown user -R . && cd wine-tkg-git/wine-tkg-git
           # Workaround for jack&jack2 conflict https://github.com/Frogging-Family/wine-tkg-git/issues/237
           sed -i "/'jack2'                 'lib32-jack2'/d" PKGBUILD
           sed -i "/'gst-plugins-good'      'lib32-gst-plugins-good'/d" PKGBUILD 
