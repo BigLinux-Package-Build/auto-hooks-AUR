@@ -7,7 +7,7 @@ echo '
 curl -X POST \
 -H "Accept: application/json" \
 -H "Authorization: token '$CHAVE'" \
---data '"'{"'"event_type"'": "'"'AUR/$AUR'"'", "'"client_payload"'": { "'"pkgbuild"'": "'""'", "'"branch"'": "'"'$REPO'"'", "'"url"'": "'"https://aur.archlinux.org/'$AUR'"'", "'"version"'": "'"1.2.3"'"}}'"' \
+--data '"'{"'"event_type"'": "'"'AUR/$AUR'"'", "'"client_payload"'": { "'"pkgbuild"'": "'""'", "'"branch"'": "'"'stable'"'", "'"url"'": "'"https://aur.archlinux.org/'$AUR'"'", "'"version"'": "'"1.2.3"'"}}'"' \
 'https://api.github.com/repos/BigLinux-Package-Build/build-package/dispatches'' > run-webhooks-aur.sh
 
 bash -x run-webhooks-aur.sh
@@ -20,7 +20,7 @@ rm run-webhooks-aur.sh
 #pkgname=
 
 
-for i in $(cat lista-auto-hooks); do pkgname=$i
+for i in $(cat lista-auto-hooks-stable); do pkgname=$i
     if [ "$i" = "" ];then
         exit
     fi

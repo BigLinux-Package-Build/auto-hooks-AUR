@@ -1,27 +1,39 @@
-name: BigLinux Hooks AUR TESTING
+name: BigLinux Hooks AUR STABLE
 
 # Controls when the workflow will run
 on:
   schedule:
-    - cron:  '30 6 * * *'
+    - cron:  '30 2 * * *'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+  
 jobs:
-  # This workflow contains a single job called "build"
   build:
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
+    container: archlinux:latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
-      
-      - name: Makepkg Teste and WebHooks
-        uses: BigLinux-Package-Build/auto-hooks-AUR@main
-        with:
-          chave: ${{ secrets.WEBHOOK_TOKEN }}
-          repo: testing
+      - uses: actions/checkout@v2
+      - name: Add Repo BigLinux
+        run: |
+          echo '
+          [biglinux-stable]
+          SigLevel = PackageRequired
+          Server = https://repo.biglinux.com.br/stable/$arch' | sudo tee -a /etc/pacman.conf
+          
+          echo '
+          [biglinux-testing]
+          SigLevel = PackageRequired
+          Server = https://repo.biglinux.com.br/testing/$arch' | sudo tee -a /etc/pacman.conf
+          
+          sudo pacman-key -r 45EC44879815E2A6
+          sudo pacman-key --lsign-key 45EC44879815E2A6
+          
+      - name: Send WeebHooks
+        run: |
+          sudo pacman -Sy
+          find -type f -iname "*.sh" -exec bash {} \;
+        env:
+          CHAVE: ${{ inputs.chave }}
+          REPO: ${{ inputs.repo }}
