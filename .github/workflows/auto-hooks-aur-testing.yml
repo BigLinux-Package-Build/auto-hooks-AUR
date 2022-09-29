@@ -20,15 +20,15 @@ jobs:
           echo '
           [biglinux-stable]
           SigLevel = PackageRequired
-          Server = https://repo.biglinux.com.br/stable/$arch' | sudo tee -a /etc/pacman.conf
+          Server = https://repo.biglinux.com.br/stable/$arch' | tee -a /etc/pacman.conf
           
           echo '
           [biglinux-testing]
           SigLevel = PackageRequired
-          Server = https://repo.biglinux.com.br/testing/$arch' | sudo tee -a /etc/pacman.conf
+          Server = https://repo.biglinux.com.br/testing/$arch' | tee -a /etc/pacman.conf
           
-          sudo pacman-key -r 45EC44879815E2A6
-          sudo pacman-key --lsign-key 45EC44879815E2A6
+          pacman-key -r 45EC44879815E2A6
+          pacman-key --lsign-key 45EC44879815E2A6
           
       - name: Send WeebHooks
         run: |
