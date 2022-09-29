@@ -14,9 +14,9 @@ jobs:
       - uses: actions/checkout@v2
       - name: Compile
         run: |
-          git clone https://github.com/Frogging-Family/wine-tkg-git.git
           echo -e "[multilib]\nInclude = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf
-          pacman -Syu --noconfirm base-devel sudo
+          pacman -Syu --noconfirm base-devel sudo git
+          git clone https://github.com/Frogging-Family/wine-tkg-git.git
           useradd user -G wheel && echo "user ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
           chown user -R . && cd wine-tkg-git
           # Workaround for jack&jack2 conflict https://github.com/Frogging-Family/wine-tkg-git/issues/237
