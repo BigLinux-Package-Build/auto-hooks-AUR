@@ -1,4 +1,4 @@
-name: BigLinux Hooks AUR STABLE
+name: BigLinux Hooks AUR Arch
 
 # Controls when the workflow will run
 on:
