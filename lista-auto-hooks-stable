@@ -95,6 +95,6 @@ python-mutatormath
 mingw-w64-tools
 psautohint
 lib32-lzo
-proton-ge-custom
+#proton-ge-custom #usando o -bin em scrip a parte
 
 
