@@ -68,13 +68,10 @@ runs:
         [biglinux-stable]
         SigLevel = PackageRequired
         Server = https://repo.biglinux.com.br/stable/$arch' | sudo tee -a /etc/pacman.conf
-        
-        if [ "$REPO" = "testing" ]; then
         echo '
         [biglinux-testing]
         SigLevel = PackageRequired
         Server = https://repo.biglinux.com.br/testing/$arch' | sudo tee -a /etc/pacman.conf
-        fi
         
         echo 'Server = https://manjaro.repo.cure.edu.uy/stable/$repo/$arch
         Server = http://mirror.datacenter.by/pub/mirrors/manjaro/stable/$repo/$arch
