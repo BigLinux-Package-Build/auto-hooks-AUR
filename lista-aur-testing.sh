@@ -29,17 +29,9 @@ for i in $(cat lista-auto-hooks-testing); do pkgname=$i
     pkgrel=$(curl -s https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=$pkgname | sed 's/<[^>]*>//g' | grep pkgrel= | cut -d "=" -f2 | sed 's|\.||g' | sed 's|-||g')
     versite=$pkgver$pkgrel
 
-     
-    #versão do repositorio do biglinux
-    if [ "$REPO" = "testing" ]; then
-        repo=biglinux-testing
-    elif [ "$REPO" = "stable" ]; then
-        repo=biglinux-stable
-    fi
+    repo=biglinux-testing
+
     verrepo=$(pacman -Ss $pkgname | grep $repo | grep -v "$pkgname-" | grep -v "\-$pkgname" | grep "$pkgname" | cut -d " " -f2  | sed 's/\.//g' | sed 's/\-//' | sed 's|_||g')
-    if [ "$versite" != "$verrepo" ]; then
-        verrepo=$(pacman -Ss $pkgname | grep biglinux-stable | grep -v "$pkgname-" | grep -v "\-$pkgname" | grep "$pkgname" | cut -d " " -f2  | sed 's/\.//g' | sed 's/\-//' | sed 's|_||g')
-    fi
     
     #se versão do site foi maior que a versão do repo local
     if [ "$versite" != "$verrepo" ]; then
