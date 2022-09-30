@@ -82,7 +82,7 @@ grapejuice
 #flac-git
 #vlc-luajit
 
-#Proton-GE dependencias
+#Proton-GE/K dependencias
 python-booleanoperations
 python-defcon
 python-fontmath
