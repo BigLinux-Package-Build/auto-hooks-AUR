@@ -31,7 +31,7 @@ plasma5-applets-window-title
 pymobiledevice-git
 python-bpylist2
 python-coloredlogs
-python-pyclip
+#python-pyclip #script-separado
 sc-controller
 start-stop-daemon
 systemd-oomd-defaults
@@ -82,7 +82,7 @@ grapejuice
 #flac-git
 #vlc-luajit
 
-#Proton-GE/K dependencias
+#Proton-GE/K-dependencias
 python-booleanoperations
 python-defcon
 python-fontmath
@@ -93,8 +93,8 @@ python-ufoprocessor
 python-pyclipper
 python-mutatormath
 mingw-w64-tools
-psautohint
+#psautohint #script-separado
 lib32-lzo
-#proton-ge-custom #usando o -bin em scrip a parte
+#proton-ge-custom #usando-bin--script
 
 
