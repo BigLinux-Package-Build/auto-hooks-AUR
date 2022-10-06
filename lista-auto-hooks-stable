@@ -75,15 +75,17 @@ grapejuice
 libglibutil
 libgbinder
 python-gbinder
+kde-snap-assist
 
-#obs-studio-tytan652
-#ffmpeg-obs
-#libajantv2
-#cef-minimal-obs-bin 
-#ftl-sdk
-#librist
-#flac-git
-#vlc-luajit
+obs-studio-tytan652
+libajantv2
+cef-minimal-obs-bin 
+ftl-sdk
+librist
+flac-git
+vlc-luajit
+pod2man
+ffmpeg-obs
 
 #Proton-GE/K-dependencias
 python-booleanoperations
@@ -100,5 +102,4 @@ mingw-w64-tools
 lib32-lzo
 vkbasalt
 #proton-ge-custom #usando-bin--script
-
 
