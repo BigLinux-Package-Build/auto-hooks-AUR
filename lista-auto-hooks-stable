@@ -39,10 +39,10 @@ vmtouch
 android-studio
 insync
 insync-dolphin
-linux515-nvidia-340xx
-linux-hardened-nvidia-340xx
-lib32-nvidia-340xx-utils
-nvidia-340xx-utils
+#linux515-nvidia-340xx
+#linux-hardened-nvidia-340xx
+#lib32-nvidia-340xx-utils
+#nvidia-340xx-utils
 goverlay-bin
 taglib-extras
 amarok
@@ -100,10 +100,10 @@ python-ufoprocessor
 python-pyclipper
 python-mutatormath
 mingw-w64-tools
-#psautohint #script-separado
+psautohint #script-separado
 lib32-lzo
 vkbasalt
-#proton-ge-custom #usando-bin--script
+proton-ge-custom-bin #usando-bin--script
 
 leagueoflegends-git
 wine-lol-bin

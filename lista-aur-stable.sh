@@ -21,10 +21,11 @@ rm run-webhooks-aur.sh
 
 
 for i in $(cat lista-auto-hooks-stable); do pkgname=$i
-    if [ "$i" = "" ];then
+    if [ "$i" = "" -o -n "$(echo $i | grep \#)" ];then
         exit
     fi
     #versão do AUR
+    veraur=
     git clone https://aur.archlinux.org/${i}.git
     cd $i 
     source PKGBUILD
@@ -37,9 +38,9 @@ for i in $(cat lista-auto-hooks-stable); do pkgname=$i
     elif [ "$REPO" = "stable" ]; then
         repo=biglinux-stable
     fi
-    verrepo=$(pacman -Ss $pkgname | grep $repo | grep -v "$pkgname-" | grep -v "\-$pkgname" | grep "$pkgname" | cut -d " " -f2)
+    verrepo=$(pacman -Ss $pkgname | grep $repo | grep -v "$pkgname-" | grep -v "\-$pkgname" | grep "$pkgname" | cut -d " " -f2 | cut -d ":" -f2)
     if [ "$veraur" != "$verrepo" ]; then
-        verrepo=$(pacman -Ss $pkgname | grep biglinux-stable | grep -v "$pkgname-" | grep -v "\-$pkgname" | grep "$pkgname" | cut -d " " -f2)
+        verrepo=$(pacman -Ss $pkgname | grep biglinux-stable | grep -v "$pkgname-" | grep -v "\-$pkgname" | grep "$pkgname" | cut -d " " -f2 | cut -d ":" -f2)
     fi
     
     #se versão do AUR foi maior que a versão do repo local
