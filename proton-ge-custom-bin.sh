@@ -20,18 +20,20 @@ rm run-webhooks-aur.sh
 #nome do programa como está no pacman
 pkgname=proton-ge-custom-bin
 
-#versão online no site da AUR
-pkgver=$(curl -s https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=$pkgname | sed 's/<[^>]*>//g' | grep pkgver= | cut -d "=" -f2 | sed 's|\.||g' | sed 's|-||g' | cut -d "}" -f2  | sed 's/&quot;//g')
-pkgrel=$(curl -s https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=$pkgname | sed 's/<[^>]*>//g' | grep pkgrel= | cut -d "=" -f2 | sed 's|\.||g' | sed 's|-||g')
-versite=$pkgver$pkgrel
+#versão do AUR
+git clone ssh://aur@aur.archlinux.org/$pkgname.git
+cd $pkgname 
+source PKGBUILD
+veraur=$pkgver-$pkgrel
+cd ..
 
 #versão do repositorio do biglinux
-verrepo=$(pacman -Ss $pkgname | grep biglinux-stable | grep -v "$pkgname-" | grep -v "\-$pkgname" | grep "$pkgname" | cut -d " " -f2 | sed 's/\.//g' | sed 's/\-//' | cut -d ":" -f2)
+verrepo=$(pacman -Ss $pkgname | grep biglinux-stable | grep -v "$pkgname-" | grep -v "\-$pkgname" | grep "$pkgname" | cut -d " " -f2 | cut -d ":" -f2)
 
-#se versão do site foi maior que a versão do repo local
-if [ "$versite" != "$verrepo" ]; then
+#se versão do aur foi maior que a versão do repo local
+if [ "$veraur" != "$verrepo" ]; then
     echo -e "Enviando \033[01;31m$pkgname\033[0m para Package Build"
-    echo "AUR ""$pkgname"="$versite"
+    echo "AUR ""$pkgname"="$veraur"
     echo "Repo ""$pkgname"="$verrepo"
     AUR=$pkgname
     webhooks

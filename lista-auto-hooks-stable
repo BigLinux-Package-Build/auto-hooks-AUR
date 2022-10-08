@@ -76,6 +76,8 @@ libglibutil
 libgbinder
 python-gbinder
 kde-snap-assist
+psautohint
+heroic-games-launcher-bin
 
 obs-studio-tytan652
 libajantv2
@@ -105,3 +107,9 @@ vkbasalt
 
 leagueoflegends-git
 wine-lol-bin
+
+linux-xanmod
+linux-xanmod-edge
+linux-xanmod-lts
+linux-xanmod-rt
+linux-xanmod-tt

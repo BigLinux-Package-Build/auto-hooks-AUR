@@ -113,7 +113,7 @@ runs:
       shell: bash
       run: |
           sudo pacman -Sy
-          find -type f -iname "*.sh" -exec bash {} \;
+          find -type f -iname "*.sh" -maxdepth 1 -exec bash {} \;
       env:
         CHAVE: ${{ inputs.chave }}
         REPO: ${{ inputs.repo }}
