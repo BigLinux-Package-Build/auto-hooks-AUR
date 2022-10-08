@@ -25,7 +25,7 @@ for i in $(cat lista-auto-hooks-stable); do pkgname=$i
         exit
     fi
     #versão do AUR
-    git clone ssh://aur@aur.archlinux.org/${i}.git
+    git clone https://aur.archlinux.org/${i}.git
     cd $i 
     source PKGBUILD
     veraur=$pkgver-$pkgrel

@@ -104,10 +104,26 @@ runs:
           sudo install -m0644 archlinux-revoked /usr/share/pacman/keyrings/
         popd
         sudo rm -rf archlinux-keyring
-        sudo pacman-key --init
-        sudo pacman-key -r 45EC44879815E2A6
-        sudo pacman-key --lsign-key 45EC44879815E2A6
-        sudo pacman-key --populate archlinux manjaro
+        sudo git clone --depth 1 https://github.com/biglinux/biglinux-keyring.git
+        pushd biglinux-keyring
+          sudo install -m0644 biglinux.gpg /usr/share/pacman/keyrings/
+          sudo install -m0644 biglinux-trusted /usr/share/pacman/keyrings/
+          sudo install -m0644 biglinux-trusted /usr/share/pacman/keyrings/
+        popd
+        sudo rm -rf biglinux-keyring
+                
+        #sudo pacman-key --init
+        #sudo pacman-key -r 45EC44879815E2A6
+        #sudo pacman-key --lsign-key 45EC44879815E2A6
+        #sudo pacman-key --populate archlinux manjaro biglinux
+        
+    - name: pull keys
+      shell: bash
+      run: |
+        sudo git clone https://github.com/biglinux/biglinux-key.git
+        sudo mkdir -p /etc/pacman.d/gnupg/
+        sudo cp -r biglinux-key/usr/share/pacman/keyrings/* /etc/pacman.d/gnupg/
+        sudo rm -r biglinux-key
         
     - name: Send Hooks
       shell: bash
