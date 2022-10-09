@@ -85,7 +85,7 @@ libajantv2
 cef-minimal-obs-bin 
 ftl-sdk
 librist
-flac-git
+#flac-git #usando-bin-script
 vlc-luajit
 pod2man
 ffmpeg-obs
@@ -101,10 +101,10 @@ python-ufoprocessor
 python-pyclipper
 python-mutatormath
 mingw-w64-tools
-psautohint #script-separado
+psautohint
 lib32-lzo
 vkbasalt
-proton-ge-custom-bin #usando-bin--script
+proton-ge-custom-bin
 
 leagueoflegends-git
 wine-lol-bin
