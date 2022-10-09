@@ -21,9 +21,12 @@ rm run-webhooks-aur.sh
 
 
 for i in $(cat lista-auto-hooks-stable); do pkgname=$i
-    if [ "$i" != "" -o -z "$(echo $i | grep \#)" ];then
-        #versão do AUR
+    if [ -z "$(echo $i)" -o -z "$(echo $i | grep \#)" ];then
+        #limpa todos os $
         veraur=
+        pkgver=
+        pkgrel=
+        #versão do AUR
         git clone https://aur.archlinux.org/${i}.git
         cd $i 
         source PKGBUILD
@@ -36,6 +39,7 @@ for i in $(cat lista-auto-hooks-stable); do pkgname=$i
         elif [ "$REPO" = "stable" ]; then
             repo=biglinux-stable
         fi
+        verrepo=
         verrepo=$(pacman -Ss $pkgname | grep $repo | grep -v "$pkgname-" | grep -v "\-$pkgname" | grep "$pkgname" | cut -d " " -f2 | cut -d ":" -f2)
         if [ "$veraur" != "$verrepo" ]; then
             verrepo=$(pacman -Ss $pkgname | grep biglinux-stable | grep -v "$pkgname-" | grep -v "\-$pkgname" | grep "$pkgname" | cut -d " " -f2 | cut -d ":" -f2)
