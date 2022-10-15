@@ -23,11 +23,11 @@ pkgname=flac-git
 #versão do AUR
 git clone https://github.com/xiph/flac.git
 cd flac
-veraur=$(git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g')
+veraur=$(git tag | sort | tail -n1)
 cd ..
 
 #versão do repositorio do biglinux
-verrepo=$(pacman -Ss $pkgname | grep biglinux-stable | grep -v "$pkgname-" | grep -v "\-$pkgname" | grep "$pkgname" | cut -d " " -f2 | sed 's/-.*//')
+verrepo=$(pacman -Ss $pkgname | grep biglinux-stable | grep -v "$pkgname-" | grep -v "\-$pkgname" | grep "$pkgname" | cut -d " " -f2 | cut -d "." -f1,2,3)
 
 #se versão do aur foi maior que a versão do repo local
 if [ "$veraur" != "$verrepo" ]; then
