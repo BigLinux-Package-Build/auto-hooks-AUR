@@ -32,6 +32,9 @@ for i in $(cat lista-auto-hooks-stable); do pkgname=$i
         source PKGBUILD
         veraur=$pkgver-$pkgrel
         cd ..
+        if [ "$pkgname" != "$i" ]; then
+            pkgname=$i
+        fi
         
         #versão do repositorio do biglinux
         if [ "$REPO" = "testing" ]; then
