@@ -83,6 +83,9 @@ kwin-scripts-forceblur
 qtscrcpy
 guiscrcpy
 python-pynput
+qpdfview
+whatsie
+featherpad-qt5
 
 obs-studio-tytan652
 libajantv2
