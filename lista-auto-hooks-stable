@@ -120,8 +120,8 @@ linux-xanmod-tt
 linux-cachyos
 linux-cachyos-bore
 linux-cachyos-tt
-linux-cachyos-hardened
 linux-cachyos-cacule
 linux-cachyos-bmq
 linux-cachyos-pds
 linux-cachyos-cfs
+linux-zen-git
