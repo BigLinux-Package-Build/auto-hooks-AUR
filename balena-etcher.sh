@@ -16,7 +16,7 @@ rm run-webhooks-aur.sh
 ##### NÃO Editar End #####
 
 #comando expecial para esse pacote
-command="https://raw.githubusercontent.com/BigLinux-Package-Build/auto-hooks-AUR/main/balena-etcher.pkgbuild && bash balena-etcher.pkgbuild"
+command="wget https://raw.githubusercontent.com/BigLinux-Package-Build/auto-hooks-AUR/main/balena-etcher.pkgbuild && bash balena-etcher.pkgbuild"
 
 
 #nome do programa como está no pacman
