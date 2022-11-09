@@ -16,7 +16,7 @@ rm run-webhooks-aur.sh
 ##### NÃO Editar End #####
 
 #comando expecial para esse pacote
-command="sed -i 's/pkgname=.*/pkgname=balena-etcher/' PKGBUILD"
+command="sed -i 's/pkgname=.*/pkgname=balena-etcher/' PKGBUILD ; sed -i 's/\${pkgname%-bin}/etcher/' PKGBUILD ; sed -i 's/conflicts=.*/conflicts=('etcher-bin' 'balena-etcher')"
 
 #nome do programa como está no pacman
 #pkgname=
