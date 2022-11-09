@@ -7,7 +7,7 @@ echo '
 curl -X POST \
 -H "Accept: application/json" \
 -H "Authorization: token '$CHAVE'" \
---data '"'{"'"event_type"'": "'"'AUR/$AUR'"'", "'"client_payload"'": { "'"pkgbuild"'": "'""'", "'"branch"'": "'"'testing'"'", "'"url"'": "'"https://aur.archlinux.org/'$AUR'"'", "'"command"'": "'"'$command'"'", "'"version"'": "'"1.2.3"'"}}'"' \
+--data '"'{"'"event_type"'": "'"'AUR/balena-etcher'"'", "'"client_payload"'": { "'"pkgbuild"'": "'""'", "'"branch"'": "'"'testing'"'", "'"url"'": "'"https://aur.archlinux.org/'$AUR'"'", "'"command"'": "'"'$command'"'", "'"version"'": "'"1.2.3"'"}}'"' \
 'https://api.github.com/repos/BigLinux-Package-Build/build-package/dispatches'' > run-webhooks-aur.sh
 
 bash -x run-webhooks-aur.sh
