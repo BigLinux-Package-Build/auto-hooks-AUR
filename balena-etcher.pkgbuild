@@ -1,6 +1,0 @@
-#!/bin/bash
-
-sed -i 's/pkgname=.*/pkgname=balena-etcher/' PKGBUILD 
-sed -i '/provides=/s/%-bin//' PKGBUILD
-sed -i 's/conflicts=.*/conflicts=('"'etcher-bin'"' '"'balena-etcher'"')/' PKGBUILD
-sed -i '/source=/s/${pkgname%-bin}/etcher/g' PKGBUILD
