@@ -16,9 +16,7 @@ rm run-webhooks-aur.sh
 ##### NÃO Editar End #####
 
 #comando expecial para esse pacote
-command="sed -i 's/pkgname=.*/pkgname=balena-etcher/' PKGBUILD && sed -i '/source=/s/\${pkgname%-bin}/etcher/g' PKGBUILD && sed -i '/conflicts/s/\"\${pkgname%-bin}\"/\"etcher-bin\" \"balena-etcher\"/' PKGBUILD"
-
-
+command="wget https://github.com/BigLinux-Package-Build/auto-hooks-AUR/balena-etcher.pkgbuild && bash balena-etcher.pkgbuild"
 
 #nome do programa como está no pacman
 #pkgname=
