@@ -21,43 +21,39 @@ rm run-webhooks-aur.sh
 
 
 pkgname=ly
-if [ -z "$(echo $i)" -o -z "$(echo $i | grep \#)" ];then
-    #limpa todos os $
-    veraur=
-    pkgver=
-    pkgrel=
-    #versão do AUR
-    git clone https://aur.archlinux.org/${i}.git
-    cd $i 
-    source PKGBUILD
-    veraur=$pkgver-$pkgrel
-    cd ..
-    if [ "$pkgname" != "$i" ]; then
-        pkgname=$i
-    fi
-    
-    #versão do repositorio do biglinux
-    if [ "$REPO" = "testing" ]; then
-        repo=biglinux-testing
-    elif [ "$REPO" = "stable" ]; then
-        repo=biglinux-stable
-    fi
-    verrepo=
-    verrepo=$(pacman -Ss $pkgname | grep $repo | grep -v "$pkgname-" | grep -v "\-$pkgname" | grep "$pkgname" | cut -d " " -f2 | cut -d ":" -f2)
-    if [ "$veraur" != "$verrepo" ]; then
-        verrepo=$(pacman -Ss $pkgname | grep biglinux-stable | grep -v "$pkgname-" | grep -v "\-$pkgname" | grep "$pkgname" | grep -w "$pkgname" | cut -d " " -f2 )
-    fi
-    
-    #se versão do AUR foi maior que a versão do repo local
-    if [ "$veraur" != "$verrepo" ]; then
-        echo -e "Enviando \033[01;31m$pkgname\033[0m para Package Build"
-        echo " AUR ""$pkgname"="$veraur"
-        echo "Repo ""$pkgname"="$verrepo"
-        AUR=$pkgname
-        webhooks
-    else
-        echo "Versão do $pkgname é igual !"
-    fi
+
+#limpa todos os $
+veraur=
+pkgver=
+pkgrel=
+#versão do AUR
+git clone https://aur.archlinux.org/${pkgname}.git
+cd $pkgname 
+source PKGBUILD
+veraur=$pkgver-$pkgrel
+cd ..
+
+#versão do repositorio do biglinux
+if [ "$REPO" = "testing" ]; then
+    repo=biglinux-testing
+elif [ "$REPO" = "stable" ]; then
+    repo=biglinux-stable
+fi
+verrepo=
+verrepo=$(pacman -Ss $pkgname | grep $repo | grep -v "$pkgname-" | grep -v "\-$pkgname" | grep "$pkgname" | cut -d " " -f2 | cut -d ":" -f2)
+if [ "$veraur" != "$verrepo" ]; then
+    verrepo=$(pacman -Ss $pkgname | grep biglinux-stable | grep -v "$pkgname-" | grep -v "\-$pkgname" | grep "$pkgname" | grep -w "$pkgname" | cut -d " " -f2 )
+fi
+
+#se versão do AUR foi maior que a versão do repo local
+if [ "$veraur" != "$verrepo" ]; then
+    echo -e "Enviando \033[01;31m$pkgname\033[0m para Package Build"
+    echo " AUR ""$pkgname"="$veraur"
+    echo "Repo ""$pkgname"="$verrepo"
+    AUR=$pkgname
+    webhooks
+else
+    echo "Versão do $pkgname é igual !"
 fi
 
 
