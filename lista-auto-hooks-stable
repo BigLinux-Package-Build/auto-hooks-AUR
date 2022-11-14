@@ -90,6 +90,7 @@ featherpad-qt5
 #python-onnxruntime
 nsync
 openvino
+python-mediapipe
 
 obs-studio-tytan652
 libajantv2
