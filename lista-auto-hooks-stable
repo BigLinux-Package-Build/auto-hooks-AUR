@@ -90,6 +90,7 @@ featherpad-qt5
 #python-onnxruntime
 nsync
 python-mediapipe
+python-playsound
 
 #dependencias-obs-studio-tytan652
 obs-studio-tytan652
