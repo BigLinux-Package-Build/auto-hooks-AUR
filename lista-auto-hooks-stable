@@ -93,8 +93,8 @@ python-mediapipe
 python-playsound
 uresourced
 64gram-desktop
-windowmaker
 breeze-extended
+inkscape-git
 
 #dependencias-obs-studio-tytan652
 obs-studio-tytan652
@@ -142,4 +142,13 @@ linux-zen-515lts
 
 #LXQt
 lxqt-arc-dark-theme-git
+
+#Gnome-Extension
+gnome-shell-extension-vertical-workspaces-git
+gnome-terminal-transparency
+gnome-shell-extension-ddterm
+
+#Window-Maker
+windowmaker
+wmclock
 
