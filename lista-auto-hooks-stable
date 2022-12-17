@@ -94,7 +94,9 @@ python-playsound
 uresourced
 64gram-desktop
 breeze-extended
+kdenlive-appimage
 inkscape-git
+imagemagick6
 
 #dependencias-obs-studio-tytan652
 obs-studio-tytan652
@@ -139,7 +141,6 @@ linux-cachyos-pds
 linux-cachyos-cfs
 linux-zen-515lts 
 
-
 #LXQt
 lxqt-arc-dark-theme-git
 
@@ -152,3 +153,46 @@ gnome-shell-extension-ddterm
 windowmaker
 wmclock
 
+#deepin
+dwayland-reborn
+deepin-wayland-protocols-reborn
+deepin-kwin-reborn
+dde-kwin-reborn
+deepin-kwin-git
+startdde-git
+golang-github-linuxdeepin-go-x11-client-git
+golang-github-linuxdeepin-go-dbus-factory-git
+golang-deepin-lib-git
+golang-deepin-gir-git
+dtkwidget-git
+dtkgui-git
+dtkcore-git
+dtkcommon-git
+disomaster-git
+deepin-turbo-git
+deepin-session-ui-git
+deepin-session-shell-git
+deepin-qt5platform-plugins-git
+deepin-qt5integration-git
+deepin-qt-dbus-factory-git
+deepin-pw-check-git
+deepin-polkit-agent-git
+deepin-polkit-agent-ext-gnomekeyring-git
+deepin-nvidia-prime-git
+deepin-network-utils-git
+deepin-movie-git
+deepin-launcher-git
+deepin-icon-theme-git
+deepin-gtk-theme-git
+deepin-gettext-tools-git
+deepin-default-settings
+deepin-file-manager-git
+deepin-dock-git
+deepin-desktop-schemas-git
+deepin-desktop-environment-meta-git
+deepin-desktop-base-git
+deepin-daemon-git
+deepin-control-center-git
+deepin-api-git
+deepin-anything-git
+deepin-anything-dkms-git
