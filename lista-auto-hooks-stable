@@ -128,11 +128,11 @@ proton-ge-custom-bin
 
 wine-lol-bin
 
-linux-xanmod
-linux-xanmod-edge
-linux-xanmod-lts
-linux-xanmod-rt
-linux-xanmod-tt
+# linux-xanmod#usando-bin-script
+# linux-xanmod-edge#usando-bin-script
+# linux-xanmod-lts#usando-bin-script
+# linux-xanmod-rt#usando-bin-script
+# linux-xanmod-tt#usando-bin-script
 linux-cachyos
 linux-cachyos-bore
 linux-cachyos-tt
