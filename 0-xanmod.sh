@@ -1,5 +1,4 @@
 #!/bin/bash
-CHAVE=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
 xanwebhooks() {
 echo '
 curl -X POST \
@@ -25,11 +24,9 @@ rm run-webhooks-aur.sh
 }
 
 xanmod=(
-linux-xanmod            
-linux-xanmod-edge       
-linux-xanmod-lts        
-linux-xanmod-rt         
-linux-xanmod-tt         
+linux-xanmod
+linux-xanmod-lts
+linux-xanmod-rt
 )
 
 extramodules=(
