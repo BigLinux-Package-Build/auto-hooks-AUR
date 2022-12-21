@@ -1,5 +1,5 @@
 #!/bin/bash
-
+CHAVE=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
 xanwebhooks() {
 echo '
 curl -X POST \
@@ -93,9 +93,17 @@ for xanmod in ${xanmod[@]}; do
             curlmodrelgit=$(curl -s https://gitlab.manjaro.org/packages/extra/linux${kver}-extramodules/${mod}/-/raw/master/PKGBUILD | grep pkgrel= | grep -v _pkgver | cut -d "=" -f2 | sed 's/\.//g' | sed 's/\-//g')
             modvergit=${curlmodvergit}${curlmodrelgit}
             
+            #troca nome do virtualbox-modules na busca do repo
+            if [ "${mod}" = "virtualbox-modules" ];then
+                mod=virtualbox-host-modules
+            fi            
             #versão do extramodules do repo do biglinux
             modverrepo=$(pacman -Ss ${xanmod}-${mod} | grep biglinux-stable | sed 's/\.//g' | sed 's/\-//g' | grep -w $(echo ${xanmod}-${mod} | sed 's/\.//g' | sed 's/\-//g') | cut -d " " -f2)
-             
+            #volta nome do virtualbox-modules
+            if [ "${mod}" = "virtualbox-host-modules" ];then
+                mod=virtualbox-modules
+            fi 
+            
             echo "${xanmod}-${mod}"
             echo "vergit =$modvergit"
             echo "verrepo=$modverrepo"
