@@ -2,7 +2,7 @@
 
 repo=stable
 
-
+#hooks to Kernel
 xanwebhooks() {
 echo '
 curl -X POST \
@@ -10,11 +10,11 @@ curl -X POST \
 -H "Authorization: token '$CHAVE'" \
 --data '"'{"'"event_type"'": "'"'AUR/$xanmod'"'", "'"client_payload"'": { "'"branch"'": "'"'$repo'"'", "'"url"'": "'"https://aur.archlinux.org/'$xanmod'"'", "'"version"'": "'"1.2.3"'"}}'"' \
 'https://api.github.com/repos/BigLinux-Package-Build/build-package/dispatches'' > run-webhooks-aur.sh
-
 bash -x run-webhooks-aur.sh
 rm run-webhooks-aur.sh
 }
 
+#hooks to ExtraModules
 exwebhooks() {
 echo '
 curl -X POST \
@@ -22,7 +22,6 @@ curl -X POST \
 -H "Authorization: token '$CHAVE'" \
 --data '"'{"'"event_type"'": "'"'${xanmod}/${mod}'"'", "'"client_payload"'": { "'"xanmod"'": "'"'${xanmod}'"'", "'"kver"'": "'"'${major}${pkgver}'"'", "'"branch"'": "'"'$repo'"'", "'"url"'": "'"https://gitlab.manjaro.org/packages/extra/linux'${kver}-extramodules/${mod}'"'", "'"version"'": "'"1.2.3"'"}}'"' \
 'https://api.github.com/repos/BigLinux-Package-Build/build-package/dispatches'' > run-webhooks-aur.sh
-
 bash -x run-webhooks-aur.sh
 rm run-webhooks-aur.sh
 }

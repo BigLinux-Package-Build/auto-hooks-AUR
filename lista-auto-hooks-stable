@@ -95,8 +95,6 @@ uresourced
 64gram-desktop
 breeze-extended
 kdenlive-appimage
-inkscape-git
-materiav2-gtk-theme
 
 #dependencias-obs-studio-tytan652
 obs-studio-tytan652
@@ -142,7 +140,7 @@ linux-cachyos-cfs
 linux-zen-515lts 
 
 #LXQt
-lxqt-arc-dark-theme-git
+# lxqt-arc-dark-theme-git
 
 #Gnome-Extension
 gnome-shell-extension-vertical-workspaces-git
@@ -198,3 +196,9 @@ tango-icon-theme
 #deepin-anything-git
 
 #deepin-kwin-git
+
+
+
+
+# inkscape-git
+# materiav2-gtk-theme

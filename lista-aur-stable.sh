@@ -6,7 +6,7 @@ webhooks() {
 echo '
 curl -X POST \
 -H "Accept: application/json" \
--H "Authorization: token '$CHAVE1'" \
+-H "Authorization: token '$CHAVE'" \
 --data '"'{"'"event_type"'": "'"'AUR/$AUR'"'", "'"client_payload"'": { "'"pkgbuild"'": "'""'", "'"branch"'": "'"'stable'"'", "'"url"'": "'"https://aur.archlinux.org/'$AUR'"'", "'"version"'": "'"1.2.3"'"}}'"' \
 'https://api.github.com/repos/BigLinux-Package-Build/build-package/dispatches'' > run-webhooks-aur.sh
 
