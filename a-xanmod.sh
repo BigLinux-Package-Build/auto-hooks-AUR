@@ -109,14 +109,16 @@ for xanmod in ${xanmod[@]}; do
             #volta nome do virtualbox-modules
             if [ "${mod}" = "virtualbox-host-modules" ];then
                 mod=virtualbox-modules
-            fi 
-            
-            echo "${xanmod}-${mod}"
-            echo "vergit =$modvergit"
-            echo "verrepo=$modverrepo"
-            if [ "$modvergit" != "$modverrepo" ];then
-                echo "send webhooks ${xanmod}-${mod}"
-                exwebhooks
+            fi
+            #não gerar ExtraModules se for RT
+            if [ "$xanmod" != "linux-xanmod-rt" ];then
+                echo "${xanmod}-${mod}"
+                echo "vergit =$modvergit"
+                echo "verrepo=$modverrepo"
+                if [ "$modvergit" != "$modverrepo" ];then
+                    echo "send webhooks ${xanmod}-${mod}"
+                    exwebhooks
+                fi
             fi            
         fi
     done
