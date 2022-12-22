@@ -70,6 +70,9 @@ for xanmod in ${xanmod[@]}; do
         echo "AUR =$xanveraur"
         echo "Repo=$xanverrepo"
         xanwebhooks
+    elif [ -z "$xanverrepo" ]; then
+        echo "Sem Pacote $xanmod no Repo, enviando....."
+        xanwebhooks
     else
         echo "Versão do $xanmod é igual"
         echo "AUR =$xanveraur"
