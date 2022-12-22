@@ -1,10 +1,14 @@
 #!/bin/bash
+
+repo=stable
+
+
 xanwebhooks() {
 echo '
 curl -X POST \
 -H "Accept: application/json" \
 -H "Authorization: token '$CHAVE'" \
---data '"'{"'"event_type"'": "'"'AUR/$xanmod'"'", "'"client_payload"'": { "'"branch"'": "'"'stable'"'", "'"url"'": "'"https://aur.archlinux.org/'$xanmod'"'", "'"version"'": "'"1.2.3"'"}}'"' \
+--data '"'{"'"event_type"'": "'"'AUR/$xanmod'"'", "'"client_payload"'": { "'"branch"'": "'"'$repo'"'", "'"url"'": "'"https://aur.archlinux.org/'$xanmod'"'", "'"version"'": "'"1.2.3"'"}}'"' \
 'https://api.github.com/repos/BigLinux-Package-Build/build-package/dispatches'' > run-webhooks-aur.sh
 
 bash -x run-webhooks-aur.sh
@@ -16,7 +20,7 @@ echo '
 curl -X POST \
 -H "Accept: application/json" \
 -H "Authorization: token '$CHAVE'" \
---data '"'{"'"event_type"'": "'"'${xanmod}/${mod}'"'", "'"client_payload"'": { "'"xanmod"'": "'"'${xanmod}'"'", "'"kver"'": "'"'${major}${pkgver}'"'", "'"branch"'": "'"'stable'"'", "'"url"'": "'"https://gitlab.manjaro.org/packages/extra/linux'${kver}-extramodules/${mod}'"'", "'"version"'": "'"1.2.3"'"}}'"' \
+--data '"'{"'"event_type"'": "'"'${xanmod}/${mod}'"'", "'"client_payload"'": { "'"xanmod"'": "'"'${xanmod}'"'", "'"kver"'": "'"'${major}${pkgver}'"'", "'"branch"'": "'"'$repo'"'", "'"url"'": "'"https://gitlab.manjaro.org/packages/extra/linux'${kver}-extramodules/${mod}'"'", "'"version"'": "'"1.2.3"'"}}'"' \
 'https://api.github.com/repos/BigLinux-Package-Build/build-package/dispatches'' > run-webhooks-aur.sh
 
 bash -x run-webhooks-aur.sh
@@ -45,7 +49,8 @@ zfs
 )
 
 funxanverrepo () {
-xanverrepo=$(pacman -Ss $xanmod | grep biglinux-stable | grep -v headers | sed 's/\.//g' | sed 's/\-//g' | grep -w $(echo $xanmod | sed 's/\.//g' | sed 's/\-//g') | cut -d " " -f2)
+xanverrepo=$(pacman -Ss $xanmod | grep biglinux-${repo} | grep -v headers | sed 's/\.//g' | sed 's/\-//g' | grep -w $(echo $xanmod | sed 's/\.//g' | sed 's/\-//g') | cut -d " " -f2)
+xanheadersverrepo=$(pacman -Ss ${xanmod}-headers | grep biglinux-${repo} | grep -w headers | sed 's/\.//g' | sed 's/\-//g' | grep -w $(echo ${xanmod}-headers | sed 's/\.//g' | sed 's/\-//g') | cut -d " " -f2)
 }
 
 #xanmod version
@@ -64,7 +69,7 @@ for xanmod in ${xanmod[@]}; do
         echo "Envia $xanmod"
         echo "AUR =$xanveraur"
         echo "Repo=$xanverrepo"
-        xanwebhooks
+#         xanwebhooks
     else
         echo "Versão do $xanmod é igual"
         echo "AUR =$xanveraur"
@@ -72,9 +77,12 @@ for xanmod in ${xanmod[@]}; do
     fi
 
     #verifica se a versão do kernel do kernel e do repo são iguais
-    while [ "$xanveraur" != "$xanverrepo" ]; do
+    while [ "$xanveraur" != "$xanverrepo" -o "$xanheadersverrepo" != "$xanverrepo"  ]; do
         #se for diferente espera chegar a versão nova para enviar o extramodules
         echo "versão diferente ainda, esperando"
+        echo "AUR =$xanveraur"
+        echo "Repo=$xanverrepo"
+        echo "Head=$xanheadersverrepo"
         sleep 60
         sudo pacman -Sy
         funxanverrepo
@@ -95,7 +103,7 @@ for xanmod in ${xanmod[@]}; do
                 mod=virtualbox-host-modules
             fi            
             #versão do extramodules do repo do biglinux
-            modverrepo=$(pacman -Ss ${xanmod}-${mod} | grep biglinux-stable | sed 's/\.//g' | sed 's/\-//g' | grep -w $(echo ${xanmod}-${mod} | sed 's/\.//g' | sed 's/\-//g') | cut -d " " -f2)
+            modverrepo=$(pacman -Ss ${xanmod}-${mod} | grep biglinux-${repo} | sed 's/\.//g' | sed 's/\-//g' | grep -w $(echo ${xanmod}-${mod} | sed 's/\.//g' | sed 's/\-//g') | cut -d " " -f2)
             #volta nome do virtualbox-modules
             if [ "${mod}" = "virtualbox-host-modules" ];then
                 mod=virtualbox-modules
@@ -106,7 +114,7 @@ for xanmod in ${xanmod[@]}; do
             echo "verrepo=$modverrepo"
             if [ "$modvergit" != "$modverrepo" ];then
                 echo "send webhooks ${xanmod}-${mod}"
-                exwebhooks
+#                 exwebhooks
             fi            
         fi
     done

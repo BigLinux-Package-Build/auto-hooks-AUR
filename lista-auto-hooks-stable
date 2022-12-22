@@ -155,27 +155,27 @@ wmclock
 tango-icon-theme
 
 ##deepin
-dde-kwin-reborn
-deepin-default-settings
-deepin-desktop-base-git
-deepin-gettext-tools-git
-deepin-gtk-theme-git
-deepin-icon-theme-git
-deepin-kwin-reborn
-deepin-network-utils-git
-deepin-nvidia-prime-git
-deepin-qt5platform-plugins-git
-deepin-qt-dbus-factory-git
-deepin-wayland-protocols-reborn
-disomaster-git
-dtkcommon-git
-dtkcore-git
-dtkgui-git
-dwayland-reborn
-golang-deepin-gir-git
-golang-deepin-lib-git
-golang-github-linuxdeepin-go-dbus-factory-git
-golang-github-linuxdeepin-go-x11-client-git
+# dde-kwin-reborn
+# deepin-default-settings
+# deepin-desktop-base-git
+# deepin-gettext-tools-git
+# deepin-gtk-theme-git
+# deepin-icon-theme-git
+# deepin-kwin-reborn
+# deepin-network-utils-git
+# deepin-nvidia-prime-git
+# deepin-qt5platform-plugins-git
+# deepin-qt-dbus-factory-git
+# deepin-wayland-protocols-reborn
+# disomaster-git
+# dtkcommon-git
+# dtkcore-git
+# dtkgui-git
+# dwayland-reborn
+# golang-deepin-gir-git
+# golang-deepin-lib-git
+# golang-github-linuxdeepin-go-dbus-factory-git
+# golang-github-linuxdeepin-go-x11-client-git
 
 #startdde-git
 #dtkwidget-git
