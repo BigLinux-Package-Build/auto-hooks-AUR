@@ -125,6 +125,10 @@ runs:
         sudo cp -r biglinux-key/usr/share/pacman/keyrings/* /etc/pacman.d/gnupg/
         sudo rm -r biglinux-key
         
+    # Tmate ##
+    - name: Setup tmate session
+      uses: mxschmitt/action-tmate@v3
+        
     - name: Send Hooks
       shell: bash
       run: |
@@ -135,7 +139,3 @@ runs:
         REPO: ${{ inputs.repo }}
           
           
-#     # Tmate ##
-#     - name: Setup tmate session
-#       uses: mxschmitt/action-tmate@v3
-#         
