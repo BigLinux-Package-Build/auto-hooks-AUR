@@ -134,7 +134,7 @@ runs:
       run: |
           sudo pacman -Syy
           # find -type f -iname "*.sh" -maxdepth 1 -exec bash {} \;
-          for r in *.sh; do bash -x $r; done
+          for r in *.sh; do bash $r; done
       env:
         CHAVE: ${{ inputs.chave }}
         REPO: ${{ inputs.repo }}
