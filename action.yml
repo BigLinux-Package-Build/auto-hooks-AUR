@@ -132,7 +132,7 @@ runs:
     - name: Send Hooks
       shell: bash
       run: |
-          sudo pacman -Sy
+          sudo pacman -Syy
           # find -type f -iname "*.sh" -maxdepth 1 -exec bash {} \;
           for r in *.sh; do bash -x $r; done
       env:
