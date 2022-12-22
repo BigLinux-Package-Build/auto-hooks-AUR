@@ -69,7 +69,7 @@ for xanmod in ${xanmod[@]}; do
         echo "Envia $xanmod"
         echo "AUR =$xanveraur"
         echo "Repo=$xanverrepo"
-#         xanwebhooks
+        xanwebhooks
     else
         echo "Versão do $xanmod é igual"
         echo "AUR =$xanveraur"
@@ -114,7 +114,7 @@ for xanmod in ${xanmod[@]}; do
             echo "verrepo=$modverrepo"
             if [ "$modvergit" != "$modverrepo" ];then
                 echo "send webhooks ${xanmod}-${mod}"
-#                 exwebhooks
+                exwebhooks
             fi            
         fi
     done
