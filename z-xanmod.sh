@@ -102,26 +102,19 @@ for xanmod in ${xanmod[@]}; do
             curlmodrelgit=$(curl -s https://gitlab.manjaro.org/packages/extra/linux${kver}-extramodules/${mod}/-/raw/master/PKGBUILD | grep pkgrel= | grep -v _pkgver | cut -d "=" -f2 | sed 's/\.//g' | sed 's/\-//g')
             modvergit=${curlmodvergit}${curlmodrelgit}
             
-            #troca nome do virtualbox-modules na busca do repo
-            if [ "${mod}" = "virtualbox-modules" ];then
-                mod=virtualbox-host-modules
-            fi
-            
             #não gerar ExtraModules se for RT
             if [ "$xanmod" != "linux-xanmod-rt" ];then
-                #versão do extramodules do repo do biglinux
+                
+                #troca nome do virtualbox-modules na busca do repo
+                if [ "${mod}" = "virtualbox-modules" ];then mod=virtualbox-host-modules; fi
+                #versão e build date dos extramodules do repo biglinux
                 modverrepo=$(pacman -Ss ${xanmod}-${mod} | grep biglinux-${repo} | sed 's/\.//g' | sed 's/\-//g' | grep -w $(echo ${xanmod}-${mod} | sed 's/\.//g' | sed 's/\-//g') | cut -d " " -f2)
                 xanbuilddate=$(date --date="$(pacman -Si ${xanmod} | grep -i "build date" | awk '{print $6 $5 $8}')" +"%Y%m%d")
                 modbuilddate=$(date --date="$(pacman -Si ${xanmod}-${mod} | grep -i "build date" | awk '{print $6 $5 $8}')" +"%Y%m%d")
                 #volta nome do virtualbox-modules
-                if [ "${mod}" = "virtualbox-host-modules" ];then
-                    mod=virtualbox-modules
-                fi
+                if [ "${mod}" = "virtualbox-host-modules" ];then mod=virtualbox-modules; fi
                 
-                echo "${xanmod}-${mod}"
-                echo "xanbuilddate=$xanbuilddate"
-                echo "modbuilddate=$modbuilddate"
-                
+                #só gerar extramodules se a data de build for diferente da data de build do kernel
                 if [ "$xanbuilddate" != "$modbuilddate" ];then
                     echo "${xanmod}-${mod}"
                     echo "vergit =$modvergit"
