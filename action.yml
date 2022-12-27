@@ -93,7 +93,7 @@ runs:
         Server = https://coresite.mm.fcix.net/manjaro/stable/$repo/$arch
         Server = https://ridgewireless.mm.fcix.net/manjaro/stable/$repo/$arch
         Server = https://opencolo.mm.fcix.net/manjaro/stable/$repo/$arch
-        Server = https://southfront.mm.fcix.net/manjaro/stable/$repo/$arch | sudo tee -a /etc/pacman.d/mirrorlist
+        Server = https://southfront.mm.fcix.net/manjaro/stable/$repo/$arch' | sudo tee -a /etc/pacman.d/mirrorlist
         
         sudo pacman -Sy
     
