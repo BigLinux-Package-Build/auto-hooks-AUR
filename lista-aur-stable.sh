@@ -1,7 +1,7 @@
 #!/bin/bash
 
-##### Não Editar Start #####
 AUR=
+##### Não Editar Start #####
 webhooks() {
 echo '
 curl -X POST \
@@ -78,7 +78,7 @@ for i in $(cat lista-auto-hooks-stable); do pkgname=$i
             echo "Repo ""$pkgname"="$verrepo"
             AUR=$pkgname
             sleep 10
-            webhooks
+#             webhooks
         else
             echo "Versão do $pkgname é igual !"
             sleep 1
