@@ -2,8 +2,8 @@ name: BigLinux Hooks Arch Container
 
 # Controls when the workflow will run
 on:
-  # schedule:
-    # - cron:  '30 2 * * *'
+  schedule:
+    - cron:  '30 2 * * *'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -150,8 +150,11 @@ jobs:
         
           pacman -Sy
           
-      - name: Makepkg Build    
+      - name: Teste, Makepkg and WebHooks
         shell: bash
+        env:
+          CHAVE: ${{ secrets.WEBHOOK_TOKEN }}
+          REPO: stable
         run: |
           useradd builduser -m 
           passwd -d builduser 
@@ -160,8 +163,8 @@ jobs:
           # gitfolder=$(find -type f -name PKGBUILD | sed 's/PKGBUILD//')
           # chmod 777 $gitfolder
           # cd $gitfolder
-          
           # sudo -u builduser bash -c 'makepkg -sc --noconfirm --skippgpcheck'
           
-          
-          bash lista-aur-stable-arch-container.sh
+          # bash lista-aur-stable-arch-container.sh
+          sudo pacman -Syy
+          for r in *.sh; do bash $r; done
