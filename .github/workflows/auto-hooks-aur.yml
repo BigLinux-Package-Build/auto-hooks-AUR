@@ -1,7 +1,7 @@
 name: BigLinux Hooks AUR
 
 # Controls when the workflow will run
-# on:
+on:
   # schedule:
     # - cron:  '30 2 * * *'
 
