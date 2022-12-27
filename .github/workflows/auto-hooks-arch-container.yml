@@ -1,0 +1,167 @@
+name: BigLinux Hooks Arch Container
+
+# Controls when the workflow will run
+on:
+  # schedule:
+    # - cron:  '30 2 * * *'
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: archlinux:latest
+    steps:
+      - uses: actions/checkout@v3
+          
+      - name: Install Dependencies
+        shell: bash
+        run: |
+          echo -e "[multilib]\nInclude = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf
+          pacman -Syu --noconfirm pacman sudo git github-cli openssh gnupg coreutils rsync wget fakeroot binutils cmake extra-cmake-modules gcc make devtools \
+          acl \
+          archlinux-keyring \
+          autoconf \
+          automake \
+          binutils \
+          bison \
+          btrfs-progs \
+          cryptsetup \
+          db \
+          debugedit \
+          diffutils \
+          dnssec-anchors \
+          fakeroot \
+          flex \
+          gc \
+          gcc-libs \
+          git \
+          glib2 \
+          groff \
+          grub \
+          guile \
+          iputils \
+          jansson \
+          ldns \
+          libedit \
+          libisl \
+          libmpc \
+          libnghttp2 \
+          libnl \
+          libp11-kit \
+          libpcap \
+          libpsl \
+          libsasl \
+          libseccomp \
+          libsecret \
+          libssh2 \
+          libsysprof-capture \
+          libtasn1 \
+          libtirpc \
+          libtool \
+          libunistring \
+          libverto \
+          libxcrypt \
+          libxml2 \
+          licenses \
+          linux \
+          linux-api-headers \
+          linux-firmware \
+          linux-firmware-whence \
+          lz4 \
+          lzo \
+          m4 \
+          make \
+          mkinitcpio \
+          mkinitcpio-busybox \
+          mpfr \
+          nano \
+          ncurses \
+          nettle \
+          npth \
+          openssh \
+          openssl \
+          p11-kit \
+          pacman-mirrorlist \
+          pam \
+          pambase \
+          patch \
+          pciutils \
+          pcre2 \
+          perl \
+          perl-error \
+          perl-mailtools \
+          perl-timedate \
+          pinentry \
+          pkgconf \
+          popt \
+          procps-ng \
+          psmisc \
+          readline \
+          sed \
+          shadow \
+          sqlite \
+          sudo \
+          systemd \
+          systemd-libs \
+          systemd-sysvcompat \
+          tar \
+          texinfo \
+          tpm2-tss \
+          tzdata \
+          util-linux \
+          util-linux-libs \
+          which \
+          xz \
+          zlib \
+          zram-generator \
+          zstd
+
+          
+      - name: Add BigLinux Repo and Key
+        shell: bash
+        run: |
+          #add biglinux archlinux repository
+          echo '
+          [biglinux-archlinux]
+          SigLevel = PackageRequired
+          Server = https://repo.biglinux.com.br/archlinux/$arch' | tee -a /etc/pacman.conf
+          
+          echo '
+          [biglinux-stable]
+          SigLevel = PackageRequired
+          Server = https://repo.biglinux.com.br/stable/$arch' | tee -a /etc/pacman.conf
+          
+          sed -i '/PACKAGER=/s/#PACKAGER=.*/\PACKAGER="BigLinux Package Build <bigbruno@gmail.com>\"/' /etc/makepkg.conf
+          
+          
+          #add biglinux Keyring
+          git clone --depth 1 https://github.com/biglinux/biglinux-keyring.git
+          pushd biglinux-keyring
+            install -m0644 biglinux.gpg /usr/share/pacman/keyrings/
+            install -m0644 biglinux-trusted /usr/share/pacman/keyrings/
+            install -m0644 biglinux-trusted /usr/share/pacman/keyrings/
+          popd
+          rm -rf biglinux-keyring
+          
+          pacman-key --init
+          pacman-key --populate archlinux biglinux
+        
+          pacman -Sy
+          
+      - name: Makepkg Build    
+        shell: bash
+        run: |
+          useradd builduser -m 
+          passwd -d builduser 
+          printf 'builduser ALL=(ALL) ALL\n' | tee -a /etc/sudoers
+          
+          # gitfolder=$(find -type f -name PKGBUILD | sed 's/PKGBUILD//')
+          # chmod 777 $gitfolder
+          # cd $gitfolder
+          
+          # sudo -u builduser bash -c 'makepkg -sc --noconfirm --skippgpcheck'
+          
+          
+          bash lista-aur-stable-arch-container.sh

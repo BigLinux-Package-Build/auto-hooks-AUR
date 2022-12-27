@@ -1,0 +1,155 @@
+name: 'BigLinux Package Auto Hooks AUR'
+description: 'Builds Manjaro Packages'
+
+inputs:
+  chave:
+    description: 'token for webhooks'
+    required: false
+  repo:
+    description: 'Repo testing or stable'
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: install build-dependencies
+      shell: bash
+      run: |
+        sudo apt-get update
+        sudo apt-get install \
+        build-essential \
+        cmake \
+        fakeroot \
+        git \
+        libarchive-dev \
+        libarchive-tools \
+        libcurl4-openssl-dev \
+        libgpgme-dev \
+        libssl-dev \
+        zip \
+        python3-pip
+        sudo pip3 install meson
+        sudo pip3 install ninja
+    - name: install pacman
+      shell: bash
+      env:
+        PACMAN_VERSION: 6.0.1
+        REPO: ${{ inputs.repo }}
+      run: |
+        sudo git clone --depth 1 https://gitlab.manjaro.org/packages/core/pacman.git
+        pushd pacman
+        sudo wget https://sources.archlinux.org/other/pacman/pacman-${PACMAN_VERSION}.tar.xz
+        sudo tar -xvf pacman-${PACMAN_VERSION}.tar.xz
+        pushd pacman-${PACMAN_VERSION}
+        sudo patch -p1 -i ../pacman-sync-first-option.patch
+        sudo meson --prefix=/usr \
+                    --buildtype=plain \
+                    -Ddoc=disabled \
+                    -Ddoxygen=enabled \
+                    -Dscriptlet-shell=/usr/bin/bash \
+                    -Dldconfig=/usr/bin/ldconfig \
+                    build
+        sudo meson compile -C build
+        sudo meson install -C build
+        popd
+        sudo install -m644 pacman.conf /etc/pacman.conf
+        sudo install -m644 makepkg.conf /etc/
+        sudo mkdir -p /etc/pacman.d
+        sudo touch /etc/pacman.d/mirrorlist
+        popd
+        sudo rm -rf pacman
+        
+        #add biglinux repository
+        sudo sed -i '/\[core\]/{h;s/.*/\[biglinux-update-stable\]/;p;x;}' /etc/pacman.conf
+        sudo sed -i '/\[core\]/{h;s/.*/SigLevel = PackageRequired/;p;x;}' /etc/pacman.conf
+        sudo sed -i '/\[core\]/{h;s/.*/Server = https:\/\/repo.biglinux.com.br\/update-stable\/$arch/;p;x;}' /etc/pacman.conf
+        sudo sed -i '/\[core\]/{h;s/.*//;p;x;}' /etc/pacman.conf
+        echo '
+        [biglinux-stable]
+        SigLevel = PackageRequired
+        Server = https://repo.biglinux.com.br/stable/$arch' | sudo tee -a /etc/pacman.conf
+        echo '
+        [biglinux-testing]
+        SigLevel = PackageRequired
+        Server = https://repo.biglinux.com.br/testing/$arch' | sudo tee -a /etc/pacman.conf
+        
+        # echo 'Server = https://manjaro.repo.cure.edu.uy/stable/$repo/$arch
+        # Server = http://mirror.datacenter.by/pub/mirrors/manjaro/stable/$repo/$arch
+        # Server = https://forksystems.mm.fcix.net/manjaro/stable/$repo/$arch
+        # Server = http://mirror.fcix.net/manjaro/stable/$repo/$arch
+        # Server = https://manjaro.ipacct.com/manjaro/stable/$repo/$arch
+        # Server = https://mirrors.gethosted.online/manjaro/repos/stable/$repo/$arch
+        # Server = https://ftp.caliu.cat/pub/distribucions/manjaro/stable/$repo/$arch
+        # Server = https://mirrors.tuna.tsinghua.edu.cn/manjaro/stable/$repo/$arch' | sudo tee -a /etc/pacman.d/mirrorlist
+        
+        echo 'Server = https://mirror.fcix.net/manjaro/stable/$repo/$arch
+        Server = https://irltoolkit.mm.fcix.net/manjaro/stable/$repo/$arch
+        Server = https://uvermont.mm.fcix.net/manjaro/stable/$repo/$arch
+        Server = https://ziply.mm.fcix.net/manjaro/stable/$repo/$arch
+        Server = https://repo.ialab.dsu.edu/manjaro/stable/$repo/$arch
+        Server = https://mnvoip.mm.fcix.net/manjaro/stable/$repo/$arch
+        Server = https://forksystems.mm.fcix.net/manjaro/stable/$repo/$arch
+        Server = https://codingflyboy.mm.fcix.net/manjaro/stable/$repo/$arch
+        Server = https://coresite.mm.fcix.net/manjaro/stable/$repo/$arch
+        Server = https://ridgewireless.mm.fcix.net/manjaro/stable/$repo/$arch
+        Server = https://opencolo.mm.fcix.net/manjaro/stable/$repo/$arch
+        Server = https://southfront.mm.fcix.net/manjaro/stable/$repo/$arch' | sudo tee -a /etc/pacman.d/mirrorlist
+        
+        sudo pacman -Sy
+    
+    - name: install keyrings
+      shell: bash
+      run: |
+        sudo install -dm755 /usr/share/pacman/keyrings/
+        sudo git clone --depth 1 https://gitlab.manjaro.org/packages/core/manjaro-keyring.git
+        pushd manjaro-keyring
+          sudo install -m0644 manjaro.gpg /usr/share/pacman/keyrings/
+          sudo install -m0644 manjaro-trusted /usr/share/pacman/keyrings/
+          sudo install -m0644 manjaro-trusted /usr/share/pacman/keyrings/
+        popd
+        sudo rm -rf manjaro-keyring
+        mkdir -p archlinux-keyring
+        pushd archlinux-keyring
+          wget https://archlinux.org/packages/core/any/archlinux-keyring/download -O /tmp/archlinux-keyring.tar.zst
+          tar --use-compress-program=unzstd --strip-components=4 --wildcards -xvf /tmp/archlinux-keyring.tar.zst usr/share/pacman/keyrings/*
+          sudo install -m0644 archlinux.gpg /usr/share/pacman/keyrings/
+          sudo install -m0644 archlinux-trusted /usr/share/pacman/keyrings/
+          sudo install -m0644 archlinux-revoked /usr/share/pacman/keyrings/
+        popd
+        sudo rm -rf archlinux-keyring
+        sudo git clone --depth 1 https://github.com/biglinux/biglinux-keyring.git
+        pushd biglinux-keyring
+          sudo install -m0644 biglinux.gpg /usr/share/pacman/keyrings/
+          sudo install -m0644 biglinux-trusted /usr/share/pacman/keyrings/
+          sudo install -m0644 biglinux-trusted /usr/share/pacman/keyrings/
+        popd
+        sudo rm -rf biglinux-keyring
+                
+        #sudo pacman-key --init
+        #sudo pacman-key -r 45EC44879815E2A6
+        #sudo pacman-key --lsign-key 45EC44879815E2A6
+        #sudo pacman-key --populate archlinux manjaro biglinux
+        
+    - name: pull keys
+      shell: bash
+      run: |
+        sudo git clone https://github.com/biglinux/biglinux-key.git
+        sudo mkdir -p /etc/pacman.d/gnupg/
+        sudo cp -r biglinux-key/usr/share/pacman/keyrings/* /etc/pacman.d/gnupg/
+        sudo rm -r biglinux-key
+        
+    # Tmate ##
+    - name: Setup tmate session
+      uses: mxschmitt/action-tmate@v3
+        
+    - name: Send Hooks
+      shell: bash
+      run: |
+          sudo pacman -Syy
+          # find -type f -iname "*.sh" -maxdepth 1 -exec bash {} \;
+          for r in *.sh; do bash $r; done
+      env:
+        CHAVE: ${{ inputs.chave }}
+        REPO: ${{ inputs.repo }}
+          
+          
