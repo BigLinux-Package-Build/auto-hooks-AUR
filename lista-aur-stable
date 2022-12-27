@@ -47,7 +47,7 @@ for i in $(cat lista-auto-hooks-stable); do pkgname=$i
         source PKGBUILD
         veraur=$pkgver-$pkgrel
         
-        sleep 3
+        sleep 1
         
         if [ "$veraur" != "$verrepo" -a -n "$verrepo" ]; then
             veraur=
@@ -62,14 +62,14 @@ for i in $(cat lista-auto-hooks-stable); do pkgname=$i
             pkgname=$i
         fi
         
-        sleep 5
+        sleep 1
         
         #verficação de redundante no repo stable
         if [ "$veraur" != "$verrepo" ]; then
             verrepo=$(pacman -Ss $pkgname | grep biglinux-stable | grep -v "$pkgname-" | grep -v "\-$pkgname" | grep "$pkgname" | cut -d " " -f2 | cut -d ":" -f2)
         fi
         
-        sleep 3
+        sleep 1
         
         #se versão do AUR foidiferente a versão do repo local
         if [ "$veraur" != "$verrepo" ]; then
@@ -81,7 +81,7 @@ for i in $(cat lista-auto-hooks-stable); do pkgname=$i
             webhooks
         else
             echo "Versão do $pkgname é igual !"
-            sleep 5
+            sleep 1
         fi
     fi
 done 
