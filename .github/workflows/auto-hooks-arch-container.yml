@@ -19,7 +19,7 @@ jobs:
         shell: bash
         run: |
           echo -e "[multilib]\nInclude = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf
-          pacman -Syu --noconfirm pacman sudo git github-cli openssh gnupg coreutils rsync wget fakeroot binutils cmake extra-cmake-modules gcc make devtools \
+          pacman -Syu --noconfirm --needed pacman sudo git github-cli openssh gnupg coreutils rsync wget fakeroot binutils cmake extra-cmake-modules gcc make devtools \
           acl \
           archlinux-keyring \
           autoconf \

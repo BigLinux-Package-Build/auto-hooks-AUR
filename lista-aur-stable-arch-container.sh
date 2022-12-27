@@ -43,7 +43,7 @@ for i in $(cat lista-auto-hooks-stable); do pkgname=$i
         pkgrel=
         #versão do AUR
         git clone https://aur.archlinux.org/${i}.git
-        chmod 777 $i
+        chmod 777 -R $i
         cd $i 
         source PKGBUILD
         veraur=$pkgver-$pkgrel
