@@ -105,17 +105,24 @@ for xanmod in ${xanmod[@]}; do
             #troca nome do virtualbox-modules na busca do repo
             if [ "${mod}" = "virtualbox-modules" ];then
                 mod=virtualbox-host-modules
-            fi            
-            #versão do extramodules do repo do biglinux
-            modverrepo=$(pacman -Ss ${xanmod}-${mod} | grep biglinux-${repo} | sed 's/\.//g' | sed 's/\-//g' | grep -w $(echo ${xanmod}-${mod} | sed 's/\.//g' | sed 's/\-//g') | cut -d " " -f2)
-            xanbuilddate=$(date --date="$(pacman -Si ${xanmod} | grep -i "build date" | awk '{print $6 $5 $8}')" +"%Y%m%d")
-            moddatebuild=$(date --date="$(pacman -Si ${xanmod}-${mod} | grep -i "build date" | awk '{print $6 $5 $8}')" +"%Y%m%d")
-            #volta nome do virtualbox-modules
-            if [ "${mod}" = "virtualbox-host-modules" ];then
-                mod=virtualbox-modules
             fi
-            #não gerar ExtraModules se for RT
+            
             if [ "$xanmod" != "linux-xanmod-rt" ];then
+                #versão do extramodules do repo do biglinux
+                modverrepo=$(pacman -Ss ${xanmod}-${mod} | grep biglinux-${repo} | sed 's/\.//g' | sed 's/\-//g' | grep -w $(echo ${xanmod}-${mod} | sed 's/\.//g' | sed 's/\-//g') | cut -d " " -f2)
+                xanbuilddate=$(date --date="$(pacman -Si ${xanmod} | grep -i "build date" | awk '{print $6 $5 $8}')" +"%Y%m%d")
+                moddatebuild=$(date --date="$(pacman -Si ${xanmod}-${mod} | grep -i "build date" | awk '{print $6 $5 $8}')" +"%Y%m%d")
+                
+                echo "date        =$(date +"%Y%m%d")"
+                echo "modverrepo  =$modverrepo"
+                echo "xanbuilddate=$xanbuilddate"
+                echo "moddatebuild=$moddatebuild"
+                
+                #volta nome do virtualbox-modules
+                if [ "${mod}" = "virtualbox-host-modules" ];then
+                    mod=virtualbox-modules
+                fi
+                #não gerar ExtraModules se for RT
                 if [ "$xanbuilddate" != "$(date +"%Y%m%d")" ];then
                     echo "${xanmod}-${mod}"
                     echo "vergit =$modvergit"
