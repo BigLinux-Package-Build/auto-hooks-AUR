@@ -33,7 +33,9 @@ for i in $(cat lista-auto-hooks-stable); do pkgname=$i
         #versão do repositorio BigLinux
         verrepo=
         verrepo=$(pacman -Ss $pkgname | grep $repo | grep -v "$pkgname-" | grep -v "\-$pkgname" | grep "$pkgname" | cut -d " " -f2 | cut -d ":" -f2)
-    
+        
+        sleep 5
+        
         #versão do AUR
         #limpa todos os $
         veraur=
@@ -44,6 +46,9 @@ for i in $(cat lista-auto-hooks-stable); do pkgname=$i
         cd $i 
         source PKGBUILD
         veraur=$pkgver-$pkgrel
+        
+        sleep 3
+        
         if [ "$veraur" != "$verrepo" -a -n "$verrepo" ]; then
             makepkg -so --noconfirm --skippgpcheck --needed
             source PKGBUILD
@@ -53,10 +58,14 @@ for i in $(cat lista-auto-hooks-stable); do pkgname=$i
             pkgname=$i
         fi
         
+        sleep 5
+        
         #verficação de redundante no repo stable
         if [ "$veraur" != "$verrepo" ]; then
             verrepo=$(pacman -Ss $pkgname | grep biglinux-stable | grep -v "$pkgname-" | grep -v "\-$pkgname" | grep "$pkgname" | cut -d " " -f2 | cut -d ":" -f2)
         fi
+        
+        sleep 3
         
         #se versão do AUR foidiferente a versão do repo local
         if [ "$veraur" != "$verrepo" ]; then
@@ -64,10 +73,11 @@ for i in $(cat lista-auto-hooks-stable); do pkgname=$i
             echo " AUR ""$pkgname"="$veraur"
             echo "Repo ""$pkgname"="$verrepo"
             AUR=$pkgname
-            sleep 1
+            sleep 10
             webhooks
         else
             echo "Versão do $pkgname é igual !"
+            sleep 5
         fi
     fi
 done 
