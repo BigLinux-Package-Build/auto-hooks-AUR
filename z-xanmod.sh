@@ -116,7 +116,7 @@ for xanmod in ${xanmod[@]}; do
             fi
             #não gerar ExtraModules se for RT
             if [ "$xanmod" != "linux-xanmod-rt" ];then
-#                 if [ "$xanbuilddate" != "$(date +"%Y%m%d")" ];then
+                if [ "$xanbuilddate" != "$(date +"%Y%m%d")" ];then
                     echo "${xanmod}-${mod}"
                     echo "vergit =$modvergit"
                     echo "verrepo=$modverrepo"
@@ -126,7 +126,7 @@ for xanmod in ${xanmod[@]}; do
                         echo "send webhooks ${xanmod}-${mod}"
                         exwebhooks
                     fi
-#                 fi
+                fi
             fi
         fi
     done

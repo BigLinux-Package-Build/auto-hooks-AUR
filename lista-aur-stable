@@ -50,8 +50,12 @@ for i in $(cat lista-auto-hooks-stable); do pkgname=$i
         sleep 3
         
         if [ "$veraur" != "$verrepo" -a -n "$verrepo" ]; then
+            veraur=
+            pkgver=
+            pkgrel=
             makepkg -so --noconfirm --skippgpcheck --needed
             source PKGBUILD
+            veraur=$pkgver-$pkgrel
         fi
         cd ..
         if [ "$pkgname" != "$i" ]; then
