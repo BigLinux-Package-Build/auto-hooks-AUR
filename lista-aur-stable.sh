@@ -34,7 +34,7 @@ for i in $(cat lista-auto-hooks-stable); do pkgname=$i
         verrepo=
         verrepo=$(pacman -Ss $pkgname | grep $repo | grep -v "$pkgname-" | grep -v "\-$pkgname" | grep "$pkgname" | cut -d " " -f2 | cut -d ":" -f2)
         
-        sleep 5
+        sleep 1
         
         #versão do AUR
         #limpa todos os $
@@ -54,6 +54,7 @@ for i in $(cat lista-auto-hooks-stable); do pkgname=$i
             pkgver=
             pkgrel=
             makepkg -so --noconfirm --skippgpcheck --needed
+            sleep 5
             source PKGBUILD
             veraur=$pkgver-$pkgrel
         fi
