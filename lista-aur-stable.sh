@@ -22,6 +22,19 @@ rm run-webhooks-aur.sh
 
 for i in $(cat lista-auto-hooks-stable); do pkgname=$i
     if [ -z "$(echo $i)" -o -z "$(echo $i | grep \#)" ];then
+        
+        #tipo de repositorio do biglinux
+        if [ "$REPO" = "testing" ]; then
+            repo=biglinux-testing
+        elif [ "$REPO" = "stable" ]; then
+            repo=biglinux-stable
+        fi
+        
+        #versão do repositorio BigLinux
+        verrepo=
+        verrepo=$(pacman -Ss $pkgname | grep $repo | grep -v "$pkgname-" | grep -v "\-$pkgname" | grep "$pkgname" | cut -d " " -f2 | cut -d ":" -f2)
+    
+        #versão do AUR
         #limpa todos os $
         veraur=
         pkgver=
@@ -29,30 +42,23 @@ for i in $(cat lista-auto-hooks-stable); do pkgname=$i
         #versão do AUR
         git clone https://aur.archlinux.org/${i}.git
         cd $i 
-        # source PKGBUILD
-        
+        source PKGBUILD
+        veraur=$pkgver-$pkgrel
+        if [ "$veraur" != "$verrepo" -a -n "$verrepo" ]; then
             makepkg -so --noconfirm --skippgpcheck --needed
             source PKGBUILD
-        
-        veraur=$pkgver-$pkgrel
+        fi
         cd ..
         if [ "$pkgname" != "$i" ]; then
             pkgname=$i
         fi
         
-        #versão do repositorio do biglinux
-        if [ "$REPO" = "testing" ]; then
-            repo=biglinux-testing
-        elif [ "$REPO" = "stable" ]; then
-            repo=biglinux-stable
-        fi
-        verrepo=
-        verrepo=$(pacman -Ss $pkgname | grep $repo | grep -v "$pkgname-" | grep -v "\-$pkgname" | grep "$pkgname" | cut -d " " -f2 | cut -d ":" -f2)
+        #verficação de redundante no repo stable
         if [ "$veraur" != "$verrepo" ]; then
             verrepo=$(pacman -Ss $pkgname | grep biglinux-stable | grep -v "$pkgname-" | grep -v "\-$pkgname" | grep "$pkgname" | cut -d " " -f2 | cut -d ":" -f2)
         fi
         
-        #se versão do AUR foi maior que a versão do repo local
+        #se versão do AUR foidiferente a versão do repo local
         if [ "$veraur" != "$verrepo" ]; then
             echo -e "Enviando \033[01;31m$pkgname\033[0m para Package Build"
             echo " AUR ""$pkgname"="$veraur"
