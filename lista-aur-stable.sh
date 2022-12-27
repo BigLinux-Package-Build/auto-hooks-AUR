@@ -29,7 +29,11 @@ for i in $(cat lista-auto-hooks-stable); do pkgname=$i
         #versão do AUR
         git clone https://aur.archlinux.org/${i}.git
         cd $i 
-        source PKGBUILD
+        # source PKGBUILD
+        
+            makepkg -so --noconfirm --skippgpcheck --needed
+            source PKGBUILD
+        
         veraur=$pkgver-$pkgrel
         cd ..
         if [ "$pkgname" != "$i" ]; then

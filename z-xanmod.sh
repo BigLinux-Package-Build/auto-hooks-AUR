@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export LC_ALL=C
+
 repo=stable
 
 #hooks to Kernel
@@ -106,20 +108,26 @@ for xanmod in ${xanmod[@]}; do
             fi            
             #versão do extramodules do repo do biglinux
             modverrepo=$(pacman -Ss ${xanmod}-${mod} | grep biglinux-${repo} | sed 's/\.//g' | sed 's/\-//g' | grep -w $(echo ${xanmod}-${mod} | sed 's/\.//g' | sed 's/\-//g') | cut -d " " -f2)
+            xanbuilddate=$(date --date="$(pacman -Si ${xanmod} | grep -i "build date" | awk '{print $6 $5 $8}')" +"%Y%m%d")
+            moddatebuild=$(date --date="$(pacman -Si ${xanmod}-${mod} | grep -i "build date" | awk '{print $6 $5 $8}')" +"%Y%m%d")
             #volta nome do virtualbox-modules
             if [ "${mod}" = "virtualbox-host-modules" ];then
                 mod=virtualbox-modules
             fi
             #não gerar ExtraModules se for RT
             if [ "$xanmod" != "linux-xanmod-rt" ];then
-                echo "${xanmod}-${mod}"
-                echo "vergit =$modvergit"
-                echo "verrepo=$modverrepo"
-                if [ "$modvergit" != "$modverrepo" ];then
-                    echo "send webhooks ${xanmod}-${mod}"
-                    exwebhooks
-                fi
-            fi            
+#                 if [ "$xanbuilddate" != "$(date +"%Y%m%d")" ];then
+                    echo "${xanmod}-${mod}"
+                    echo "vergit =$modvergit"
+                    echo "verrepo=$modverrepo"
+                    echo "Xan Build=$xanbuilddate"
+                    echo "Mod Build=$moddatebuild"
+                    if [ "$modvergit" != "$modverrepo" -o "$xanbuilddate" != "$(date +"%Y%m%d")" ];then
+                        echo "send webhooks ${xanmod}-${mod}"
+                        exwebhooks
+                    fi
+#                 fi
+            fi
         fi
     done
 done

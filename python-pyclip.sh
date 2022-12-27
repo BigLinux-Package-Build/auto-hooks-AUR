@@ -22,8 +22,8 @@ rm run-webhooks-aur.sh
 
 pkgname=python-pyclip
 #versão online no site da AUR
-pkgver=$(curl -s https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=$pkgname | sed 's/<[^>]*>//g' | grep pkgver= | cut -d "=" -f2 | sed 's|\.||g' | sed 's|\_||g'| sed 's|-||g' | cut -d "}" -f2  | sed 's/&quot;//g' | sed 's|_||g' )
-pkgrel=$(curl -s https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=$pkgname | sed 's/<[^>]*>//g' | grep pkgrel= | cut -d "=" -f2 | sed 's|\.||g' | sed 's|-||g')
+pkgver=$(curl -s https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=python-pyclip | sed 's/<[^>]*>//g' | grep pkgver= | cut -d "=" -f2 | sed 's|\.||g' | sed 's|\_||g'| sed 's|-||g' | cut -d "}" -f2  | sed 's/&quot;//g' | sed 's|_||g' )
+pkgrel=$(curl -s https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=python-pyclip | sed 's/<[^>]*>//g' | grep pkgrel= | cut -d "=" -f2 | sed 's|\.||g' | sed 's|-||g')
 versite=$pkgver$pkgrel
  
 #versão do repositorio do biglinux
@@ -34,7 +34,7 @@ elif [ "$REPO" = "stable" ]; then
 fi
 verrepo=$(pacman -Ss $pkgname | grep $repo | grep -v "$pkgname-" | grep -v "\-$pkgname" | grep -v "python-pyclipper" | grep "$pkgname" | cut -d " " -f2  | sed 's/\.//g' | sed 's/\-//' | sed 's|_||g')
 if [ "$versite" != "$verrepo" ]; then
-    verrepo=$(pacman -Ss $pkgname | grep biglinux-stable | grep -v "$pkgname-" | grep -v "\-$pkgname" | grep "$pkgname" | cut -d " " -f2  | sed 's/\.//g' | sed 's/\-//' | sed 's|_||g')
+    verrepo=$(pacman -Ss $pkgname | grep biglinux-stable | grep -v "$pkgname-" | grep -v "\-$pkgname"  | grep -v "python-pyclipper" | grep "$pkgname" | cut -d " " -f2  | sed 's/\.//g' | sed 's/\-//' | sed 's|_||g')
 fi
 
 #se versão do site foi maior que a versão do repo local
