@@ -30,12 +30,13 @@ rm run-webhooks-aur.sh
 
 pkgname=wine-tkg-staging-fsync-git
 
-pkgver=$(curl -s https://github.com/wine-staging/wine-staging/blob/master/staging/VERSION | sed 's/<[^>]*>//g' | grep "Wine Staging" | grep "Wine Staging"| sed 's/^ \+//' | cut -d " " -f3 | sed 's|\.||g')
+pkgver=$(curl -s https://github.com/wine-staging/wine-staging/blob/master/staging/VERSION | sed 's/<[^>]*>//g' | grep "Wine Staging" | grep "Wine Staging"| sed 's/^ \+//' | cut -d " " -f3 | sed 's|\.||g' | sed 's/\-//')
 versite=$pkgver
 
 pkgnamerepo=$pkgname
 #versão do repositorio do biglinux
-verrepo=$(pacman -Ss $pkgnamerepo | grep biglinux-stable | grep -v "$pkgnamerepo-" | grep -v "\-$pkgnamerepo" | grep "$pkgnamerepo" | cut -d " " -f2 | awk -F"_devel" '{print $1}' | sed 's/\.//g' | sed 's/\-//' | cut -c 1-3 )
+verrepo=$(pacman -Ss $pkgnamerepo | grep biglinux-stable | grep -v "$pkgnamerepo-" | grep -v "\-$pkgnamerepo" | grep "$pkgnamerepo" | cut -d " " -f2 | awk -F"_devel" '{print $1}' | awk -F. '{print $1$2}' | sed 's/\.//g' | sed 's/\-//')
+#| cut -c 1-3
 
 #se versão do site foi maior que a versão do repo local
 if [ "$versite" != "$verrepo" ]; then
