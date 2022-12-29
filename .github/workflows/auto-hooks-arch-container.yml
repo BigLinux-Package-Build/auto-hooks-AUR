@@ -167,4 +167,4 @@ jobs:
           
           # bash lista-aur-stable-arch-container.sh
           sudo pacman -Syy
-          for r in *.sh; do bash $r; done
+          for r in *.sh; do bash -x $r; done
