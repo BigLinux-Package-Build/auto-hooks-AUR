@@ -122,11 +122,11 @@ jobs:
       - name: Add BigLinux Repo and Key
         shell: bash
         run: |
-          #add biglinux archlinux repository
+          #add biglinux testing repository
           echo '
-          [biglinux-archlinux]
+          [biglinux-testing]
           SigLevel = PackageRequired
-          Server = https://repo.biglinux.com.br/archlinux/$arch' | tee -a /etc/pacman.conf
+          Server = https://repo.biglinux.com.br/testing/$arch' | tee -a /etc/pacman.conf
           
           echo '
           [biglinux-stable]
