@@ -6,7 +6,7 @@ echo '
 curl -X POST \
 -H "Accept: application/json" \
 -H "Authorization: token '$CHAVE'" \
---data '"'{"'"event_type"'": "'"'AUR/$AUR'"'", "'"client_payload"'": { "'"pkgbuild"'": "'""'", "'"branch"'": "'"'$REPO'"'", "'"url"'": "'"https://aur.archlinux.org/'$AUR'"'", "'"version"'": "'"1.2.3"'"}}'"' \
+--data '"'{"'"event_type"'": "'"'AUR/$AUR'"'", "'"client_payload"'": { "'"pkgbuild"'": "'""'", "'"branch"'": "'"'$repo'"'", "'"url"'": "'"https://aur.archlinux.org/'$AUR'"'", "'"version"'": "'"1.2.3"'"}}'"' \
 'https://api.github.com/repos/BigLinux-Package-Build/build-package/dispatches'' > run-webhooks-aur.sh
 
 bash -x run-webhooks-aur.sh
@@ -18,21 +18,14 @@ rm run-webhooks-aur.sh
 #nome do programa como está no pacman
 #pkgname=
 AUR=
-REPO=testing
+repo=testing
 
 for i in $(cat dde.list); do pkgname=$i
     if [ -z "$(echo $i)" -o -z "$(echo $i | grep \#)" ];then
         
-        #tipo de repositorio do biglinux
-        if [ "$REPO" = "testing" ]; then
-            repo=biglinux-testing
-        elif [ "$REPO" = "stable" ]; then
-            repo=biglinux-stable
-        fi
-        
         #versão do repositorio BigLinux
         verrepo=
-        verrepo=$(pacman -Ss $pkgname | grep $repo | grep -v "$pkgname-" | grep -v "\-$pkgname" | grep "$pkgname" | cut -d " " -f2 | cut -d ":" -f2)
+        verrepo=$(pacman -Ss $pkgname | grep biglinux-${repo} | grep -v "$pkgname-" | grep -v "\-$pkgname" | grep "$pkgname" | cut -d " " -f2 | cut -d ":" -f2)
         
         sleep 1
         
@@ -68,7 +61,10 @@ for i in $(cat dde.list); do pkgname=$i
         
         #verficação de redundancia no repo stable
         if [ "$veraur" != "$verrepo" ]; then
-            verrepo=$(pacman -Ss $pkgname | grep biglinux-stable | grep -v "$pkgname-" | grep -v "\-$pkgname" | grep "$pkgname" | cut -d " " -f2 | cut -d ":" -f2)
+            verrepostable=$(pacman -Ss $pkgname | grep biglinux-stable | grep -v "$pkgname-" | grep -v "\-$pkgname" | grep "$pkgname" | cut -d " " -f2 | cut -d ":" -f2)
+            if [ -n "$verrepostable" ];then
+                verrepo=$verrepostable
+            fi
         fi
         
         sleep 1

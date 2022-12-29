@@ -1,6 +1,6 @@
 deepin-nvidia-prime-git
 
-#base package
+#base-package
 deepin-icon-theme-git
 deepin-gtk-theme-git
 deepin-gettext-tools-git
@@ -27,7 +27,7 @@ deepin-pw-check-git
 startdde-git
 deepin-daemon-git
 
-#desktop environment layer
+#desktop-environment-layer
 deepin-polkit-agent-git
 deepin-polkit-agent-ext-gnomekeyring-git
 deepin-network-utils-git
