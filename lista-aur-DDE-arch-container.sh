@@ -25,6 +25,7 @@ for i in $(cat dde.list); do pkgname=$i
         
         #versão do repositorio BigLinux
         verrepo=
+        pacman -Ss $pkgname
         verrepo=$(pacman -Ss $pkgname | grep biglinux-${repo} | grep -v "$pkgname-" | grep -v "\-$pkgname" | grep "$pkgname" | cut -d " " -f2 | cut -d ":" -f2)
         
         sleep 1
