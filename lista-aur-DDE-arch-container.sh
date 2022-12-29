@@ -76,7 +76,7 @@ for i in $(cat dde.list); do pkgname=$i
             echo "Repo ""$pkgname"="$verrepo"
             AUR=$pkgname
             sleep 10
-            #webhooks
+            webhooks
         else
             echo "Versão do $pkgname é igual !"
             sleep 1
