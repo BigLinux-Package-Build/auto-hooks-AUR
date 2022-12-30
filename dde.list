@@ -4,7 +4,7 @@ deepin-nvidia-prime-git
 deepin-icon-theme-git
 deepin-gtk-theme-git
 deepin-gettext-tools-git
-deepin-default-settings
+#deepin-default-settings--pq-builda-com-nome-deepin-font-settings???
 deepin-desktop-schemas-git
 
 #dtk
@@ -39,10 +39,16 @@ disomaster-git
 deepin-movie-git
 deepin-file-manager-git
 deepin-anything-git
-deepin-anything-dkms-git
+#deepin-anything-dkms-git--mesmo-pkgbuild-do-deepin-anything-git
 
 #kwin
 dde-kwin-git
 deepin-wayland-protocols-git
 dwayland-git
 deepin-kwin-git
+
+
+##faltando
+#deepin-wallpapers-git
+#deepin-app-services-git
+#deepin-sound-theme-git
