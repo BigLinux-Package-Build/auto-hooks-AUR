@@ -57,6 +57,9 @@ for i in $(cat lista-auto-hooks-stable); do pkgname=$i
             pkgname=$i
         fi
         
+        #apagar diretorio do git
+        rm -r $pkgname
+        
         sleep 1
         
         #verficação de redundante no repo stable
