@@ -97,24 +97,18 @@ for xanmod in ${xanmod[@]}; do
     for mod in ${extramodules[@]}; do
         #se a versão do xanmod for igual no git e no repo AND não for RT, enviar webhooks dos extramodules
         if [ "$xanveraur" -eq "$xanverrepo" -a "$xanmod" != "linux-xanmod-rt" ]; then
-            
+            #versão curta do xanmod
             kmajor=$(echo $major | sed 's|\.||g')
-            
             #pegar versão do moduloextra do git
             modvergit=$(curl -s https://gitlab.manjaro.org/packages/extra/linux${kmajor}-extramodules/${mod}/-/raw/master/PKGBUILD | grep pkgver= | grep -v _pkgver | cut -d "=" -f2 | sed 's/\.//g' | sed 's/\-//g')
-            
                 #troca nome do virtualbox-modules na busca do repo
                 if [ "${mod}" = "virtualbox-modules" ];then mod=virtualbox-host-modules; fi
-        
             #pegar versão do moduloextra do repo (sem pkgrel)
             modverrepo=$(pacman -Ss ${xanmod}-${mod} | grep biglinux-${repo} | sed 's/\.//g' | grep -v ${xanmod}-${mod}- | cut -d " " -f2 | cut -d "-" -f1)
-            
             #pegar rel do moduloextra do repo
             modrelrepo=$(pacman -Ss ${xanmod}-${mod} | grep biglinux-${repo} | sed 's/\.//g' | grep -v ${xanmod}-${mod}- | awk '{print $2}' | awk -F- '{print $2}')
-            
                 #volta nome do virtualbox-modules
                 if [ "${mod}" = "virtualbox-host-modules" ];then mod=virtualbox-modules; fi
-        
             #pegar versão do xanmod
             xanver=$xanveraur
             
@@ -127,6 +121,8 @@ for xanmod in ${xanmod[@]}; do
                 echo "Mod Rel=$modrelrepo"
                 echo "send webhooks ${xanmod}-${mod}"
                 exwebhooks
+            else
+                echo "Versão do ${xanmod}-${mod} é igual"
             fi
         fi
     done
