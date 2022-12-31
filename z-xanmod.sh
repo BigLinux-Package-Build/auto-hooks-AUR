@@ -2,8 +2,6 @@
 
 export LC_ALL=C
 
-repo=stable
-
 #hooks to Kernel
 xanwebhooks() {
 echo '
@@ -22,7 +20,7 @@ echo '
 curl -X POST \
 -H "Accept: application/json" \
 -H "Authorization: token '$CHAVE'" \
---data '"'{"'"event_type"'": "'"'${xanmod}/${mod}'"'", "'"client_payload"'": { "'"xanmod"'": "'"'${xanmod}'"'", "'"kver"'": "'"'${major}${pkgver}'"'", "'"branch"'": "'"'$repo'"'", "'"url"'": "'"https://gitlab.manjaro.org/packages/extra/linux'${kver}-extramodules/${mod}'"'", "'"version"'": "'"1.2.3"'"}}'"' \
+--data '"'{"'"event_type"'": "'"'${xanmod}/${mod}'"'", "'"client_payload"'": { "'"xanmod"'": "'"'${xanmod}'"'", "'"kmajor"'": "'"'${major}${pkgver}'"'", "'"xanver"'": "'"'${xanver}'"'", "'"branch"'": "'"'$repo'"'", "'"url"'": "'"https://gitlab.manjaro.org/packages/extra/linux'${kmajor}-extramodules/${mod}'"'", "'"version"'": "'"1.2.3"'"}}'"' \
 'https://api.github.com/repos/BigLinux-Package-Build/build-package/dispatches'' > run-webhooks-aur.sh
 bash -x run-webhooks-aur.sh
 rm run-webhooks-aur.sh
@@ -49,6 +47,8 @@ virtualbox-modules
 zfs
 )
 
+repo=stable
+
 funxanverrepo () {
 xanverrepo=$(pacman -Ss $xanmod | grep biglinux-${repo} | grep -v headers | sed 's/\.//g' | sed 's/\-//g' | grep -w $(echo $xanmod | sed 's/\.//g' | sed 's/\-//g') | cut -d " " -f2)
 xanheadersverrepo=$(pacman -Ss ${xanmod}-headers | grep biglinux-${repo} | grep -w headers | sed 's/\.//g' | sed 's/\-//g' | grep -w $(echo ${xanmod}-headers | sed 's/\.//g' | sed 's/\-//g') | cut -d " " -f2)
@@ -56,6 +56,7 @@ xanheadersverrepo=$(pacman -Ss ${xanmod}-headers | grep biglinux-${repo} | grep 
 
 #xanmod version
 for xanmod in ${xanmod[@]}; do
+    
     #versão online no site da AUR
     major=$(curl -s https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=$xanmod | sed 's/<[^>]*>//g' | grep _major= | cut -d "=" -f2)
     pkgver=$(curl -s https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=$xanmod | sed 's/<[^>]*>//g' | grep pkgver= | cut -d "=" -f2 | cut -d "}" -f2)
@@ -66,13 +67,13 @@ for xanmod in ${xanmod[@]}; do
     funxanverrepo
     
     #se versão do AUR foi maior que a versão do repo local
-    if [ "$xanveraur" -gt "$xanverrepo" ]; then
+    if [ -z "$xanverrepo" ]; then
+        echo "Sem Pacote $xanmod no Repo, enviando....."
+        xanwebhooks
+    elif [ "$xanveraur" -gt "$xanverrepo" ]; then
         echo "Envia $xanmod"
         echo "AUR =$xanveraur"
         echo "Repo=$xanverrepo"
-        xanwebhooks
-    elif [ -z "$xanverrepo" ]; then
-        echo "Sem Pacote $xanmod no Repo, enviando....."
         xanwebhooks
     else
         echo "Versão do $xanmod é igual"
@@ -80,7 +81,7 @@ for xanmod in ${xanmod[@]}; do
         echo "Repo=$xanverrepo"
     fi
 
-    #verifica se a versão do kernel do kernel e do repo são iguais
+    #verifica se a versão header do kernel e do repo são iguais
     while [ "$xanveraur" != "$xanverrepo" -o "$xanheadersverrepo" != "$xanverrepo"  ]; do
         #se for diferente espera chegar a versão nova para enviar o extramodules
         echo "versão diferente ainda, esperando"
@@ -94,38 +95,38 @@ for xanmod in ${xanmod[@]}; do
     
     #extramodules
     for mod in ${extramodules[@]}; do
-        #se a versão do repo for igual, enviar webhooks dos extramodules
-        if [ "$xanveraur" -eq "$xanverrepo" ]; then
-            kver=$(echo $major | sed 's|\.||g')
-            #pega a versão do extramodules do gitlad do manjaro
-            curlmodvergit=$(curl -s https://gitlab.manjaro.org/packages/extra/linux${kver}-extramodules/${mod}/-/raw/master/PKGBUILD | grep pkgver= | grep -v _pkgver | cut -d "=" -f2 | sed 's/\.//g' | sed 's/\-//g')
-            curlmodrelgit=$(curl -s https://gitlab.manjaro.org/packages/extra/linux${kver}-extramodules/${mod}/-/raw/master/PKGBUILD | grep pkgrel= | grep -v _pkgver | cut -d "=" -f2 | sed 's/\.//g' | sed 's/\-//g')
-            modvergit=${curlmodvergit}${curlmodrelgit}
+        #se a versão do xanmod for igual no git e no repo AND não for RT, enviar webhooks dos extramodules
+        if [ "$xanveraur" -eq "$xanverrepo" -a "$xanmod" != "linux-xanmod-rt" ]; then
             
-            #não gerar ExtraModules se for RT
-            if [ "$xanmod" != "linux-xanmod-rt" ];then
-                
+            kmajor=$(echo $major | sed 's|\.||g')
+            
+            #pegar versão do moduloextra do git
+            modvergit=$(curl -s https://gitlab.manjaro.org/packages/extra/linux${kmajor}-extramodules/${mod}/-/raw/master/PKGBUILD | grep pkgver= | grep -v _pkgver | cut -d "=" -f2 | sed 's/\.//g' | sed 's/\-//g')
+            
                 #troca nome do virtualbox-modules na busca do repo
                 if [ "${mod}" = "virtualbox-modules" ];then mod=virtualbox-host-modules; fi
-                #versão e build date dos extramodules do repo biglinux
-                modverrepo=$(pacman -Ss ${xanmod}-${mod} | grep biglinux-${repo} | sed 's/\.//g' | sed 's/\-//g' | grep -w $(echo ${xanmod}-${mod} | sed 's/\.//g' | sed 's/\-//g') | cut -d " " -f2)
-                xanbuilddate=$(date --date="$(pacman -Si ${xanmod} | grep -i "build date" | awk '{print $6 $5 $8}')" +"%Y%m%d")
-                modbuilddate=$(date --date="$(pacman -Si ${xanmod}-${mod} | grep -i "build date" | awk '{print $6 $5 $8}')" +"%Y%m%d")
+        
+            #pegar versão do moduloextra do repo (sem pkgrel)
+            modverrepo=$(pacman -Ss ${xanmod}-${mod} | grep biglinux-${repo} | sed 's/\.//g' | grep -v ${xanmod}-${mod}- | cut -d " " -f2 | cut -d "-" -f1)
+            
+            #pegar rel do moduloextra do repo
+            modrelrepo=$(pacman -Ss ${xanmod}-${mod} | grep biglinux-${repo} | sed 's/\.//g' | grep -v ${xanmod}-${mod}- | awk '{print $2}' | awk -F- '{print $2}')
+            
                 #volta nome do virtualbox-modules
                 if [ "${mod}" = "virtualbox-host-modules" ];then mod=virtualbox-modules; fi
-                
-                #só gerar extramodules se a data de build for diferente da data de build do kernel
-                if [ "$xanbuilddate" != "$modbuilddate" ];then
-                    echo "${xanmod}-${mod}"
-                    echo "vergit =$modvergit"
-                    echo "verrepo=$modverrepo"
-                    echo "Xan Build=$xanbuilddate"
-                    echo "Mod Build=$modbuilddate"
-                    if [ "$modvergit" != "$modverrepo" -o "$xanbuilddate" != "$modbuilddate" ];then
-                        echo "send webhooks ${xanmod}-${mod}"
-                        exwebhooks
-                    fi
-                fi
+        
+            #pegar versão do xanmod
+            xanver=$xanveraur
+            
+            #se a pkgver do git =! pkgver repo OU do pkgrel do modulo =! pkgver do xanmod , re-buildar
+            if [ "$modvergit" != "$modverrepo" -o "$modrelrepo" != "$xanver" ];then
+                echo "${xanmod}-${mod}"
+                echo "Mod Vergit =$modvergit"
+                echo "Mod Verrepo=$modverrepo"
+                echo "Xan Ver=$xanver"
+                echo "Mod Rel=$modrelrepo"
+                echo "send webhooks ${xanmod}-${mod}"
+                exwebhooks
             fi
         fi
     done
