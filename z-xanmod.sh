@@ -20,7 +20,7 @@ echo '
 curl -X POST \
 -H "Accept: application/json" \
 -H "Authorization: token '$CHAVE'" \
---data '"'{"'"event_type"'": "'"'${xanmod}/${mod}'"'", "'"client_payload"'": { "'"xanmod"'": "'"'${xanmod}'"'", "'"kmajor"'": "'"'${major}${pkgver}'"'", "'"xanver"'": "'"'${xanver}'"'", "'"branch"'": "'"'$repo'"'", "'"url"'": "'"https://gitlab.manjaro.org/packages/extra/linux'${kmajor}-extramodules/${mod}'"'", "'"version"'": "'"1.2.3"'"}}'"' \
+--data '"'{"'"event_type"'": "'"'${xanmod}/${mod}'"'", "'"client_payload"'": { "'"xanmod"'": "'"'${xanmod}'"'", "'"kver"'": "'"'${major}${pkgver}'"'", "'"xanver"'": "'"'${xanver}'"'", "'"branch"'": "'"'$repo'"'", "'"url"'": "'"https://gitlab.manjaro.org/packages/extra/linux'${kmajor}-extramodules/${mod}'"'", "'"version"'": "'"1.2.3"'"}}'"' \
 'https://api.github.com/repos/BigLinux-Package-Build/build-package/dispatches'' > run-webhooks-aur.sh
 bash -x run-webhooks-aur.sh
 rm run-webhooks-aur.sh
