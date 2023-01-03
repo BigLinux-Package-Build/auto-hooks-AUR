@@ -104,7 +104,7 @@ for xanmod in ${xanmod[@]}; do
                 #troca nome do virtualbox-modules na busca do repo
                 if [ "${mod}" = "virtualbox-modules" ];then mod=virtualbox-host-modules; fi
             #pegar versão do moduloextra do repo (sem pkgrel)
-            modverrepo=$(pacman -Ss ${xanmod}-${mod} | grep biglinux-${repo} | sed 's/\.//g' | grep -v ${xanmod}-${mod}- | cut -d " " -f2 | cut -d "-" -f1)
+            modverrepo=$(pacman -Ss ${xanmod}-${mod} | grep biglinux-${repo} | sed 's/\.//g' | grep -v ${xanmod}-${mod}- | cut -d " " -f2 | cut -d "-" -f1 | sed 's/.*://')
             #pegar rel do moduloextra do repo
             modrelrepo=$(pacman -Ss ${xanmod}-${mod} | grep biglinux-${repo} | sed 's/\.//g' | grep -v ${xanmod}-${mod}- | awk '{print $2}' | awk -F- '{print $2}')
                 #volta nome do virtualbox-modules
