@@ -61,27 +61,34 @@ pkgname=mesa-git
 # versite=$pkgver$pkgrel
 
 #clona, verifica a versão do patch e declara o vergit
-git clone https://gitlab.freedesktop.org/mesa/mesa.git
-pkgver() {
-    cd mesa
-    local _ver
-    read -r _ver <VERSION
+# git clone https://gitlab.freedesktop.org/mesa/mesa.git
+# pkgver() {
+#     cd mesa
+#     local _ver
+#     read -r _ver <VERSION
+# 
+#     local _patchver
+#     local _patchfile
+#     for _patchfile in "${source[@]}"; do
+#         _patchfile="${_patchfile%%::*}"
+#         _patchfile="${_patchfile##*/}"
+#         [[ $_patchfile = *.patch ]] || continue
+#         _patchver="${_patchver}$(md5sum ${srcdir}/${_patchfile} | cut -c1-32)"
+#     done
+#     _patchver="$(echo -n $_patchver | md5sum | cut -c1-32)"
+# 
+# #     echo ${_ver/-/_}.$(git rev-list --count HEAD).$(git rev-parse --short HEAD).${_patchver}
+#     vergit=$(echo ${_ver} | sed 's|\.||g' | sed 's|-||g' | sed 's/devel//' )${_patchver}
+#     echo $vergit
+# }
+# pkgver
 
-    local _patchver
-    local _patchfile
-    for _patchfile in "${source[@]}"; do
-        _patchfile="${_patchfile%%::*}"
-        _patchfile="${_patchfile##*/}"
-        [[ $_patchfile = *.patch ]] || continue
-        _patchver="${_patchver}$(md5sum ${srcdir}/${_patchfile} | cut -c1-32)"
-    done
-    _patchver="$(echo -n $_patchver | md5sum | cut -c1-32)"
-
-#     echo ${_ver/-/_}.$(git rev-list --count HEAD).$(git rev-parse --short HEAD).${_patchver}
-    vergit=$(echo ${_ver} | sed 's|\.||g' | sed 's|-||g' | sed 's/devel//' )${_patchver}
-    echo $vergit
-}
-pkgver
+git clone https://aur.archlinux.org/mesa-git.git
+cd mesa-git
+sudo -u builduser bash -c 'makepkg -so --noconfirm --skippgpcheck --needed'
+sleep 5
+source PKGBUILD
+vergit=$(echo $pkgver | sed 's|\.||1' | sed 's|\.||1' | sed 's/_/./' | cut -d "." -f1,5 | sed 's|\.||g')
 
 #versão do repositorio do biglinux
 verrepo=$(pacman -Ss $pkgname | grep biglinux-stable | grep -v "$pkgname-" | grep -v "\-$pkgname" | grep "$pkgname" | cut -d " " -f2 | cut -d "-" -f1 | sed 's|\.||1' | sed 's|\.||1' | sed 's/_/./' | cut -d "." -f1,5 | sed 's|\.||g')
