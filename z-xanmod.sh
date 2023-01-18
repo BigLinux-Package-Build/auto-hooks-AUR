@@ -50,6 +50,7 @@ zfs
 repo=stable
 
 funxanverrepo () {
+sudo pacman -Sy
 xanverrepo=$(pacman -Ss $xanmod | grep biglinux-${repo} | grep -v headers | sed 's/\.//g' | sed 's/\-//g' | grep -w $(echo $xanmod | sed 's/\.//g' | sed 's/\-//g') | cut -d " " -f2)
 xanheadersverrepo=$(pacman -Ss ${xanmod}-headers | grep biglinux-${repo} | grep -w headers | sed 's/\.//g' | sed 's/\-//g' | grep -w $(echo ${xanmod}-headers | sed 's/\.//g' | sed 's/\-//g') | cut -d " " -f2)
 }
