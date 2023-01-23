@@ -32,7 +32,7 @@ curl -X POST \
 -H "Accept: application/json" \
 -H "Authorization: token '$CHAVE'" \
 --data '"'{"'"event_type"'": "'"'Remake PKGBUILD'"'", "'"client_payload"'": { "'"repo"'": "'"'$repo'"'", "'"mod"'": "'"'$mod'"'", "'"mkdepends"'": "'"'$mkdepends'"'", "'"xanmod"'": "'"'$xanmod'"'"}}'"' \
-'https://api.github.com/repos/biglinux/linux-xanmod-${mod}/dispatches'' > run-webhooks-aur.sh
+'https://api.github.com/repos/biglinux/${xanmod}-${mod}/dispatches'' > run-webhooks-aur.sh
 bash -x run-webhooks-aur.sh
 rm run-webhooks-aur.sh
 }
