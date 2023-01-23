@@ -14,14 +14,25 @@ bash -x run-webhooks-aur.sh
 rm run-webhooks-aur.sh
 }
 
-#hooks to ExtraModules
-exwebhooks() {
+# #hooks to ExtraModules
+# exwebhooks() {
+# echo '
+# curl -X POST \
+# -H "Accept: application/json" \
+# -H "Authorization: token '$CHAVE'" \
+# --data '"'{"'"event_type"'": "'"'${xanmod}/${mod}'"'", "'"client_payload"'": { "'"xanmod"'": "'"'${xanmod}'"'", "'"kver"'": "'"'${major}${pkgver}'"'", "'"xanver"'": "'"'${xanver}'"'", "'"branch"'": "'"'$repo'"'", "'"url"'": "'"https://gitlab.manjaro.org/packages/extra/linux'${kmajor}-extramodules/${mod}'"'", "'"version"'": "'"1.2.3"'"}}'"' \
+# 'https://api.github.com/repos/BigLinux-Package-Build/build-package/dispatches'' > run-webhooks-aur.sh
+# bash -x run-webhooks-aur.sh
+# rm run-webhooks-aur.sh
+# }
+
+newexwebhooks() {
 echo '
 curl -X POST \
 -H "Accept: application/json" \
 -H "Authorization: token '$CHAVE'" \
---data '"'{"'"event_type"'": "'"'${xanmod}/${mod}'"'", "'"client_payload"'": { "'"xanmod"'": "'"'${xanmod}'"'", "'"kver"'": "'"'${major}${pkgver}'"'", "'"xanver"'": "'"'${xanver}'"'", "'"branch"'": "'"'$repo'"'", "'"url"'": "'"https://gitlab.manjaro.org/packages/extra/linux'${kmajor}-extramodules/${mod}'"'", "'"version"'": "'"1.2.3"'"}}'"' \
-'https://api.github.com/repos/BigLinux-Package-Build/build-package/dispatches'' > run-webhooks-aur.sh
+--data '"'{"'"event_type"'": "'"'Remake PKGBUILD'"'", "'"client_payload"'": { "'"repo"'": "'"'$repo'"'", "'"mod"'": "'"'$mod'"'", "'"mkdepends"'": "'"'$mkdepends'"'", "'"xanmod"'": "'"'$xanmod'"'"}}'"' \
+'https://api.github.com/repos/biglinux/linux-xanmod-nvidia/dispatches'' > run-webhooks-aur.sh
 bash -x run-webhooks-aur.sh
 rm run-webhooks-aur.sh
 }
@@ -35,10 +46,16 @@ linux-xanmod-rt
 extramodules=(
 acpi_call
 bbswitch
+broadcom-wl
+nvidia
+nvidia-390xx
+nvidia-470xx
 r8168
 rtl8723bu
-vhba-module
 tp_smapi
+vhba-module
+virtualbox-modules
+zfs
 )
 
 repo=stable
@@ -95,7 +112,33 @@ for xanmod in ${xanmod[@]}; do
             #versão curta do xanmod
             kmajor=$(echo $major | sed 's|\.||g')
             #pegar versão do moduloextra do git
-            modvergit=$(curl -s https://gitlab.manjaro.org/packages/extra/linux${kmajor}-extramodules/${mod}/-/raw/master/PKGBUILD | grep pkgver= | grep -v _pkgver | cut -d "=" -f2 | sed 's/\.//g' | sed 's/\-//g')
+            
+            funmkdepends () {
+            modvergit=$(pacman -Ss ${mkdepends} | sed 's/\.//g' | grep ${mkdepends} | grep -v "\-${mkdepends}" | cut -d " " -f2 | cut -d "-" -f1 | sed 's/.*://')
+            }
+            
+            if [ "$mod" = "broadcom-wl" ];then
+                mkdepends=broadcom-wl-dkms
+                funmkdepends
+            elif [ "$mod" = "nvidia" ];then
+                mkdepends=nvidia-utils
+                funmkdepends
+            elif [ "$mod" = "nvidia-390xx" ];then
+                mkdepends=nvidia-390xx-utils
+                funmkdepends
+            elif [ "$mod" = "nvidia-470xx" ];then
+                mkdepends=nvidia-470xx-utils
+                funmkdepends
+            elif [ "$mod" = "virtualbox-modules" ];then
+                mkdepends=virtualbox-host-dkms
+                funmkdepends
+            elif [ "$mod" = "zfs" ];then
+                mkdepends=zfs-utils
+                funmkdepends
+            else
+                modvergit=$(curl -s https://gitlab.manjaro.org/packages/extra/linux${kmajor}-extramodules/${mod}/-/raw/master/PKGBUILD | grep pkgver= | grep -v _pkgver | cut -d "=" -f2 | sed 's/\.//g' | sed 's/\-//g')
+            fi
+            
                 #troca nome do virtualbox-modules na busca do repo
                 if [ "${mod}" = "virtualbox-modules" ];then mod=virtualbox-host-modules; fi
             #pegar versão do moduloextra do repo (sem pkgrel)
@@ -115,7 +158,7 @@ for xanmod in ${xanmod[@]}; do
                 echo "Xan Ver=$xanver"
                 echo "Mod Rel=$modrelrepo"
                 echo "send webhooks ${xanmod}-${mod}"
-                exwebhooks
+                newexwebhooks
             else
                 echo "Versão do ${xanmod}-${mod} é igual"
             fi
