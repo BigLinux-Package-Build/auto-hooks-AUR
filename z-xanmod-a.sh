@@ -137,6 +137,7 @@ for xanmod in ${xanmod[@]}; do
                 funmkdepends
             else
                 modvergit=$(curl -s https://gitlab.manjaro.org/packages/extra/linux${kmajor}-extramodules/${mod}/-/raw/master/PKGBUILD | grep pkgver= | grep -v _pkgver | cut -d "=" -f2 | sed 's/\.//g' | sed 's/\-//g')
+                mkdepends=
             fi
             
                 #troca nome do virtualbox-modules na busca do repo
