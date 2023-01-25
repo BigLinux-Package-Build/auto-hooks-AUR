@@ -1,0 +1,63 @@
+name: BigLinux Hooks Arch Container
+
+# Controls when the workflow will run
+on:
+  schedule:
+    - cron:  '30 2 * * *'
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: manjarolinux/base
+    steps:
+      - uses: actions/checkout@v3
+          
+      - name: Install Dependencies
+        shell: bash
+        run: |
+          sudo pacman -Sy --noconfirm --needed \
+          git \
+          openssh \
+          xz \
+          tmate
+          
+          #add biglinux repository
+          sudo sed -i '/\[core\]/{h;s/.*/\[biglinux-update-stable\]/;p;x;}' /etc/pacman.conf
+          sudo sed -i '/\[core\]/{h;s/.*/SigLevel = PackageRequired/;p;x;}' /etc/pacman.conf
+          sudo sed -i '/\[core\]/{h;s/.*/Server = https:\/\/repo.biglinux.com.br\/update-stable\/$arch/;p;x;}' /etc/pacman.conf
+          sudo sed -i '/\[core\]/{h;s/.*//;p;x;}' /etc/pacman.conf
+          echo '
+          [biglinux-testing]
+          SigLevel = PackageRequired
+          Server = https://repo.biglinux.com.br/testing/$arch' | sudo tee -a /etc/pacman.conf
+          echo '
+          [biglinux-stable]
+          SigLevel = PackageRequired
+          Server = https://repo.biglinux.com.br/stable/$arch' | sudo tee -a /etc/pacman.conf
+          
+          sudo git clone --depth 1 https://github.com/biglinux/biglinux-keyring.git
+          pushd biglinux-keyring
+            sudo install -m0644 biglinux.gpg /usr/share/pacman/keyrings/
+            sudo install -m0644 biglinux-trusted /usr/share/pacman/keyrings/
+            sudo install -m0644 biglinux-trusted /usr/share/pacman/keyrings/
+          popd
+          sudo rm -rf biglinux-keyring
+          
+          sudo git clone https://github.com/biglinux/biglinux-key.git
+          sudo mkdir -p /etc/pacman.d/gnupg/
+          sudo cp -r biglinux-key/usr/share/pacman/keyrings/* /etc/pacman.d/gnupg/
+          sudo rm -r biglinux-key
+          
+          sudo pacman -Sy
+          
+      - name: Teste, Makepkg and WebHooks
+        shell: bash
+        env:
+          CHAVE: ${{ secrets.WEBHOOK_TOKEN }}
+          REPO: stable
+        run: |
+          bash z-xanmod
