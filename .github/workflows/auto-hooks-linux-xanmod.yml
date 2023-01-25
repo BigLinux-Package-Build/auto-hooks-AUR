@@ -54,6 +54,13 @@ jobs:
           
           sudo pacman -Sy
           
+      # Tmate ##
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
+        with:
+          install-dependencies: false
+        
+          
       - name: Teste, Makepkg and WebHooks
         shell: bash
         env:

@@ -58,7 +58,7 @@ virtualbox-modules
 zfs
 )
 
-repo=stable
+repo=testing
 
 funxanverrepo () {
 sudo pacman -Sy
