@@ -40,8 +40,8 @@ rm run-webhooks-aur.sh
 xanmod=(
 linux-xanmod
 linux-xanmod-lts
-linux-xanmod-rt
 )
+#linux-xanmod-rt
 
 extramodules=(
 acpi_call
