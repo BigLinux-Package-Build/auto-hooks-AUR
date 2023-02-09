@@ -96,6 +96,8 @@ uresourced
 breeze-extended
 kdenlive-appimage
 qt5-webkit
+waydroid
+wine-lol-bin
 
 #bigstore-categorias
 syncthing-gtk
@@ -132,11 +134,15 @@ mongodb
 cecilia
 cura-bin
 kvantum-theme-libadwaita-git
-
-perl-sdl
-#minetime-bin
-#sk1
 frozen-bubble
+#perl-sdl
+
+#AI
+questdb
+openvino
+python-paddlepaddle
+python-onnxruntime
+python-onnx
 
 #dependencias-obs-studio-tytan652
 obs-studio-tytan652
@@ -165,10 +171,7 @@ lib32-lzo
 vkbasalt
 proton-ge-custom-bin
 
-waydroid
-
-wine-lol-bin
-
+#Kernel
 # linux-xanmod#usando-bin-script
 # linux-xanmod-edge#usando-bin-script
 # linux-xanmod-lts#usando-bin-script
@@ -183,6 +186,32 @@ linux-cachyos-pds
 linux-cachyos-cfs
 linux-zen-515lts 
 
+#Window-Maker
+windowmaker
+wmclock
+tango-icon-theme
+lxdm-biglinux-theme
+deepin-polkit-agent-ext-gnomekeyring-git
+deepin-polkit-agent-git
+kde-service-menu-reimage
+wmsystemtray
+wmix
+wmautomenu-biglinux
+sevi-icon-theme-blue-dark
+
+#BSPWM
+catppuccin-wallpapers-git
+nerd-fonts-jetbrains-mono
+betterlockscreen
+catppuccin-cursors-mocha
+catppuccin-gtk-theme-mocha
+papirus-folders-catppuccin-git
+ttf-icomoon-feather
+ksuperkey
+picom-ibhagwan-git
+oranchelo-icon-theme
+i3lock-color
+
 #LXQt
 #lxqt-arc-dark-theme-git
 
@@ -190,11 +219,6 @@ linux-zen-515lts
 gnome-shell-extension-vertical-workspaces-git
 gnome-terminal-transparency
 gnome-shell-extension-ddterm
-
-#Window-Maker
-windowmaker
-wmclock
-tango-icon-theme
 
 ##deepin
 #dde-kwin-reborn
@@ -218,7 +242,6 @@ tango-icon-theme
 #golang-deepin-lib-git
 #golang-github-linuxdeepin-go-dbus-factory-git
 #golang-github-linuxdeepin-go-x11-client-git
-
 #startdde-git
 #dtkwidget-git
 #deepin-turbo-git
@@ -238,30 +261,20 @@ tango-icon-theme
 #deepin-control-center-git
 #deepin-api-git
 #deepin-anything-git
-
 #deepin-kwin-git
 #deepin-sound-theme-git
 #deepin-wallpapers-git
-
-
-
-#inkscape-git
-
-
-#BSPWM
-catppuccin-wallpapers-git
-nerd-fonts-jetbrains-mono
-betterlockscreen
-catppuccin-cursors-mocha
-catppuccin-gtk-theme-mocha
-papirus-folders-catppuccin-git
-ttf-icomoon-feather
-ksuperkey
-picom-ibhagwan-git
-oranchelo-icon-theme
-i3lock-color
 
 #community-xfce
 ocs-url
 qogir-icon-theme
 qogir-gtk-theme
+
+#inkscape-git
+lib2geom-git
+
+
+
+
+
+
