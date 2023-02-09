@@ -140,7 +140,7 @@ frozen-bubble
 #AI
 questdb
 openvino
-python-paddlepaddle
+#python-paddlepaddle
 python-onnxruntime
 python-onnx
 
@@ -190,13 +190,10 @@ linux-zen-515lts
 windowmaker
 wmclock
 tango-icon-theme
-lxdm-biglinux-theme
 deepin-polkit-agent-ext-gnomekeyring-git
-deepin-polkit-agent-git
-kde-service-menu-reimage
+#kde-service-menu-reimage
 wmsystemtray
 wmix
-wmautomenu-biglinux
 sevi-icon-theme-blue-dark
 
 #BSPWM
