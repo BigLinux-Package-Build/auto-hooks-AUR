@@ -136,6 +136,8 @@ cura-bin
 kvantum-theme-libadwaita-git
 frozen-bubble
 #perl-sdl
+sndcpy-bin
+usbaudio-git
 
 #AI
 questdb
