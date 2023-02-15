@@ -188,6 +188,17 @@ linux-cachyos-pds
 linux-cachyos-cfs
 linux-zen-515lts 
 
+#gimp-plugin-resynthesizer-git
+python2-setuptools
+cython2
+python2-numpy
+libglade
+python2-gobject2
+pygtk
+python2-gimp
+gimp-plugin-resynthesizer-git
+
+
 #Window-Maker
 windowmaker
 wmclock
