@@ -21,7 +21,7 @@ lightly-git
 mawk
 ocrmypdf
 openrgb
-plasma5-applets-eventcalendar
+#plasma5-applets-eventcalendar
 plasma5-applets-latte-spacer
 plasma5-applets-netspeed
 plasma5-applets-resources-monitor
