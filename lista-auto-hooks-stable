@@ -130,7 +130,8 @@ screencloud
 sdl_pango
 perl-alien-sdl
 python-pyo
-mongodb
+mongodb-bin
+mongosh-bin
 cecilia
 cura-bin
 kvantum-theme-libadwaita-git
