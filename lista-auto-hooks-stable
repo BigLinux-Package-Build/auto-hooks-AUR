@@ -86,9 +86,9 @@ python-pynput
 qpdfview
 whatsie
 featherpad-qt5
-#ly#usando-bin-script
+ly
 #python-onnxruntime
-#nsync-#movido-script-particular
+nsync
 python-mediapipe
 python-playsound
 uresourced
@@ -145,7 +145,7 @@ questdb
 openvino
 #python-paddlepaddle
 python-onnxruntime
-#python-onnx#usando-script-a-parte
+python-onnx
 
 #dependencias-obs-studio-tytan652
 obs-studio-tytan652
