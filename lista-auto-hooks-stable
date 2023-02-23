@@ -140,6 +140,7 @@ frozen-bubble
 #perl-sdl
 sndcpy-bin
 usbaudio-git
+epson-inkjet-printer-escpr
 
 #AI
 questdb
