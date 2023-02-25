@@ -140,7 +140,6 @@ frozen-bubble
 #perl-sdl
 sndcpy-bin
 usbaudio-git
-epson-inkjet-printer-escpr
 
 #AI
 questdb
@@ -159,6 +158,7 @@ librist
 vlc-luajit
 pod2man
 ffmpeg-obs
+obs-streamfx-git
 
 #Proton-GE/K-dependencias
 python-booleanoperations
