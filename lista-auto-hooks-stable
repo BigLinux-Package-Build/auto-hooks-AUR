@@ -140,6 +140,7 @@ frozen-bubble
 #perl-sdl
 sndcpy-bin
 usbaudio-git
+vdu_controls
 
 #AI
 questdb
@@ -284,7 +285,7 @@ qogir-icon-theme
 qogir-gtk-theme
 qt5-styleplugins
 
-inkscape-git
+#inkscape-git
 lib2geom-git
 
 
