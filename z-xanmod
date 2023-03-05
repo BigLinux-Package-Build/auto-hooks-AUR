@@ -83,7 +83,7 @@ for xanmod in ${xanmod[@]}; do
     if [ -z "$xanverrepo" ]; then
         echo "Sem Pacote $xanmod no Repo, enviando....."
         xanwebhooks
-    elif [ "$xanveraur" -gt "$xanverrepo" ]; then
+    elif [ "$xanveraur" != "$xanverrepo" ]; then
         echo "Envia $xanmod"
         echo "AUR =$xanveraur"
         echo "Repo=$xanverrepo"
