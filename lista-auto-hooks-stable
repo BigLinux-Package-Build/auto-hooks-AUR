@@ -203,7 +203,7 @@ python2-gimp
 gimp-plugin-resynthesizer-git
 
 
-#Window-Maker
+#Community-Window-Maker
 windowmaker
 wmclock
 tango-icon-theme
@@ -213,7 +213,7 @@ wmsystemtray
 wmix
 sevi-icon-theme-blue-dark
 
-#BSPWM
+#Community-BSPWM
 catppuccin-wallpapers-git
 nerd-fonts-jetbrains-mono
 betterlockscreen
@@ -229,57 +229,26 @@ i3lock-color
 #LXQt
 #lxqt-arc-dark-theme-git
 
-#Gnome-Extension
+#Community-Gnome
 gnome-shell-extension-vertical-workspaces-git
 gnome-terminal-transparency
 gnome-shell-extension-ddterm
+#new-packages
+gnome-shell-extension-blur-my-shell
+gnome-shell-extension-burn-my-windows
+gnome-shell-extension-coverflow-alt-tab-git
+gnome-shell-extension-pano-git
+mutter-dynamic-buffering
+otf-bebas-neue-git
+ttf-abel-regular
+ttf-economica
+ttf-material-design-icons-desktop-git
 
-##deepin
-#dde-kwin-reborn
-#deepin-default-settings
-#deepin-desktop-base-git
-#deepin-gettext-tools-git
-#deepin-gtk-theme-git
-#deepin-icon-theme-git
-#deepin-kwin-reborn
-#deepin-network-utils-git
-#deepin-nvidia-prime-git
-#deepin-qt5platform-plugins-git
-#deepin-qt-dbus-factory-git
-#deepin-wayland-protocols-reborn
-#disomaster-git
-#dtkcommon-git
-#dtkcore-git
-#dtkgui-git
-#dwayland-reborn
-#golang-deepin-gir-git
-#golang-deepin-lib-git
-#golang-github-linuxdeepin-go-dbus-factory-git
-#golang-github-linuxdeepin-go-x11-client-git
-#startdde-git
-#dtkwidget-git
-#deepin-turbo-git
-#deepin-session-ui-git
-#deepin-session-shell-git
-#deepin-qt5integration-git
-#deepin-pw-check-git
-#deepin-polkit-agent-git
-#deepin-polkit-agent-ext-gnomekeyring-git
-#deepin-movie-git
-#deepin-launcher-git
-#deepin-file-manager-git
-#deepin-dock-git
-#deepin-desktop-schemas-git
-#deepin-desktop-environment-meta-git
-#deepin-daemon-git
-#deepin-control-center-git
-#deepin-api-git
-#deepin-anything-git
-#deepin-kwin-git
-#deepin-sound-theme-git
-#deepin-wallpapers-git
 
-#community-xfce
+##Community-Deepin
+
+
+#Community-xfce
 ocs-url
 qogir-icon-theme
 qogir-gtk-theme
