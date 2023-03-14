@@ -235,7 +235,7 @@ windowmaker
 wmclock
 tango-icon-theme
 wmsystemtray
-wmix
+#wmix
 #sevi-icon-theme-blue-dark
 
 #Community-BSPWM
