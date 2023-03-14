@@ -191,6 +191,7 @@ linux-cachyos-bmq
 linux-cachyos-pds
 linux-cachyos-cfs
 linux-zen-515lts 
+linux-amd
 
 #gimp-plugin-resynthesizer-git
 python2-setuptools
