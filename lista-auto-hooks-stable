@@ -145,7 +145,6 @@ vdu_controls
 #udev
 usbasp-udev
 trezor-udev
-usbasp-udev
 numworks-udev
 apple-superdrive-udev
 nx-udev
