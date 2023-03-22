@@ -86,7 +86,6 @@ qpdfview
 whatsie
 featherpad-qt5
 ly
-#python-onnxruntime
 nsync
 python-mediapipe
 python-playsound
@@ -217,7 +216,8 @@ linux-cachyos-cacule
 linux-cachyos-bmq
 linux-cachyos-pds
 linux-cachyos-cfs
-linux-zen-515lts 
+linux-zen-515lts
+linux-zen-git
 linux-amd
 
 #gimp-plugin-resynthesizer-git
@@ -260,8 +260,6 @@ gnome-shell-extension-blur-my-shell
 gnome-shell-extension-coverflow-alt-tab-git
 gnome-shell-extension-pano-git
 mutter-dynamic-buffering
-
-
 # gnome-shell-extension-vertical-workspaces-git
 # gnome-terminal-transparency
 # gnome-shell-extension-ddterm
