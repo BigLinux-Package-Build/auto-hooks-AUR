@@ -256,12 +256,11 @@ i3lock-color
 #lxqt-arc-dark-theme-git
 
 #Community-Gnome
-gnome-shell-extension-vertical-workspaces-git
-gnome-terminal-transparency
-gnome-shell-extension-ddterm
-#new-packages
+# gnome-shell-extension-vertical-workspaces-git
+# gnome-terminal-transparency
+# gnome-shell-extension-ddterm
 gnome-shell-extension-blur-my-shell
-gnome-shell-extension-burn-my-windows
+# gnome-shell-extension-burn-my-windows
 gnome-shell-extension-coverflow-alt-tab-git
 gnome-shell-extension-pano-git
 mutter-dynamic-buffering
