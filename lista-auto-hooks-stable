@@ -260,14 +260,14 @@ gnome-shell-extension-blur-my-shell
 gnome-shell-extension-coverflow-alt-tab-git
 gnome-shell-extension-pano-git
 mutter-dynamic-buffering
-# gnome-shell-extension-vertical-workspaces-git
-# gnome-terminal-transparency
-# gnome-shell-extension-ddterm
-# gnome-shell-extension-burn-my-windows
-# otf-bebas-neue-git
-# ttf-abel-regular
-# ttf-economica
-# ttf-material-design-icons-desktop-git
+#gnome-shell-extension-vertical-workspaces-git
+#gnome-terminal-transparency
+#gnome-shell-extension-ddterm
+#gnome-shell-extension-burn-my-windows
+#otf-bebas-neue-git
+#ttf-abel-regular
+#ttf-economica
+#ttf-material-design-icons-desktop-git
 
 
 ##Community-Deepin
