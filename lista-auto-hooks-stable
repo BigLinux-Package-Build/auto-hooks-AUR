@@ -143,6 +143,7 @@ frozen-bubble
 sndcpy-bin
 usbaudio-git
 vdu_controls
+rakarrack-plus
 
 #udev
 usbasp-udev
