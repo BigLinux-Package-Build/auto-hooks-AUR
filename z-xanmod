@@ -73,8 +73,15 @@ for xanmod in ${xanmod[@]}; do
     #versão online no site da AUR
     major=$(curl -s https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=$xanmod | sed 's/<[^>]*>//g' | grep _major= | cut -d "=" -f2)
     pkgver=$(curl -s https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=$xanmod | sed 's/<[^>]*>//g' | grep pkgver= | cut -d "=" -f2 | cut -d "}" -f2)
-    # pkgrel=$(curl -s https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=$xanmod | sed 's/<[^>]*>//g' | grep xanmod= | cut -d "=" -f2)
-    pkgrel=$(curl -s https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=$xanmod | sed 's/<[^>]*>//g' | grep pkgrel= | cut -d "=" -f2 | sed 's/#.*//')
+    
+    #se pkgrel for um numero, continuar, se não usar xanmod= como valor
+    pkgrel=$(curl -s https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=$xanmod | sed 's/<[^>]*>//g' | grep pkgrel= | cut -d "=" -f2 | sed 's/#.*//' | sed 's/ //g')
+    if [[ $pkgrel =~ ^[0-9]+$ ]];then
+        echo "xpto" > /dev/null
+    else
+        pkgrel=$(curl -s https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=$xanmod | sed 's/<[^>]*>//g' | grep xanmod= | cut -d "=" -f2)
+    fi
+
     xanveraur=$(echo ${major}${pkgver}${pkgrel} | sed 's|\.||g' | sed 's|-||g')
 
     #versão do repositorio do biglinux
