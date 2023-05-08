@@ -161,7 +161,7 @@ for xanmod in ${xanmod[@]}; do
             xanver=$xanveraur
             
             #se a pkgver do git =! pkgver repo OU do pkgrel do modulo =! pkgver do xanmod , re-buildar
-            if [ "$modvergit" != "$modverrepo" -o "$modrelrepo" != "$xanver" ];then
+#             if [ "$modvergit" != "$modverrepo" -o "$modrelrepo" != "$xanver" ];then
                 echo "${xanmod}-${mod}"
                 echo "Mod Vergit =$modvergit"
                 echo "Mod Verrepo=$modverrepo"
@@ -169,9 +169,9 @@ for xanmod in ${xanmod[@]}; do
                 echo "Mod Rel=$modrelrepo"
                 echo "send webhooks ${xanmod}-${mod}"
                 newexwebhooks
-            else
+#             else
                 echo "Versão do ${xanmod}-${mod} é igual"
-            fi
+#             fi
         fi
     done
 done
