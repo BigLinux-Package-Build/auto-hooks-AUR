@@ -90,12 +90,12 @@ for xanmod in ${xanmod[@]}; do
     #se versão do AUR foi maior que a versão do repo local
     if [ -z "$xanverrepo" ]; then
         echo "Sem Pacote $xanmod no Repo, enviando....."
-        xanwebhooks
+#         xanwebhooks
     elif [ "$xanveraur" != "$xanverrepo" ]; then
         echo "Envia $xanmod"
         echo "AUR =$xanveraur"
         echo "Repo=$xanverrepo"
-        xanwebhooks
+#         xanwebhooks
     else
         echo "Versão do $xanmod é igual"
         echo "AUR =$xanveraur"
@@ -168,7 +168,7 @@ for xanmod in ${xanmod[@]}; do
                 echo "Xan Ver=$xanver"
                 echo "Mod Rel=$modrelrepo"
                 echo "send webhooks ${xanmod}-${mod}"
-                newexwebhooks
+#                 newexwebhooks
             else
                 echo "Versão do ${xanmod}-${mod} é igual"
             fi
