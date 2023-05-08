@@ -161,7 +161,7 @@ for xanmod in ${xanmod[@]}; do
             xanver=$xanveraur
             #se o numero da versão contiver apenas 4 caracteres, adicionar um 0 ao final da versão
             if [ "${#xanver}" -le "4" ]; then 
-                sed -i '/pkgrel=/s/$/0/' PKGBUILD
+                xanver+=0
             fi
             
             #se a pkgver do git =! pkgver repo OU do pkgrel do modulo =! pkgver do xanmod , re-buildar
