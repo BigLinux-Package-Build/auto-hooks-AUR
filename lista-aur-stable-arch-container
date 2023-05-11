@@ -18,9 +18,9 @@ rm run-webhooks-aur.sh
 #nome do programa como está no pacman
 #pkgname=
 AUR=
-repo=stable
+repo=$1
 
-for i in $(cat lista-auto-hooks-stable); do pkgname=$i
+for i in $(cat lista-auto-hooks-${repo}); do pkgname=$i
     if [ -z "$(echo $i)" -o -z "$(echo $i | grep \#)" ];then
         
         #versão do repositorio BigLinux

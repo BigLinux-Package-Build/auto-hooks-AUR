@@ -167,4 +167,6 @@ jobs:
           
           # bash lista-aur-stable-arch-container.sh
           sudo pacman -Syy
+          bash lista-aur-stable-arch-container stable
+          bash lista-aur-stable-arch-container testing
           for r in *.sh; do bash $r; done
