@@ -172,7 +172,7 @@ for xanmod in ${xanmod[@]}; do
                 echo "Xan Ver=$xanver"
                 echo "Mod Rel=$modrelrepo"
                 echo "send webhooks ${xanmod}-${mod}"
-#                 newexwebhooks
+                newexwebhooks
             else
                 echo "Versão do ${xanmod}-${mod} é igual"
             fi
