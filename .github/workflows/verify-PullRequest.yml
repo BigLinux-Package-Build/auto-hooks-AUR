@@ -22,7 +22,7 @@ jobs:
             open=$(gh pr list -R $i --state open | grep OPEN)
             if [ -n "$open" ];then
               package=$(echo $i | cut -d "/" -f2)
-              curl -X POST -H 'Content-Type: application/json' -d '{"chat_id": "${{ secrets.CHAT_ID }}", "text": "PullRequest encontrado no '$package', https://github.com/'$i'/pulls", "disable_notification": false}' ${{ secrets.MESSAGE_BOT_KEY }}
+              curl -X POST -H 'Content-Type: application/json' -d '{"chat_id": "${{ secrets.CHAT_ID }}", "text": "☢️ PullRequest encontrado no '$package', https://github.com/'$i'/pulls", "disable_notification": false}' ${{ secrets.MESSAGE_BOT_KEY }}
             fi
           done
         env:
