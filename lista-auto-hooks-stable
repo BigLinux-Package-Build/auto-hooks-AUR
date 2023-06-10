@@ -23,6 +23,7 @@ ocrmypdf
 openrgb
 #plasma5-applets-eventcalendar
 plasma5-applets-latte-spacer
+#plasma5-applets-latte-separator
 plasma5-applets-netspeed
 plasma5-applets-resources-monitor
 plasma5-applets-virtual-desktop-bar-git
@@ -183,7 +184,7 @@ python-onnx
 #dependencias-obs-studio-tytan652
 obs-studio-tytan652
 libajantv2
-cef-minimal-obs-bin 
+cef-minimal-obs-bin
 ftl-sdk
 librist
 #flac-git #usando-bin-script
