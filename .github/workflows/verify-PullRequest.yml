@@ -16,10 +16,10 @@ jobs:
         shell: bash
         run: |
           
-      - name: Teste, Makepkg and WebHooks
+      - name: Verify and Send Msg
         shell: bash
         env:
-          GH_TOKEN: ${{ secrets.WEBHOOK_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           for i in $(gh repo list --limit 500 --visibility public biglinux | awk '{print $1}'); do 
               open=$(gh pr list -R $i --state open | grep OPEN)
