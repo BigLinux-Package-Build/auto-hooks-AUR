@@ -11,10 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-          
-      - name: Install Dependencies
-        shell: bash
-        run: |
         
       # - name: Setup tmate session
       #   uses: mxschmitt/action-tmate@v3
@@ -22,11 +18,13 @@ jobs:
       - name: Verify and Send Msg
         shell: bash
         run: |
-          for i in $(gh repo list --limit 500 --visibility public biglinux | awk '{print $1}'); do 
-              open=$(gh pr list -R $i --state open | grep OPEN)
-              if [ -n "$open" ];then
-                  echo "PullRequest encontrado no $(echo $i | cut -d "/" -f2), https://github.com/$i/pulls"
-              fi
-          done
+          # for i in $(gh repo list --limit 500 --visibility public biglinux | awk '{print $1}'); do 
+          #     open=$(gh pr list -R $i --state open | grep OPEN)
+          #     if [ -n "$open" ];then
+          #         echo "PullRequest encontrado no $(echo $i | cut -d "/" -f2), https://github.com/$i/pulls"
+          #     fi
+          # done
+          gh repo list --limit 500 --visibility public biglinux
+          
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
