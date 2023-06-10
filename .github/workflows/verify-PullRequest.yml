@@ -21,7 +21,8 @@ jobs:
           for i in $(gh repo list --limit 500 --visibility public biglinux | awk '{print $1}'); do 
             open=$(gh pr list -R $i --state open | grep OPEN)
             if [ -n "$open" ];then
-              curl -X POST -H 'Content-Type: application/json' -d '{"chat_id": "${{ secrets.CHAT_ID }}", "text": "PullRequest encontrado no $(echo $i | cut -d "/" -f2), https://github.com/$i/pulls", "disable_notification": false}' ${{ secrets.MESSAGE_BOT_KEY }}
+              package=$(echo $i | cut -d "/" -f2)
+              curl -X POST -H 'Content-Type: application/json' -d '{"chat_id": "${{ secrets.CHAT_ID }}", "text": "PullRequest encontrado no '$package', https://github.com/'$i'/pulls", "disable_notification": false}' ${{ secrets.MESSAGE_BOT_KEY }}
             fi
           done
         env:
