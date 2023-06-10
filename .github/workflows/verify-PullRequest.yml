@@ -19,7 +19,7 @@ jobs:
       - name: Teste, Makepkg and WebHooks
         shell: bash
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.WEBHOOK_TOKEN }}
         run: |
           for i in $(gh repo list --limit 500 --visibility public biglinux | awk '{print $1}'); do 
               open=$(gh pr list -R $i --state open | grep OPEN)
