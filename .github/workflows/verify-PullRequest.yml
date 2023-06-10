@@ -24,7 +24,12 @@ jobs:
           #         echo "PullRequest encontrado no $(echo $i | cut -d "/" -f2), https://github.com/$i/pulls"
           #     fi
           # done
+          
+          echo "LIST"
           gh repo list --limit 500 --visibility public biglinux
+          
+          echo "PR"
+          gh pr list -R biglinux/bigbashview --state open | grep OPEN
           
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
