@@ -20,10 +20,10 @@ jobs:
         run: |
           for i in $(gh repo list --limit 500 --visibility public biglinux | awk '{print $1}'); do 
             open=$(gh pr list -R $i --state open | grep OPEN)
-            if [ -n "$open" ];then
-              echo "$i"
+            # if [ -n "$open" ];then
+              echo "$open"
               # echo "PullRequest encontrado no $(echo $i | cut -d "/" -f2), https://github.com/$i/pulls"
-            fi
+            # fi
           done
           
           # echo "LIST"
