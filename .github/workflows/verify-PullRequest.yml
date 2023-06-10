@@ -16,7 +16,7 @@ jobs:
       #   uses: mxschmitt/action-tmate@v3
           
       - name: Verify and Send Msg
-        shell: bash
+        shell: bash -O extglob {0}
         run: |
           for i in $(gh repo list --limit 500 --visibility public biglinux | awk '{print $1}'); do 
             # open=$(gh pr list -R $i --state open | grep OPEN)
