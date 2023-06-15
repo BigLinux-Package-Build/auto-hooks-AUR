@@ -223,7 +223,7 @@ linux-cachyos-bmq
 linux-cachyos-pds
 linux-cachyos-cfs
 linux-zen-515lts
-linux-zen-git
+linux-zen-versioned-bin
 linux-amd
 
 #gimp-plugin-resynthesizer-git
