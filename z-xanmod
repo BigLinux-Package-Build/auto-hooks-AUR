@@ -55,8 +55,9 @@ rtl8723bu
 tp_smapi
 vhba-module
 virtualbox-modules
+zfs
 )
-#zfs
+
 
 repo=testing
 branch_build=testing
