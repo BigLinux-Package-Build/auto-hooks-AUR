@@ -148,6 +148,7 @@ sndcpy-bin
 usbaudio-git
 vdu_controls
 rakarrack-plus
+clementine
 
 #udev
 usbasp-udev
