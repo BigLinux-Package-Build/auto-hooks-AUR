@@ -139,7 +139,7 @@ for xanmod in ${xanmod[@]}; do
             elif [ "$mod" = "nvidia-470xx" ];then
                 mkdepends=nvidia-470xx-utils
                 funmkdepends
-            elif [ "$mod" = "virtualbox-modules" ];then
+            elif [ "$mod" = "virtualbox" ];then
                 mkdepends=virtualbox-host-dkms
                 funmkdepends
             elif [ "$mod" = "zfs" ];then
