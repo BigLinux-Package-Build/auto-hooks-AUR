@@ -157,7 +157,8 @@ for xanmod in ${xanmod[@]}; do
             #pegar rel do moduloextra do repo
             modrelrepo=$(pacman -Ss ${xanmod}-${mod} | grep biglinux-${repo} | sed 's/\.//g' | grep -v ${xanmod}-${mod}- | awk '{print $2}' | awk -F- '{print $2}')
                 #volta nome do virtualbox-modules
-                if [ "${mod}" = "virtualbox-host-modules" ];then mod=virtualbox; fi
+                if [ "${mod}" = "virtualbox-host-modules" -a "$(sed 's|\.||' <<< $major)" -le "63" ];then mod=virtualbox-modules
+                elif [ "${mod}" = "virtualbox-host-modules" -a "$(sed 's|\.||' <<< $major)" -gt "63" ];then mod=virtualbox; fi
             #pegar versão do xanmod
             xanver=$xanveraur
             #se o numero da versão contiver apenas 4 caracteres, adicionar um 0 ao final da versão
