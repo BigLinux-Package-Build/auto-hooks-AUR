@@ -13,8 +13,8 @@ jobs:
     runs-on: ubuntu-latest
     container: archlinux:latest
       volumes:
-        - imagegeneration:/imagegeneration
-        - opt:/opt
+        - /imagegeneration:/imagegeneration
+        - /opt:/opt
     steps:
       - uses: actions/checkout@v3
       
