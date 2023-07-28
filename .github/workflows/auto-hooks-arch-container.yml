@@ -30,7 +30,7 @@ jobs:
           echo "Clean System"
           df -h
           rm -rf /__t
-          sudo rm -rf \
+          rm -rf \
           /lixo/imagegeneration \
           /lixo/opt/az \
           /lixo/opt/ghc \
