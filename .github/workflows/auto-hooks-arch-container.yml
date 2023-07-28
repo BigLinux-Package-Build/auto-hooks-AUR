@@ -12,11 +12,19 @@ jobs:
   build:
     runs-on: ubuntu-latest
     container: archlinux:latest
+      volumes:
+        - imagegeneration:/imagegeneration
+        - opt:/opt
     steps:
       - uses: actions/checkout@v3
       
       - name: Setup tmate session
         uses: mxschmitt/action-tmate@v3
+      
+      # - name: Clean System
+      #   shell: bash
+      #   run: |
+      #     rm -r __t
         
       - name: Install Dependencies
         shell: bash
