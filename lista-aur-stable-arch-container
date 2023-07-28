@@ -37,22 +37,22 @@ for i in $(cat lista-auto-hooks-${repo}); do pkgname=$i
         #versão do AUR
         git clone https://aur.archlinux.org/${i}.git
         chmod 777 -R $i
-        cd $i 
-        source PKGBUILD
-        veraur=$pkgver-$pkgrel
-        
-        sleep 1
-        
-        if [ "$veraur" != "$verrepo" -a -n "$verrepo" ]; then
-            veraur=
-            pkgver=
-            pkgrel=
+        pushd $i
+#         source PKGBUILD
+#         veraur=$pkgver-$pkgrel
+#
+#         sleep 1
+#
+#         if [ "$veraur" != "$verrepo" -a -n "$verrepo" ]; then
+#             veraur=
+#             pkgver=
+#             pkgrel=
             sudo -u builduser bash -c 'makepkg -so --noconfirm --skippgpcheck --needed'
             sleep 5
             source PKGBUILD
             veraur=$pkgver-$pkgrel
-        fi
-        cd ..
+#         fi
+        popd
         if [ "$pkgname" != "$i" ]; then
             pkgname=$i
         fi
