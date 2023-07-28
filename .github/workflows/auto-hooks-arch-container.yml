@@ -14,7 +14,10 @@ jobs:
     container: archlinux:latest
     steps:
       - uses: actions/checkout@v3
-          
+      
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
+        
       - name: Install Dependencies
         shell: bash
         run: |
@@ -117,7 +120,6 @@ jobs:
           zlib \
           zram-generator \
           zstd
-
           
       - name: Add BigLinux Repo and Key
         shell: bash
@@ -134,7 +136,6 @@ jobs:
           Server = https://repo.biglinux.com.br/stable/$arch' | tee -a /etc/pacman.conf
           
           sed -i '/PACKAGER=/s/#PACKAGER=.*/\PACKAGER="BigLinux Package Build <bigbruno@gmail.com>\"/' /etc/makepkg.conf
-          
           
           #add biglinux Keyring
           git clone --depth 1 https://github.com/biglinux/biglinux-keyring.git
@@ -156,8 +157,8 @@ jobs:
           CHAVE: ${{ secrets.WEBHOOK_TOKEN }}
           REPO: stable
         run: |
-          useradd builduser -m 
-          passwd -d builduser 
+          useradd builduser -m
+          passwd -d builduser
           printf 'builduser ALL=(ALL) ALL\n' | tee -a /etc/sudoers
           
           # gitfolder=$(find -type f -name PKGBUILD | sed 's/PKGBUILD//')
