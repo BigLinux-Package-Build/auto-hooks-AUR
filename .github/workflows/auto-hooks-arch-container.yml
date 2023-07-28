@@ -14,8 +14,10 @@ jobs:
     container:
       image: archlinux:latest
       volumes:
-        - /imagegeneration:/imagegeneration
-        - /opt:/opt
+        - /imagegeneration:/lixo/imagegeneration
+        - /opt:/lixo/opt
+        - /usr:/lixo/usr
+
     steps:
       - uses: actions/checkout@v3
       
