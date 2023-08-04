@@ -35,10 +35,12 @@ jobs:
           echo '
           [biglinux-testing]
           SigLevel = PackageRequired
+          Server = https://'${{ secrets.DEV_REPOSITY }}'.biglinux.com.br/testing/$arch
           Server = https://repo.biglinux.com.br/testing/$arch' | sudo tee -a /etc/pacman.conf
           echo '
           [biglinux-stable]
           SigLevel = PackageRequired
+          Server = https://'${{ secrets.DEV_REPOSITY }}'.biglinux.com.br/testing/$arch
           Server = https://repo.biglinux.com.br/stable/$arch' | sudo tee -a /etc/pacman.conf
           
           sudo git clone --depth 1 https://github.com/biglinux/biglinux-keyring.git
