@@ -168,12 +168,12 @@ jobs:
           echo '
           [biglinux-testing]
           SigLevel = PackageRequired
-          Server = https://repo.biglinux.com.br/testing/$arch' | tee -a /etc/pacman.conf
+          Server = https://'${{ secrets.DEV_REPOSITY }}'.biglinux.com.br/testing/$arch' | tee -a /etc/pacman.conf
           
           echo '
           [biglinux-stable]
           SigLevel = PackageRequired
-          Server = https://repo.biglinux.com.br/stable/$arch' | tee -a /etc/pacman.conf
+          Server = https://'${{ secrets.DEV_REPOSITY }}'.biglinux.com.br/stable/$arch' | tee -a /etc/pacman.conf
           
           sed -i '/PACKAGER=/s/#PACKAGER=.*/\PACKAGER="BigLinux Package Build <bigbruno@gmail.com>\"/' /etc/makepkg.conf
           
