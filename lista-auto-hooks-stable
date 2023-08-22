@@ -220,7 +220,7 @@ proton-ge-custom-bin
 linux-cachyos
 linux-cachyos-bore
 linux-cachyos-tt
-linux-cachyos-cacule
+# linux-cachyos-cacule
 linux-cachyos-bmq
 linux-cachyos-pds
 linux-cachyos-cfs
@@ -291,8 +291,9 @@ qt5-styleplugins
 #inkscape-git
 lib2geom-git
 
-
-
+#Narayan
+vosk-api
+python-srt
 
 
 
