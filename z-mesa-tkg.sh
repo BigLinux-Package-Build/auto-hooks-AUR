@@ -60,8 +60,8 @@ pkgname=mesa-tkg-git
 # pkgrel=$(curl -s https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=$pkgname | sed 's/<[^>]*>//g' | grep pkgrel= | cut -d "=" -f2 | sed 's|\.||g' | sed 's|-||g' | sed 's|_||g')
 # versite=$pkgver$pkgrel
 
-#só rodar segunda,quarta e sexta feira
-if [ "$(date +%u)" = "1" -o "$(date +%u)" = "3" -o "$(date +%u)" = "5" ];then
+#só rodar terça e sexta feira
+# if [ "$(date +%u)" = "2" -o "$(date +%u)" = "5" ];then
     #clona, verifica a versão do patch e declara o vergit
     git clone https://gitlab.freedesktop.org/mesa/mesa.git
     pkgver() {
@@ -100,5 +100,5 @@ if [ "$(date +%u)" = "1" -o "$(date +%u)" = "3" -o "$(date +%u)" = "5" ];then
     else
         echo "Versão do $pkgname é igual !"
     fi
-fi
+# fi
 
