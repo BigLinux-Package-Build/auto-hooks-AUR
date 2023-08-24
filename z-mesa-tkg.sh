@@ -61,7 +61,7 @@ pkgname=mesa-tkg-git
 # versite=$pkgver$pkgrel
 
 #só rodar terça e sexta feira
-# if [ "$(date +%u)" = "2" -o "$(date +%u)" = "5" ];then
+if [ "$(date +%u)" = "2" -o "$(date +%u)" = "5" ];then
     #clona, verifica a versão do patch e declara o vergit
     git clone https://gitlab.freedesktop.org/mesa/mesa.git
     pkgver() {
@@ -100,5 +100,5 @@ pkgname=mesa-tkg-git
     else
         echo "Versão do $pkgname é igual !"
     fi
-# fi
+fi
 
