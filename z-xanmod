@@ -60,7 +60,7 @@ zfs
 
 
 repo=testing
-branch_build=testing
+branch_build=stable
 
 funxanverrepo () {
 sudo pacman -Sy
