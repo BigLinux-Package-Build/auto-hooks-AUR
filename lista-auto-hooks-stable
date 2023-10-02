@@ -77,7 +77,6 @@ libgbinder
 python-gbinder
 kde-snap-assist
 psautohint
-heroic-games-launcher-bin
 python2
 kwin-scripts-forceblur
 qtscrcpy
@@ -133,7 +132,6 @@ wings3d
 trojita
 balena-etcher-appimage
 shortwave
-extremetuxracer
 libsearpc
 seafile
 seafile-client
@@ -304,3 +302,13 @@ python-srt
 python-inputs
 protonup-qt
 
+
+#Jogos
+heroic-games-launcher-bin
+extremetuxracer
+gamehub
+ufoai-git
+gtksourceview2
+dunedynasty
+dunelegacy
+freesynd
