@@ -1,0 +1,68 @@
+bootstrap
+paru
+plasma5-applets-eventcalendar
+xsnow
+kde-service-menu-reimage
+kde-servicemenus-officeconverter
+lightly-git
+plasma5-applets-presentwindows
+mintstick
+icons-in-terminal
+fluent-icon-theme-git
+fluent-kde-theme-git
+fluent-gtk-theme-git
+kde-snap-assist
+brave-bin
+python-bs4
+openrgb-udev-rules
+ocrmypdf
+ttf-meslo-nerd-font-powerlevel10k
+hunspell-pt-br
+game-devices-udev
+ananicy-cpp
+cachyos-ananicy-rules-git
+usbasp-udev
+trezor-udev
+numworks-udev
+apple-superdrive-udev
+nx-udev
+xr-hardware
+keepkey-udev
+bitbox-udev
+adafruit-boards-udev
+allow-input-accelerometer-udev
+avrisp-udev
+btchip-udev
+crazyflie-udev
+crazyradio-udev
+mooltipass-udev
+nintendo-udev
+osc-udev-storage
+stadia-controller-udev
+usbtinyisp-udev
+vlc-luajit
+
+
+rustdesk
+vcpkg
+
+# with URL
+https://gitlab.manjaro.org/packages/community/kde/plasma-simplemenu
+
+
+
+# corrigir arch=
+geticons
+vmtouch > pod2man
+mystiq
+
+
+#?????
+plasma5-applets-latte-spacer #não enviar
+plasma5-applets-latte-separator #não enviar
+kwin-scripts-forceblur #não enviar
+eza
+
+
+
+
