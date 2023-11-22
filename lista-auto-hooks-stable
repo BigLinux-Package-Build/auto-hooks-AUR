@@ -201,6 +201,7 @@ vlc-luajit
 pod2man
 ffmpeg-obs
 obs-streamfx-git
+libdatachannel-nice
 
 #Proton-GE/K-dependencias
 python-booleanoperations
