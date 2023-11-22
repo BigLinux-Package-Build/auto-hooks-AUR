@@ -202,6 +202,8 @@ pod2man
 ffmpeg-obs
 obs-streamfx-git
 libdatachannel-nice
+plog
+libusrsctp
 
 #Proton-GE/K-dependencias
 python-booleanoperations
