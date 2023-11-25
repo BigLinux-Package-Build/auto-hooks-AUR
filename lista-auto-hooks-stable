@@ -204,6 +204,7 @@ obs-streamfx-git
 libdatachannel-nice
 plog
 libusrsctp
+qrcodegen-cmake
 
 #Proton-GE/K-dependencias
 python-booleanoperations
@@ -370,4 +371,15 @@ python-colcon-common-extensions
 python-pyqt5-sip4
 ros2-arch-deps
 ros2-git
+
+#turing-smart-screen
+python-sv-ttk
+python-pystray
+python-gputil
+
+
+
+
+
+
 
