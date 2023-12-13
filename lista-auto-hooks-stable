@@ -331,7 +331,7 @@ ignition-math
 urdfdom-headers
 console-bridge
 urdfdom
-sdformat
+#sdformat
 ignition-transport
 ignition-msgs
 ignition-common
