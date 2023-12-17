@@ -182,6 +182,7 @@ osc-udev-storage
 signal-hound-udev
 stadia-controller-udev
 usbtinyisp-udev
+qtwebkit
 
 #AI
 questdb
