@@ -183,6 +183,7 @@ signal-hound-udev
 stadia-controller-udev
 usbtinyisp-udev
 qtwebkit
+qt4
 
 #AI
 questdb
@@ -311,6 +312,7 @@ vosk-api
 python-srt
 python-inputs
 protonup-qt
+lact
 
 
 #Jogos
@@ -322,6 +324,7 @@ dunedynasty
 dunelegacy
 freesynd
 gpu-screen-recorder-gtk-git
+gpu-screen-recorder-git
 
 
 #gazebo
