@@ -396,8 +396,8 @@ python-pystray
 python-gputil
 
 
-
-
-
-
-
+# oci-cli
+python-circuitbreaker
+python-terminaltables
+python-oci
+oci-cli
