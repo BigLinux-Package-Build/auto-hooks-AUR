@@ -242,6 +242,7 @@ linux-cachyos-cfs
 linux-zen-515lts
 linux-zen-versioned-bin
 linux-amd
+scx-scheds
 
 #gimp-plugin-resynthesizer-git
 python2-setuptools
