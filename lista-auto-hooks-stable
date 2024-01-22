@@ -116,6 +116,7 @@ inkstitch
 qdirstat
 openlens-bin
 iriunwebcam-bin
+opentofu
 
 
 #bigstore-categorias
@@ -398,7 +399,7 @@ python-pystray
 python-gputil
 
 
-# oci-cli
+#oci-cli
 python-circuitbreaker
 python-terminaltables
 python-oci
@@ -406,5 +407,5 @@ oci-cli
 
 
 
-# XiVa Studio
+#XiVaStudio
 tubeamp-designer-git
