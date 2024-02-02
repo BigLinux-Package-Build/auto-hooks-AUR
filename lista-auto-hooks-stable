@@ -212,6 +212,25 @@ plog
 libusrsctp
 qrcodegen-cmake
 
+
+chromaprint-fftw
+celt
+davs2
+flite1 #
+libklvanc
+lensfun-git
+shine
+uavs3d-git
+vo-amrwbenc
+xavs
+xavs2
+rockchip-mpp
+libaribcaption
+opencv2
+
+
+
+
 #Proton-GE/K-dependencias
 python-booleanoperations
 python-defcon
