@@ -211,8 +211,6 @@ libdatachannel-nice
 plog
 libusrsctp
 qrcodegen-cmake
-
-
 chromaprint-fftw
 celt
 davs2
