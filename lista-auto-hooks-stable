@@ -205,7 +205,7 @@ librist
 #flac-git #usando-bin-script
 vlc-luajit
 pod2man
-ffmpeg-obs
+#ffmpeg-obs #portado para o repo
 obs-streamfx-git
 libdatachannel-nice
 plog
