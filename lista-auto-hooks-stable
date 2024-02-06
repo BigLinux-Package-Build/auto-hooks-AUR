@@ -298,25 +298,28 @@ i3lock-color
 #lxqt-arc-dark-theme-git
 qps
 
-#Community-Gnome
-#gnome-shell-extension-blur-my-shell
-#gnome-shell-extension-pano-git
+
+## COMMUNITY GNOME
+amberol
+ttf-roboto-slab
+gnome-shell-extension-pano
+gnome-shell-extension-blur-my-shell
+qadwaitadecorations-qt6
+
+#--- Fora da ISO
 #mutter-dynamic-buffering
 #gnome-shell-extension-coverflow-alt-tab-git #empacotado-git-biglinux
 #gnome-shell-extension-vertical-workspaces-git
-#gnome-terminal-transparency
+gnome-terminal-transparency
 #gnome-shell-extension-ddterm
 #gnome-shell-extension-burn-my-windows
 #otf-bebas-neue-git
 #ttf-abel-regular
 #ttf-economica
 #ttf-material-design-icons-desktop-git
-amberol
-ttf-roboto-slab
-gnome-shell-extension-pano
-gnome-shell-extension-blur-my-shell
 
-##Community-Deepin
+
+## COMMUNITY DDE
 
 
 #Community-xfce
