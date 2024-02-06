@@ -299,14 +299,14 @@ i3lock-color
 qps
 
 
-## COMMUNITY GNOME
+##COMMUNITY-GNOME #-NÃO-PODE-TER-ESPAÇO-NAS-LINHAS-COMENTADAS
 amberol
 ttf-roboto-slab
 gnome-shell-extension-pano
 gnome-shell-extension-blur-my-shell
 qadwaitadecorations-qt6
 
-#--- Fora da ISO
+#---Fora-da-ISO #-NÃO-PODE-TER-ESPAÇO-NAS-LINHAS-COMENTADAS
 #mutter-dynamic-buffering
 #gnome-shell-extension-coverflow-alt-tab-git #empacotado-git-biglinux
 #gnome-shell-extension-vertical-workspaces-git
@@ -319,7 +319,7 @@ gnome-terminal-transparency
 #ttf-material-design-icons-desktop-git
 
 
-## COMMUNITY DDE
+##COMMUNITY-DDE #NÃO-PODE-TER-ESPAÇO-NAS-LINHAS-COMENTADAS
 
 
 #Community-xfce
@@ -426,6 +426,6 @@ oci-cli
 
 
 
-#XiVaStudio
+#XIVAStudio
 tubeamp-designer-git
 musescore3
