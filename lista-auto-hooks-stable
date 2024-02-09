@@ -205,7 +205,7 @@ librist
 #flac-git #usando-bin-script
 vlc-luajit
 pod2man
-#ffmpeg-obs #portado para o repo
+#ffmpeg-obs #portado-para-o-repo
 obs-streamfx-git
 libdatachannel-nice
 plog
@@ -246,11 +246,11 @@ vkbasalt
 proton-ge-custom-bin
 
 #Kernel
-# linux-xanmod#usando-bin-script
-# linux-xanmod-edge#usando-bin-script
-# linux-xanmod-lts#usando-bin-script
-# linux-xanmod-rt#usando-bin-script
-# linux-xanmod-tt#usando-bin-script
+#linux-xanmod#usando-bin-script
+#linux-xanmod-edge#usando-bin-script
+#linux-xanmod-lts#usando-bin-script
+#linux-xanmod-rt#usando-bin-script
+#linux-xanmod-tt#usando-bin-script
 linux-cachyos
 linux-cachyos-bore
 linux-cachyos-tt
