@@ -302,6 +302,8 @@ qps
 ##COMMUNITY-GNOME
 amberol
 ttf-roboto-slab
+gnome-network-displays
+gdm-settings
 gnome-shell-extension-pano
 gnome-shell-extension-blur-my-shell
 qt5-wayland-decorations
