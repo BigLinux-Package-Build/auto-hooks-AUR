@@ -117,7 +117,7 @@ qdirstat
 openlens-bin
 iriunwebcam-bin
 opentofu
-
+lib32-faudio
 
 #bigstore-categorias
 syncthing-gtk
