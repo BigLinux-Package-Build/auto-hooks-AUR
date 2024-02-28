@@ -118,6 +118,7 @@ openlens-bin
 iriunwebcam-bin
 opentofu
 lib32-faudio
+python-sysv_ipc
 
 #bigstore-categorias
 syncthing-gtk
