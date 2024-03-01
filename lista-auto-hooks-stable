@@ -308,7 +308,7 @@ gdm-settings
 gnome-shell-extension-pano
 gnome-shell-extension-blur-my-shell
 qt5-wayland-decorations
-qadwaitadecorations
+#qadwaitadecorations  #script-separado
 
 #---Fora-da-ISO
 #mutter-dynamic-buffering
