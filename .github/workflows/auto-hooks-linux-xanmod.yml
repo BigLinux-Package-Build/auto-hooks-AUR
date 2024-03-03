@@ -19,7 +19,7 @@ jobs:
       - name: Install Dependencies
         shell: bash
         run: |
-          sudo pacman-mirrors --api --set-branch testing
+          #sudo pacman-mirrors --api --set-branch testing
           sudo pacman -Syy
           sudo pacman -Sy --noconfirm --needed \
           git \
