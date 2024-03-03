@@ -162,7 +162,7 @@ for xanmod in ${xanmod[@]}; do
             #pegar versão do xanmod
             xanver=$xanveraur
             #se o numero da versão contiver apenas 4 caracteres, adicionar um 0 ao final da versão
-            if [ "${#xanver}" -le "4" ]; then 
+            if [ "${#xanver}" -le "4" ]; then
                 xanver+=0
             fi
             
@@ -174,9 +174,12 @@ for xanmod in ${xanmod[@]}; do
                 echo "Xan Ver=$xanver"
                 echo "Mod Rel=$modrelrepo"
                 echo "send webhooks ${xanmod}-${mod}"
+                sleep 3
                 newexwebhooks
+                echo ""
             else
                 echo "Versão do ${xanmod}-${mod} é igual"
+                echo ""
             fi
         fi
     done
