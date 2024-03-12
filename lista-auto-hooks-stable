@@ -387,6 +387,7 @@ gazebo
 python-catkin_pkg
 sip4
 python-colcon-core
+python-empy3
 python-rospkg
 python-vcstool
 python-colcon-pkg-config
