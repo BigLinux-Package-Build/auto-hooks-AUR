@@ -118,6 +118,10 @@ iriunwebcam-bin
 opentofu
 lib32-faudio
 python-sysv_ipc
+stl-thumb
+stl-thumb-kde
+faudio
+lib32-faudio 
 
 #bigstore-categorias
 syncthing-gtk
