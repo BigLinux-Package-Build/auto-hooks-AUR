@@ -122,6 +122,7 @@ stl-thumb
 stl-thumb-kde
 faudio
 lib32-faudio
+clipboard-sync
 
 #bigstore-categorias
 syncthing-gtk
