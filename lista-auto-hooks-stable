@@ -20,14 +20,6 @@ lightly-git
 mawk
 ocrmypdf
 openrgb
-#plasma5-applets-eventcalendar
-plasma5-applets-latte-spacer
-#plasma5-applets-latte-separator
-plasma5-applets-netspeed
-plasma5-applets-resources-monitor
-plasma5-applets-virtual-desktop-bar-git
-plasma5-applets-window-appmenu
-plasma5-applets-window-title
 pymobiledevice-git
 python-bpylist2
 python-coloredlogs
@@ -123,6 +115,27 @@ stl-thumb-kde
 faudio
 lib32-faudio
 clipboard-sync
+openboard
+
+
+##Plasma5##
+##plasma5-applets-eventcalendar
+#plasma5-applets-latte-spacer
+##plasma5-applets-latte-separator
+#plasma5-applets-netspeed
+#plasma5-applets-resources-monitor
+#plasma5-applets-virtual-desktop-bar-git
+#plasma5-applets-window-appmenu
+#plasma5-applets-window-title
+
+
+##Plasma##
+#plasma6-applets-window-title
+#plasma6-applets-netspeed
+#plasma6-applets-resources-monitor
+#plasma6-applets-panel-colorizer
+
+
 
 #bigstore-categorias
 syncthing-gtk
@@ -309,8 +322,8 @@ amberol
 ttf-roboto-slab
 gnome-network-displays
 gdm-settings
-gnome-shell-extension-pano
-gnome-shell-extension-blur-my-shell
+#gnome-shell-extension-pano
+#gnome-shell-extension-blur-my-shell
 qt5-wayland-decorations
 #qadwaitadecorations  #script-separado
 
