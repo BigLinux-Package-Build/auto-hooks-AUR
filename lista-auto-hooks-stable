@@ -109,13 +109,14 @@ openlens-bin
 iriunwebcam-bin
 opentofu
 lib32-faudio
-python-sysv_ipc
+#python-sysv_ipc  #moveToGit
 stl-thumb
 stl-thumb-kde
 faudio
 lib32-faudio
 clipboard-sync
 openboard
+
 
 
 ##Plasma5##
@@ -403,7 +404,8 @@ gazebo
 #ros2
 python-catkin_pkg
 sip4
-python-colcon-core
+python-pytest-runner
+#python-colcon-core  #moveToGit
 python-empy3
 python-rospkg
 python-vcstool
@@ -413,20 +415,20 @@ python-rosdistro
 python-colcon-defaults
 python-colcon-recursive-crawl
 python-colcon-output
-python-colcon-cd
-python-colcon-devtools
+#python-colcon-cd  #moveToGit
+python-colcon-devtools  #moveToGit
 python-colcon-powershell
 python-colcon-parallel-executor
 python-colcon-python-setup-py
 python-colcon-package-selection
-python-colcon-package-information
+#python-colcon-package-information  #moveToGit
 python-colcon-metadata
-python-colcon-notification
+#python-colcon-notification  #moveToGit
 python-colcon-zsh
 python-colcon-test-result
 python-colcon-cmake
 python-colcon-library-path
-python-colcon-ros
+#python-colcon-ros  #moveToGit
 python-rosdep
 python-colcon-argcomplete
 python-colcon-common-extensions
