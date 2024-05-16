@@ -416,7 +416,7 @@ python-colcon-defaults
 python-colcon-recursive-crawl
 python-colcon-output
 #python-colcon-cd  #moveToGit
-python-colcon-devtools  #moveToGit
+#python-colcon-devtools  #moveToGit
 python-colcon-powershell
 python-colcon-parallel-executor
 python-colcon-python-setup-py
