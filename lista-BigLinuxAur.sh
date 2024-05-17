@@ -6,8 +6,8 @@ curl -X POST -H "Accept: application/json" -H "Authorization: token $CHAVE" --da
 
 sendWebHooks() {
 echo -e "Enviando \033[01;31m$pkgname\033[0m para Package Build"
-echo " AUR ""$pkgname"="$veraur"
-echo "Repo ""$pkgname"="$verrepo"
+echo " AUR ""$pkgname"="$verAurOrg"
+echo "Repo ""$pkgname"="$verRepoOrg"
 package=$pkgname
 sleep 10
 webhooks
@@ -24,7 +24,9 @@ sed -i '/^$/d' BigLinuxAur-${repo}
 for pkgname in $(cat BigLinuxAur-${repo}); do
   #versão do repositorio BigLinux
   verrepo=
-  verrepo=$(pacman -Ss $pkgname | grep biglinux-${repo} | grep -v "$pkgname-" | grep -v "\-$pkgname" | grep "$pkgname" | cut -d "/" -f2 | grep -w $pkgname | cut -d " " -f2 | cut -d ":" -f2 | sed 's/\.//g;s/-//g')
+  verrepo=$(pacman -Ss $pkgname | grep biglinux-${repo} | grep -v "$pkgname-" | grep -v "\-$pkgname" | grep "$pkgname" | cut -d "/" -f2 | grep -w $pkgname | cut -d " " -f2 | cut -d ":" -f2)
+  verRepoOrg=$verrepo
+  verrepo=${verrepo//[-.]}
 
   # Verificar se repo existe no BigLinuxAur
   if [ "$(curl -s -o /dev/null -w "%{http_code}" https://api.github.com/repos/BigLinuxAur/$pkgname)" != "200" ];then
@@ -53,6 +55,7 @@ for pkgname in $(cat BigLinuxAur-${repo}); do
   if [ -z "$(grep -q 'pkgver()' PKGBUILD)" ];then
     source PKGBUILD
     veraur=$pkgver-$pkgrel
+    verAurOrg=$veraur
     veraur=${veraur//[.-]}
   else
     sudo -u builduser bash -c 'makepkg -so --noconfirm --skippgpcheck --needed'
