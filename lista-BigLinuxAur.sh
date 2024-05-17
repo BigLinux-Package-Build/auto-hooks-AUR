@@ -10,7 +10,7 @@ echo " AUR ""$pkgname"="$veraur"
 echo "Repo ""$pkgname"="$verrepo"
 package=$pkgname
 sleep 10
-# webhooks
+webhooks
 }
 
 newRepo(){
@@ -76,7 +76,7 @@ for pkgname in $(cat BigLinuxAur-${repo}); do
     if [ "$veraur" -gt "$verrepo" ]; then
       sendWebHooks
     else
-      echo "Versão do $pkgname é igual !"
+      echo "Versão do \033[01;31m$pkgname\033[0m é igual !"
       sleep 1
     fi
   else
