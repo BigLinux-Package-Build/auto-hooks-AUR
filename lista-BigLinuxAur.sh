@@ -18,53 +18,57 @@ sed -i 's/#.*$//' lista-auto-hooks-${repo}
 sed -i '/^$/d' lista-auto-hooks-${repo}
 
 for pkgname in $(cat lista-auto-hooks-${repo}); do
-  if [ -z "$(echo $pkgname)" -o -z "$(echo $pkgname | grep \#)" ];then
-    #versão do repositorio BigLinux
-    verrepo=
-    verrepo=$(pacman -Ss $pkgname | grep biglinux-${repo} | grep -v "$pkgname-" | grep -v "\-$pkgname" | grep "$pkgname" | cut -d "/" -f2 | grep -w $pkgname | cut -d " " -f2 | cut -d ":" -f2)
+  
+  echo "PACKAGE = $pkgname"
+  
+  #versão do repositorio BigLinux
+  verrepo=
+  verrepo=$(pacman -Ss $pkgname | grep biglinux-${repo} | grep -v "$pkgname-" | grep -v "\-$pkgname" | grep "$pkgname" | cut -d "/" -f2 | grep -w $pkgname | cut -d " " -f2 | cut -d ":" -f2)
 
-    sleep 1
+  sleep 1
 
-    #versão do AUR
-    #limpa todos os $
-    veraur=
-    pkgver=
-    pkgrel=
+  #versão do AUR
+  #limpa todos os $
+  veraur=
+  pkgver=
+  pkgrel=
 
-    git clone https://aur.archlinux.org/$pkgname.git
-    chmod 777 -R $pkgname
-    pushd $pkgname
+  git clone https://aur.archlinux.org/${pkgname}.git
+  chmod 777 -R $pkgname
+  pushd $pkgname
 
-    if [ -z "$(grep -q 'pkgver()' PKGBUILD)" ];then
-      source PKGBUILD
-      veraur=$pkgver-$pkgrel
-      veraur=${veraur//[.-]}
+  if [ -z "$(grep -q 'pkgver()' PKGBUILD)" ];then
+    source PKGBUILD
+    veraur=$pkgver-$pkgrel
+    veraur=${veraur//[.-]}
+  else
+    sudo -u builduser bash -c 'makepkg -so --noconfirm --skippgpcheck --needed'
+    sleep 5
+    source PKGBUILD
+    veraur=$pkgver-$pkgrel
+  fi
+  
+  #apagar diretorio do git
+  popd
+  rm -r $pkgname
+
+  # se contiver apenas numeros ou se for com hash
+  if [[ $veraur =~ ^[0-9]+$ ]]; then
+    if [ "$veraur" -gt "$verrepo" ]; then
+      sendWebHooks
     else
-      sudo -u builduser bash -c 'makepkg -so --noconfirm --skippgpcheck --needed'
-      sleep 5
-      source PKGBUILD
-      veraur=$pkgver-$pkgrel
+      echo "Versão do $pkgname é igual !"
+      sleep 1
     fi
-    #apagar diretorio do git
-    rm -r $pkgname
-
-    # se contiver apenas numeros ou se for com hash
-    if [[ $veraur =~ ^[0-9]+$ ]]; then
-      if [ "$veraur" -gt "$verrepo" ]; then
-        sendWebHooks
-      else
-        echo "Versão do $pkgname é igual !"
-        sleep 1
-      fi
+  else
+    if [ "$veraur" != "$verrepo" ]; then
+      sendWebHooks
     else
-      if [ "$veraur" != "$verrepo" ]; then
-        sendWebHooks
-      else
-        echo "Versão do $pkgname é igual !"
-        sleep 1
-      fi
+      echo "Versão do $pkgname é igual !"
+      sleep 1
     fi
   fi
+
 done
 
 
