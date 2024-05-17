@@ -18,7 +18,7 @@ sed -i 's/#.*$//' lista-auto-hooks-${repo}
 sed -i '/^$/d' lista-auto-hooks-${repo}
 
 for pkgname in $(cat lista-auto-hooks-${repo}); do
-  if [ -z "$(echo $i)" -o -z "$(echo $i | grep \#)" ];then
+  if [ -z "$(echo $pkgname)" -o -z "$(echo $pkgname | grep \#)" ];then
     #versão do repositorio BigLinux
     verrepo=
     verrepo=$(pacman -Ss $pkgname | grep biglinux-${repo} | grep -v "$pkgname-" | grep -v "\-$pkgname" | grep "$pkgname" | cut -d "/" -f2 | grep -w $pkgname | cut -d " " -f2 | cut -d ":" -f2)
@@ -31,9 +31,9 @@ for pkgname in $(cat lista-auto-hooks-${repo}); do
     pkgver=
     pkgrel=
 
-    git clone https://aur.archlinux.org/${i}.git
-    chmod 777 -R $i
-    pushd $i
+    git clone https://aur.archlinux.org/$pkgname.git
+    chmod 777 -R $pkgname
+    pushd $pkgname
 
     if [ -z "$(grep -q 'pkgver()' PKGBUILD)" ];then
       source PKGBUILD
