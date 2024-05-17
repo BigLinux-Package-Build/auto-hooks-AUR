@@ -1,4 +1,4 @@
-name: BigLinux Hooks Arch Container
+name: BigLinux Hooks BigLinuxAur
 
 # Controls when the workflow will run
 on:
