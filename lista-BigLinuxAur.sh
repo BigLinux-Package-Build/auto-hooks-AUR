@@ -10,14 +10,14 @@ echo " AUR ""$pkgname"="$veraur"
 echo "Repo ""$pkgname"="$verrepo"
 package=$pkgname
 sleep 10
-webhooks
+# webhooks
 }
 
 newRepo(){
-curl -sH "Authorization: token $CHAVE" -H "Accept: application/vnd.github.baptiste-preview+json" --data '{"owner":"BigLinuxAur","name":"'$pkgname'","client_payload": { "branch": "'$repo'"}}' https://api.github.com/repos/BigLinuxAur/aurTemplate/generate > /dev/null
+curl -sH "Authorization: token $CHAVE" -H "Accept: application/vnd.github.baptiste-preview+json" --data '{"owner":"BigLinuxAur","name":"'$pkgname'"}' https://api.github.com/repos/BigLinuxAur/aurTemplate/generate > /dev/null
 }
 
-repo=testing
+repo=stable
 sed -i 's/#.*$//' BigLinuxAur-${repo}
 sed -i '/^$/d' BigLinuxAur-${repo}
 
