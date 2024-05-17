@@ -53,11 +53,12 @@ for pkgname in $(cat BigLinuxAur-${repo}); do
   if [ -z "$veraur" ];then
     echo -e '\033[01;31m!!!ERRRRRO!!!\033[0m' $pkgname '\033[01;31m!!!ERRRRRO!!!\033[0m'
   fi
-  
+
+  # Enviar caso não encontre no repo
   if [ -z "$verrepo" ];then
     sendWebHooks
   fi
-  
+
   # se contiver apenas numeros ou se for com hash
   if [[ $veraur =~ ^[0-9]+$ ]]; then
     if [ "$veraur" -gt "$verrepo" ]; then
