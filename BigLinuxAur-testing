@@ -1,0 +1,42 @@
+#GERAL
+geticons
+icons-in-terminal-git
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#ros2
+python-colcon-core  # moveToGit
+python-colcon-cd  # moveToGit
+python-colcon-package-information  # moveToGit
+python-colcon-notification  # moveToGit
+python-colcon-ros  # moveToGit
+
+
+
+
+
+
+
+
+
+
+
