@@ -57,22 +57,22 @@ for pkgname in $(cat BigLinuxAur-${repo}); do
   # Enviar caso não encontre no repo
   if [ -z "$verrepo" ];then
     sendWebHooks
-  fi
-
-  # se contiver apenas numeros ou se for com hash
-  if [[ $veraur =~ ^[0-9]+$ ]]; then
-    if [ "$veraur" -gt "$verrepo" ]; then
-      sendWebHooks
-    else
-      echo "Versão do $pkgname é igual !"
-      sleep 1
-    fi
   else
-    if [ "$veraur" != "$verrepo" ]; then
-      sendWebHooks
+    # se contiver apenas numeros ou se for com hash
+    if [[ $veraur =~ ^[0-9]+$ ]]; then
+      if [ "$veraur" -gt "$verrepo" ]; then
+        sendWebHooks
+      else
+        echo "Versão do $pkgname é igual !"
+        sleep 1
+      fi
     else
-      echo "Versão do $pkgname é igual !"
-      sleep 1
+      if [ "$veraur" != "$verrepo" ]; then
+        sendWebHooks
+      else
+        echo "Versão do $pkgname é igual !"
+        sleep 1
+      fi
     fi
   fi
 echo
