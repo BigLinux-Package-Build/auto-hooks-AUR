@@ -13,7 +13,7 @@ sleep 10
 webhooks
 }
 
-repo=stable
+repo=testing
 sed -i 's/#.*$//' BigLinuxAur-${repo}
 sed -i '/^$/d' BigLinuxAur-${repo}
 
