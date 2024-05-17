@@ -211,4 +211,6 @@ jobs:
           
           # bash lista-aur-stable-arch-container.sh
           sudo pacman -Syy
-          bash lista-BigLinuxAur.sh
+          for i in stable testing development; do
+            bash lista-BigLinuxAur.sh $i
+          done

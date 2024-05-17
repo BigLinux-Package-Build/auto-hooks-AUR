@@ -17,7 +17,7 @@ newRepo(){
 curl -sH "Authorization: token $CHAVE" -H "Accept: application/vnd.github.baptiste-preview+json" --data '{"owner":"BigLinuxAur","name":"'$pkgname'"}' https://api.github.com/repos/BigLinuxAur/aurTemplate/generate > /dev/null
 }
 
-repo=stable
+repo=$1
 sed -i 's/#.*$//' BigLinuxAur-${repo}
 sed -i '/^$/d' BigLinuxAur-${repo}
 
@@ -67,7 +67,8 @@ for pkgname in $(cat BigLinuxAur-${repo}); do
 
   # MSG de ERRO
   if [ -z "$veraur" ];then
-    echo -e '\033[01;31m!!!ERRRRRO!!!\033[0m' $pkgname '\033[01;31m!!!ERRRRRO!!!\033[0m'
+    echo -e '\033[01;31m!!!ERRRRRO!!!\033[0m' $pkgname não encontrado '\033[01;31m!!!ERRRRRO!!!\033[0m'
+    continue
   # Enviar caso não encontre no repo
   elif [ -z "$verrepo" ];then
     sendWebHooks
