@@ -13,17 +13,14 @@ sleep 10
 webhooks
 }
 
-repo=BigLinuxAur
-sed -i 's/#.*$//' lista-auto-hooks-${repo}
-sed -i '/^$/d' lista-auto-hooks-${repo}
+repo=stable
+sed -i 's/#.*$//' BigLinuxAur-${repo}
+sed -i '/^$/d' BigLinuxAur-${repo}
 
-for pkgname in $(cat lista-auto-hooks-${repo}); do
-  
-  echo "PACKAGE = $pkgname"
-  
+for pkgname in $(cat BigLinuxAur-${repo}); do
   #versão do repositorio BigLinux
   verrepo=
-  verrepo=$(pacman -Ss $pkgname | grep biglinux-${repo} | grep -v "$pkgname-" | grep -v "\-$pkgname" | grep "$pkgname" | cut -d "/" -f2 | grep -w $pkgname | cut -d " " -f2 | cut -d ":" -f2)
+  verrepo=$(pacman -Ss $pkgname | grep biglinux-${repo} | grep -v "$pkgname-" | grep -v "\-$pkgname" | grep "$pkgname" | cut -d "/" -f2 | grep -w $pkgname | cut -d " " -f2 | cut -d ":" -f2 | sed 's/\.//g;s/-//g')
 
   sleep 1
 
@@ -33,9 +30,9 @@ for pkgname in $(cat lista-auto-hooks-${repo}); do
   pkgver=
   pkgrel=
 
-  git clone https://aur.archlinux.org/${pkgname}.git
-  chmod 777 -R $pkgname
-  pushd $pkgname
+  git clone https://aur.archlinux.org/${pkgname}.git > /dev/null 2>&1
+#   chmod 777 -R $pkgname
+  cd $pkgname
 
   if [ -z "$(grep -q 'pkgver()' PKGBUILD)" ];then
     source PKGBUILD
@@ -47,10 +44,15 @@ for pkgname in $(cat lista-auto-hooks-${repo}); do
     source PKGBUILD
     veraur=$pkgver-$pkgrel
   fi
-  
+
   #apagar diretorio do git
-  popd
+  cd ..
   rm -r $pkgname
+
+  # MSG de ERRO
+  if [ -z "$veraur" ];then
+    echo -e '\033[01;31m!!!ERRRRRO!!!\033[0m' $pkgname '\033[01;31m!!!ERRRRRO!!!\033[0m'
+  fi
 
   # se contiver apenas numeros ou se for com hash
   if [[ $veraur =~ ^[0-9]+$ ]]; then
@@ -68,7 +70,8 @@ for pkgname in $(cat lista-auto-hooks-${repo}); do
       sleep 1
     fi
   fi
-
+echo
+echo
 done
 
 
