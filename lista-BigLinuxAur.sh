@@ -64,6 +64,8 @@ for pkgname in $(cat lista-auto-hooks-${repo}); do
         sleep 1
       fi
     fi
+  fi
+done
 
 
 
