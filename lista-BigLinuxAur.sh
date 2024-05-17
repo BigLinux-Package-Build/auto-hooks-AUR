@@ -14,7 +14,7 @@ webhooks
 }
 
 newRepo(){
-curl -sH "Authorization: token $CHAVE" -H "Accept: application/vnd.github.baptiste-preview+json" --data '{"owner":"BigLinuxAur","name":"'$pkgname'"}' https://api.github.com/repos/BigLinuxAur/aurTemplate/generate > /dev/null
+curl -sH "Authorization: token $CHAVE" -H "Accept: application/vnd.github.baptiste-preview+json" --data '{"owner":"BigLinuxAur","name":"'$pkgname'","client_payload": { "branch": "'$repo'"}}' https://api.github.com/repos/BigLinuxAur/aurTemplate/generate > /dev/null
 }
 
 repo=testing
@@ -28,12 +28,12 @@ for pkgname in $(cat BigLinuxAur-${repo}); do
 
   # Verificar se repo existe no BigLinuxAur
   if [ "$(curl -s -o /dev/null -w "%{http_code}" https://api.github.com/repos/BigLinuxAur/$pkgname)" != "200" ];then
-    echo -e "Criando repo \033[01;31m$pkgname\033[0m no GitHub"
+    echo -e "\033[01;31mCriando\033[0m repo \033[01;31m$pkgname\033[0m no GitHub"
     newRepo
-    # Esperar fazer o pull do AUR
-    while [ "$(curl -s -o /dev/null -w "%{http_code}" https://api.github.com/repos/BigLinuxAur/$pkgname/contents/$pkgname)" != "200" ]; do
-      sleep 3
-    done
+    ## Esperar fazer o pull do AUR
+    # while [ "$(curl -s -o /dev/null -w "%{http_code}" https://api.github.com/repos/BigLinuxAur/$pkgname/contents/$pkgname)" != "200" ]; do
+    #   sleep 3
+    # done
     # Passar para o proximo da lista
     continue
   fi
