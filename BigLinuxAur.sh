@@ -25,7 +25,9 @@ else
   branch=$repo
 fi
 
-echo "branch=$branch"
+echo '...'
+echo -e "\033[01;31mEXCUÇÃO no BRANCH $repo\033[0m"
+echo '...'
 
 sed -i 's/#.*$//' BigLinuxAur-${repo}
 sed -i '/^$/d' BigLinuxAur-${repo}
@@ -100,8 +102,6 @@ for pkgname in $(cat BigLinuxAur-${repo}); do
       sleep 1
     fi
   fi
-echo
-echo
 done
 
 
