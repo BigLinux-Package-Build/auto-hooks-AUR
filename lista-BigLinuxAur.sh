@@ -19,7 +19,7 @@ curl -sH "Authorization: token $CHAVE" -H "Accept: application/vnd.github.baptis
 
 # Define repo
 repo=$1
-if [ "repo" = "development" ]; then
+if [ "$repo" = "development" ]; then
   branch=$REPO_DEV
 else
   branch=$repo
