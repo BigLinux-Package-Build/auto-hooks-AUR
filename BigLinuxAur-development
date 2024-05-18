@@ -30,7 +30,7 @@ python-rosdep
 python-colcon-argcomplete
 python-colcon-common-extensions
 python-bloom
-python-rosinstall-generator
+python-rosinstall_generator 
 python-pyqt5-sip4
 ros2-arch-deps
 ros2-git
