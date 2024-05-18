@@ -10,7 +10,7 @@ echo " AUR ""$pkgname"="$verAurOrg"
 echo "Repo ""$pkgname"="$verRepoOrg"
 package=$pkgname
 sleep 10
-# webhooks
+webhooks
 }
 
 newRepo(){
