@@ -1,4 +1,5 @@
 #ros2
+lttng-tools
 python-catkin_pkg
 sip4
 python-pytest-runner
