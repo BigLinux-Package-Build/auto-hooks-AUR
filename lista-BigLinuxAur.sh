@@ -17,7 +17,12 @@ newRepo(){
 curl -sH "Authorization: token $CHAVE" -H "Accept: application/vnd.github.baptiste-preview+json" --data '{"owner":"BigLinuxAur","name":"'$pkgname'"}' https://api.github.com/repos/BigLinuxAur/aurTemplate/generate > /dev/null
 }
 
-repo=$1
+# Define repo
+if [ "$1" = "development" ]; then
+  repo=$REPO_DEV
+else
+  repo=$1
+fi
 sed -i 's/#.*$//' BigLinuxAur-${repo}
 sed -i '/^$/d' BigLinuxAur-${repo}
 

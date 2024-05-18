@@ -210,7 +210,7 @@ jobs:
         shell: bash
         env:
           CHAVE: ${{ secrets.WEBHOOK_TOKEN }}
-          REPO: stable
+          REPO_DEV: ${{ secrets.REPO_DEV }}
         run: |
           useradd builduser -m
           passwd -d builduser
