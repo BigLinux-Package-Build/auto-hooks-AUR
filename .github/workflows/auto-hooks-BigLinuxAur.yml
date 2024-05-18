@@ -174,7 +174,7 @@ jobs:
           echo '
           [biglinux-${{ secrets.REPO_DEV }}]
           SigLevel = PackageRequired
-          Server = https://'${{ secrets.REPO_MIRROR }}'.biglinux.com.br/${{ secrets.REPO_DEV }}/$arch' | tee -a /etc/pacman.conf
+          Server = https://'${{ secrets.REPO_MIRROR }}'.biglinux.com.br/'${{ secrets.REPO_DEV }}'/$arch' | tee -a /etc/pacman.conf
           
           echo '
           [biglinux-testing]
