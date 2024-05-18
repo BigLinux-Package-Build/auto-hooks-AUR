@@ -24,6 +24,9 @@ if [ "$repo" = "development" ]; then
 else
   branch=$repo
 fi
+
+echo "branch=$branch"
+
 sed -i 's/#.*$//' BigLinuxAur-${repo}
 sed -i '/^$/d' BigLinuxAur-${repo}
 
