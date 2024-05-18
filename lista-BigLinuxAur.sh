@@ -18,10 +18,11 @@ curl -sH "Authorization: token $CHAVE" -H "Accept: application/vnd.github.baptis
 }
 
 # Define repo
-if [ "$1" = "development" ]; then
-  repo=$REPO_DEV
+repo=$1
+if [ "repo" = "development" ]; then
+  branch=$REPO_DEV
 else
-  repo=$1
+  branch=$repo
 fi
 sed -i 's/#.*$//' BigLinuxAur-${repo}
 sed -i '/^$/d' BigLinuxAur-${repo}
@@ -29,7 +30,7 @@ sed -i '/^$/d' BigLinuxAur-${repo}
 for pkgname in $(cat BigLinuxAur-${repo}); do
   #versão do repositorio BigLinux
   verrepo=
-  verrepo=$(pacman -Ss $pkgname | grep biglinux-${repo} | grep -v "$pkgname-" | grep -v "\-$pkgname" | grep "$pkgname" | cut -d "/" -f2 | grep -w $pkgname | cut -d " " -f2 | cut -d ":" -f2)
+  verrepo=$(pacman -Ss $pkgname | grep biglinux-$branch | grep -v "$pkgname-" | grep -v "\-$pkgname" | grep "$pkgname" | cut -d "/" -f2 | grep -w $pkgname | cut -d " " -f2 | cut -d ":" -f2)
   verRepoOrg=$verrepo
   verrepo=${verrepo//[-.]}
 
