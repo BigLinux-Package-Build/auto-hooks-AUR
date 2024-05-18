@@ -20,7 +20,6 @@ jobs:
     container:
       image: archlinux:latest
       volumes:
-        - /imagegeneration:/lixo/imagegeneration
         - /opt:/lixo/opt
         - /usr:/lixo/usr
 
@@ -30,39 +29,37 @@ jobs:
       # - name: Setup tmate session
       #   uses: mxschmitt/action-tmate@v3
       
-      # - name: Clean System
-      #   shell: bash -O extglob {0}
-      #   run: |
-      #     echo "Clean System"
-      #     df -h
-      #     rm -rf /__t
-      #     rm -rf \
-      #     /lixo/imagegeneration \
-      #     /lixo/opt/az \
-      #     /lixo/opt/ghc \
-      #     /lixo/opt/pipx \
-      #     /lixo/opt/google \
-      #     /lixo/opt/microsoft \
-      #     /lixo/opt/hostedtoolcache \
-      #     /lixo/usr/lib/gcc \
-      #     /lixo/usr/lib/llvm* \
-      #     /lixo/var/lib/mysql \
-      #     /lixo/var/lib/snapd \
-      #     /lixo/var/lib/docker \
-      #     /lixo/usr/lib/google* \
-      #     /lixo/usr/lib/firefox \
-      #     /lixo/usr/local/julia* \
-      #     /lixo/usr/local/.ghcup \
-      #     /lixo/usr/local/aws-cli \
-      #     /lixo/usr/local/lib/android \
-      #     /lixo/usr/local/aws-sam-cli \
-      #     /lixo/usr/local/share/chromium \
-      #     /lixo/usr/local/lib/node_modules \
-      #     /lixo/usr/local/share/powershell \
-      #     /lixo/usr/share/swift \
-      #     /lixo/usr/share/dotnet
-      #     echo "End Clean System"
-      #     df -h
+      - name: Clean System
+        shell: bash -O extglob {0}
+        run: |
+          echo "Clean System"
+          df -h
+          rm -rf \
+          /lixo/opt/az \
+          /lixo/opt/ghc \
+          /lixo/opt/pipx \
+          /lixo/opt/google \
+          /lixo/opt/microsoft \
+          /lixo/opt/hostedtoolcache \
+          /lixo/usr/lib/gcc \
+          /lixo/usr/lib/llvm* \
+          /lixo/var/lib/mysql \
+          /lixo/var/lib/snapd \
+          /lixo/var/lib/docker \
+          /lixo/usr/lib/google* \
+          /lixo/usr/lib/firefox \
+          /lixo/usr/local/julia* \
+          /lixo/usr/local/.ghcup \
+          /lixo/usr/local/aws-cli \
+          /lixo/usr/local/lib/android \
+          /lixo/usr/local/aws-sam-cli \
+          /lixo/usr/local/share/chromium \
+          /lixo/usr/local/lib/node_modules \
+          /lixo/usr/local/share/powershell \
+          /lixo/usr/share/swift \
+          /lixo/usr/share/dotnet
+          echo "End Clean System"
+          df -h
         
       - name: Install Dependencies
         shell: bash
