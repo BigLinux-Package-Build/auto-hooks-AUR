@@ -60,7 +60,6 @@ for pkgname in $(cat BigLinuxAur-${repo}); do
   pkgrel=
 
   git clone https://aur.archlinux.org/${pkgname}.git > /dev/null 2>&1
-#   chmod 777 -R $pkgname
   cd $pkgname
 
   if [ -z "$(grep -q 'pkgver()' PKGBUILD)" ];then
@@ -69,6 +68,7 @@ for pkgname in $(cat BigLinuxAur-${repo}); do
     verAurOrg=$veraur
     veraur=${veraur//[.-]}
   else
+    chmod 777 -R $pkgname
     sudo -u builduser bash -c 'makepkg -so --noconfirm --skippgpcheck --needed'
     sleep 5
     source PKGBUILD
