@@ -7,6 +7,12 @@ on:
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+    inputs:
+      debug_enabled:
+        type: boolean
+        description: 'With TMATE'
+        required: false
+        default: false
 
 jobs:
   build:
@@ -190,9 +196,10 @@ jobs:
           pacman-key --populate archlinux biglinux
         
           pacman -Sy
-          
-      # - name: Setup tmate session
-      #   uses: mxschmitt/action-tmate@v3
+        
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.debug_enabled }}
           
       - name: Teste, Makepkg and WebHooks
         shell: bash
