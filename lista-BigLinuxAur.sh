@@ -89,7 +89,7 @@ for pkgname in $(cat BigLinuxAur-${repo}); do
     if [ "$veraur" -gt "$verrepo" ]; then
       sendWebHooks
     else
-      echo "Versão do \033[01;31m$pkgname\033[0m é igual !"
+      echo -e "Versão do \033[01;31m$pkgname\033[0m é igual !"
       sleep 1
     fi
   else
