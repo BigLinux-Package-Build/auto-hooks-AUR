@@ -183,7 +183,7 @@ jobs:
           SigLevel = PackageRequired
           Server = https://'${{ secrets.REPO_MIRROR }}'.biglinux.com.br/stable/$arch' | tee -a /etc/pacman.conf
           
-          sed -i '/PACKAGER=/s/#PACKAGER=.*/\PACKAGER="BigLinux Package Build <bigbruno@gmail.com>\"/' /etc/makepkg.conf
+          sed -i '/PACKAGER=/s/.*/\PACKAGER="BigLinux Package Build <bigbruno@gmail.com>\"/' /etc/makepkg.conf
           
           #add biglinux Keyring
           git clone --depth 1 https://github.com/biglinux/biglinux-keyring.git

@@ -4,8 +4,6 @@ webhooks() {
 curl -X POST -H "Accept: application/json" -H "Authorization: token $CHAVE" --data '{"event_type": "clone", "client_payload": { "branch": "'$repo'", "pkgver": "'$veraur'"}}' https://api.github.com/repos/BigLinuxAur/$package/dispatches
 }
 
-
-
 sendWebHooks() {
 echo -e "Enviando \033[01;31m$pkgname\033[0m para Package Build"
 echo " AUR ""$pkgname"="$verAurOrg"
@@ -92,12 +90,12 @@ for p in $(cat BigLinuxAur-${repo}); do
     sendWebHooks
   # se contiver apenas numeros ou se for com hash
   elif [[ $veraur =~ ^[0-9]+$ ]]; then
-    if [ "$veraur" -gt "$verrepo" ]; then
+#     if [ "$veraur" -gt "$verrepo" ]; then
       sendWebHooks
-    else
-      echo -e "Versão do \033[01;31m$pkgname\033[0m é igual !"
-      sleep 1
-    fi
+#     else
+#       echo -e "Versão do \033[01;31m$pkgname\033[0m é igual !"
+#       sleep 1
+#     fi
   else
     # Enviar hooks
     if [ "$veraur" != "$verrepo" ]; then
