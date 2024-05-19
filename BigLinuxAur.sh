@@ -32,7 +32,8 @@ echo '...'
 sed -i 's/#.*$//' BigLinuxAur-${repo}
 sed -i '/^$/d' BigLinuxAur-${repo}
 
-for pkgname in $(cat BigLinuxAur-${repo}); do
+for p in $(cat BigLinuxAur-${repo}); do
+  pkgname=$p
   #versão do repositorio BigLinux
   verrepo=
   verrepo=$(pacman -Ss $pkgname | grep biglinux-$branch | grep -v "$pkgname-" | grep -v "\-$pkgname" | grep "$pkgname" | cut -d "/" -f2 | grep -w $pkgname | cut -d " " -f2 | cut -d ":" -f2)
@@ -51,17 +52,13 @@ for pkgname in $(cat BigLinuxAur-${repo}); do
     continue
   fi
 
-  sleep 1
-
   #versão do AUR
   #limpa todos os $
   veraur=
   pkgver=
   pkgrel=
-
   git clone https://aur.archlinux.org/${pkgname}.git > /dev/null 2>&1
   cd $pkgname
-
   if [ -z "$(grep -q 'pkgver()' PKGBUILD)" ];then
     source PKGBUILD
     veraur=$pkgver-$pkgrel
@@ -73,6 +70,11 @@ for pkgname in $(cat BigLinuxAur-${repo}); do
     sleep 5
     source PKGBUILD
     veraur=$pkgver-$pkgrel
+  fi
+
+  # Vririficar se source PKGBUILD alterou o $pkgname
+  if [ "$pkgname" != "$p" ]; then
+    pkgname=$p
   fi
 
   #apagar diretorio do git
@@ -95,6 +97,7 @@ for pkgname in $(cat BigLinuxAur-${repo}); do
       sleep 1
     fi
   else
+    # Enviar hooks
     if [ "$veraur" != "$verrepo" ]; then
       sendWebHooks
     else
