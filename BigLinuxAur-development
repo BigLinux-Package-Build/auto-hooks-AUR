@@ -1,37 +1,37 @@
-#ros2
-lttng-tools
-python-catkin_pkg
-sip4
-python-pytest-runner
-python-colcon-core
-python-empy3
-python-rospkg
-python-vcstool
-python-colcon-pkg-config
-python-colcon-bash
-python-rosdistro
-python-colcon-defaults
-python-colcon-recursive-crawl
-python-colcon-output
-python-colcon-cd
-python-colcon-devtools
-python-colcon-powershell
-python-colcon-parallel-executor
-python-colcon-python-setup-py
-python-colcon-package-selection
-python-colcon-package-information
-python-colcon-metadata
-python-colcon-notification
-python-colcon-zsh
-python-colcon-test-result
-python-colcon-cmake
-python-colcon-library-path
-python-colcon-ros
-python-rosdep
-python-colcon-argcomplete
-python-colcon-common-extensions
-python-bloom
-python-rosinstall_generator 
-python-pyqt5-sip4
-ros2-arch-deps
-ros2-git
+# ros2
+# lttng-tools
+# python-catkin_pkg
+# sip4
+# python-pytest-runner
+# python-colcon-core
+# python-empy3
+# python-rospkg
+# python-vcstool
+# python-colcon-pkg-config
+# python-colcon-bash
+# python-rosdistro
+# python-colcon-defaults
+# python-colcon-recursive-crawl
+# python-colcon-output
+# python-colcon-cd
+# python-colcon-devtools
+# python-colcon-powershell
+# python-colcon-parallel-executor
+# python-colcon-python-setup-py
+# python-colcon-package-selection
+# python-colcon-package-information
+# python-colcon-metadata
+# python-colcon-notification
+# python-colcon-zsh
+# python-colcon-test-result
+# python-colcon-cmake
+# python-colcon-library-path
+# python-colcon-ros
+# python-rosdep
+# python-colcon-argcomplete
+# python-colcon-common-extensions
+# python-bloom
+# python-rosinstall_generator 
+# python-pyqt5-sip4
+# ros2-arch-deps
+# ros2-git
