@@ -55,7 +55,7 @@ pyside2
 # python-colcon-common-extensions
 # python-pyqt5-sip4
 # python-bloom
-# python-rosinstall-generator
+python-rosinstall-generator
 # ros2-arch-deps
 # ros2-git
 
