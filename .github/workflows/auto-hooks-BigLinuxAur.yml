@@ -22,7 +22,6 @@ jobs:
       volumes:
         - /opt:/lixo/opt
         - /usr:/lixo/usr
-        - /var:/lixo/var
 
     steps:
       - uses: actions/checkout@v3
