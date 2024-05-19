@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 
 webhooks() {
-curl -X POST -H "Accept: application/json" -H "Authorization: token $CHAVE" --data '{"event_type": "clone", "client_payload": { "branch": "'$repo'"}}' https://api.github.com/repos/BigLinuxAur/$package/dispatches
+curl -X POST -H "Accept: application/json" -H "Authorization: token $CHAVE" --data '{"event_type": "clone", "client_payload": { "branch": "'$repo'", "pkgver:" "'$veraur'"}}' https://api.github.com/repos/BigLinuxAur/$package/dispatches
 }
+
+
 
 sendWebHooks() {
 echo -e "Enviando \033[01;31m$pkgname\033[0m para Package Build"
