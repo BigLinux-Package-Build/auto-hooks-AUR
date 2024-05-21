@@ -17,14 +17,6 @@ newRepo(){
 curl -sH "Authorization: token $CHAVE" -H "Accept: application/vnd.github.baptiste-preview+json" --data '{"owner":"BigLinuxAur","name":"'$pkgname'"}' https://api.github.com/repos/BigLinuxAur/aurTemplate/generate > /dev/null
 }
 
-# Define repo
-repo=$1
-if [ "$repo" = "development" ]; then
-  branch=$REPO_DEV
-else
-  branch=$repo
-fi
-
 echo '...'
 echo -e "\033[01;31mEXCUÇÃO no BRANCH $repo\033[0m"
 echo '...'
@@ -36,12 +28,10 @@ sed -i '/^$/d' BigLinuxAur-${repo}
 gh auth login --with-token <<< $CHAVE
 for p in $(gh repo list BigLinuxAur --limit 1000 | awk '{print $1}'); do
 # for p in $(cat BigLinuxAur-${repo}); do
+
+  pkgname=
+  # declara nome do pacote
   pkgname=$p
-  #versão do repositorio BigLinux
-  verrepo=
-  verrepo=$(pacman -Ss $pkgname | grep biglinux-$branch | grep -v "$pkgname-" | grep -v "\-$pkgname" | grep "$pkgname" | cut -d "/" -f2 | grep -w $pkgname | cut -d " " -f2 | cut -d ":" -f2)
-  verRepoOrg=$verrepo
-  verrepo=${verrepo//[-.]}
 
   # Verificar se repo existe no BigLinuxAur
   if [ "$(curl -s -o /dev/null -w "%{http_code}" https://api.github.com/repos/BigLinuxAur/$pkgname)" != "200" ];then
@@ -81,9 +71,21 @@ for p in $(gh repo list BigLinuxAur --limit 1000 | awk '{print $1}'); do
     pkgname=$p
   fi
 
+  #descobre o branch
+  branch=$(git status | grep -i 'on branch' | awk '{print $3}')
+  if [ "$branch" = "main" ]; then
+    branch=$REPO_DEV
+  fi
+
   #apagar diretorio do git
   cd ..
   rm -r $pkgname
+
+  #versão do repositorio BigLinux
+  verrepo=
+  verrepo=$(pacman -Ss $pkgname | grep biglinux-$branch | grep -v "$pkgname-" | grep -v "\-$pkgname" | grep "$pkgname" | cut -d "/" -f2 | grep -w $pkgname | cut -d " " -f2 | cut -d ":" -f2)
+  verRepoOrg=$verrepo
+  verrepo=${verrepo//[-.]}
 
   # MSG de ERRO
   if [ -z "$veraur" ];then
@@ -94,12 +96,12 @@ for p in $(gh repo list BigLinuxAur --limit 1000 | awk '{print $1}'); do
     sendWebHooks
   # se contiver apenas numeros ou se for com hash
   elif [[ $veraur =~ ^[0-9]+$ ]]; then
-#     if [ "$veraur" -gt "$verrepo" ]; then
+    if [ "$veraur" -gt "$verrepo" ]; then
       sendWebHooks
-#     else
-#       echo -e "Versão do \033[01;31m$pkgname\033[0m é igual !"
-#       sleep 1
-#     fi
+    else
+      echo -e "Versão do \033[01;31m$pkgname\033[0m é igual !"
+      sleep 1
+    fi
   else
     # Enviar hooks
     if [ "$veraur" != "$verrepo" ]; then
