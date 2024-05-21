@@ -17,15 +17,15 @@ newRepo(){
 curl -sH "Authorization: token $CHAVE" -H "Accept: application/vnd.github.baptiste-preview+json" --data '{"owner":"BigLinuxAur","name":"'$pkgname'"}' https://api.github.com/repos/BigLinuxAur/aurTemplate/generate > /dev/null
 }
 
-echo '...'
-echo -e "\033[01;31mEXCUÇÃO no BRANCH $repo\033[0m"
-echo '...'
+# echo '...'
+# echo -e "\033[01;31mEXCUÇÃO no BRANCH $repo\033[0m"
+# echo '...'
 
-sed -i 's/#.*$//' BigLinuxAur-${repo}
-sed -i '/^$/d' BigLinuxAur-${repo}
+# sed -i 's/#.*$//' BigLinuxAur-${repo}
+# sed -i '/^$/d' BigLinuxAur-${repo}
 
 
-gh auth login --with-token <<< $CHAVE
+gh auth login --with-token <<< $BigLinuxAur_TOKEN
 for p in $(gh repo list BigLinuxAur --limit 1000 | awk '{print $1}'); do
 # for p in $(cat BigLinuxAur-${repo}); do
 

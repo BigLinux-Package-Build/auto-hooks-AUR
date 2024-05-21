@@ -208,6 +208,7 @@ jobs:
         env:
           CHAVE: ${{ secrets.WEBHOOK_TOKEN }}
           REPO_DEV: ${{ secrets.REPO_DEV }}
+          BigLinuxAur_TOKEN: ${{ secrets.BigLinuxAur_TOKEN }}
         run: |
           useradd builduser -m
           passwd -d builduser
