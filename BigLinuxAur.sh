@@ -13,9 +13,9 @@ sleep 10
 # webhooks
 }
 
-newRepo(){
-curl -sH "Authorization: token $CHAVE" -H "Accept: application/vnd.github.baptiste-preview+json" --data '{"owner":"BigLinuxAur","name":"'$pkgname'"}' https://api.github.com/repos/BigLinuxAur/aurTemplate/generate > /dev/null
-}
+# newRepo(){
+# curl -sH "Authorization: token $CHAVE" -H "Accept: application/vnd.github.baptiste-preview+json" --data '{"owner":"BigLinuxAur","name":"'$pkgname'"}' https://api.github.com/repos/BigLinuxAur/aurTemplate/generate > /dev/null
+# }
 
 # echo '...'
 # echo -e "\033[01;31mEXCUÇÃO no BRANCH $repo\033[0m"
@@ -26,7 +26,7 @@ curl -sH "Authorization: token $CHAVE" -H "Accept: application/vnd.github.baptis
 
 
 gh auth login --with-token <<< $BigLinuxAur_TOKEN
-for p in $(gh repo list BigLinuxAur --limit 1000 | awk '{print $1}'); do
+for p in $(gh repo list BigLinuxAur --limit 1000 | awk '{print $1}' | cut -d "/" -f2); do
 # for p in $(cat BigLinuxAur-${repo}); do
 
   pkgname=
@@ -34,16 +34,16 @@ for p in $(gh repo list BigLinuxAur --limit 1000 | awk '{print $1}'); do
   pkgname=$p
 
   # Verificar se repo existe no BigLinuxAur
-  if [ "$(curl -s -o /dev/null -w "%{http_code}" https://api.github.com/repos/BigLinuxAur/$pkgname)" != "200" ];then
-    echo -e "\033[01;31mCriando\033[0m repo \033[01;31m$pkgname\033[0m no GitHub"
-    newRepo
-    ## Esperar fazer o pull do AUR
-    # while [ "$(curl -s -o /dev/null -w "%{http_code}" https://api.github.com/repos/BigLinuxAur/$pkgname/contents/$pkgname)" != "200" ]; do
-    #   sleep 3
-    # done
-    # Passar para o proximo da lista
-    continue
-  fi
+  # if [ "$(curl -s -o /dev/null -w "%{http_code}" https://api.github.com/repos/BigLinuxAur/$pkgname)" != "200" ];then
+  #   echo -e "\033[01;31mCriando\033[0m repo \033[01;31m$pkgname\033[0m no GitHub"
+  #   newRepo
+  #   ## Esperar fazer o pull do AUR
+  #   # while [ "$(curl -s -o /dev/null -w "%{http_code}" https://api.github.com/repos/BigLinuxAur/$pkgname/contents/$pkgname)" != "200" ]; do
+  #   #   sleep 3
+  #   # done
+  #   # Passar para o proximo da lista
+  #   continue
+  # fi
 
   #versão do AUR
   #limpa todos os $
