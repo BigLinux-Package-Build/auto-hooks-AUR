@@ -80,7 +80,12 @@ for p in $(gh repo list BigLinuxAur --limit 1000 | awk '{print $1}' | cut -d "/"
   #apagar diretorio do git
   cd ..
   rm -r $pkgname
-
+  
+  echo "branch=$branch"
+  echo "pkgname=$pkgname"
+  
+  
+  
   #versão do repositorio BigLinux
   verrepo=
   verrepo=$(pacman -Ss $pkgname | grep biglinux-$branch | grep -v "$pkgname-" | grep -v "\-$pkgname" | grep "$pkgname" | cut -d "/" -f2 | grep -w $pkgname | cut -d " " -f2 | cut -d ":" -f2)
