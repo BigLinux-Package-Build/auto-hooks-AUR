@@ -33,6 +33,21 @@ for p in $(gh repo list BigLinuxAur --limit 1000 | awk '{print $1}' | cut -d "/"
   # declara nome do pacote
   pkgname=$p
 
+  # Define o branch
+  branch=$(gh repo view BigLinuxAur/$pkgname --json defaultBranchRef -q .defaultBranchRef.name)
+  if [ "$branch" = "main" ]; then
+    branch=$REPO_DEV
+  fi
+
+  echo "branch=$branch"
+  echo "pkgname=$pkgname"
+
+  # Versão do repositorio BigLinux
+  verrepo=
+  verrepo=$(pacman -Ss $pkgname | grep biglinux-$branch | grep -v "$pkgname-" | grep -v "\-$pkgname" | grep "$pkgname" | cut -d "/" -f2 | grep -w $pkgname | cut -d " " -f2 | cut -d ":" -f2)
+  verRepoOrg=$verrepo
+  verrepo=${verrepo//[-.]}
+
   # Verificar se repo existe no BigLinuxAur
   # if [ "$(curl -s -o /dev/null -w "%{http_code}" https://api.github.com/repos/BigLinuxAur/$pkgname)" != "200" ];then
   #   echo -e "\033[01;31mCriando\033[0m repo \033[01;31m$pkgname\033[0m no GitHub"
@@ -71,26 +86,9 @@ for p in $(gh repo list BigLinuxAur --limit 1000 | awk '{print $1}' | cut -d "/"
     pkgname=$p
   fi
 
-  #descobre o branch
-  branch=$(git status | grep -i 'on branch' | awk '{print $3}')
-  if [ "$branch" = "main" ]; then
-    branch=$REPO_DEV
-  fi
-
   #apagar diretorio do git
   cd ..
   rm -r $pkgname
-  
-  echo "branch=$branch"
-  echo "pkgname=$pkgname"
-  
-  
-  
-  #versão do repositorio BigLinux
-  verrepo=
-  verrepo=$(pacman -Ss $pkgname | grep biglinux-$branch | grep -v "$pkgname-" | grep -v "\-$pkgname" | grep "$pkgname" | cut -d "/" -f2 | grep -w $pkgname | cut -d " " -f2 | cut -d ":" -f2)
-  verRepoOrg=$verrepo
-  verrepo=${verrepo//[-.]}
 
   # MSG de ERRO
   if [ -z "$veraur" ];then
