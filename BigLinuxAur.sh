@@ -10,7 +10,7 @@ echo " AUR ""$pkgname"="$verAurOrg"
 echo "Repo ""$pkgname"="$verRepoOrg"
 package=$pkgname
 sleep 10
-webhooks
+# webhooks
 }
 
 newRepo(){
@@ -32,7 +32,10 @@ echo '...'
 sed -i 's/#.*$//' BigLinuxAur-${repo}
 sed -i '/^$/d' BigLinuxAur-${repo}
 
-for p in $(cat BigLinuxAur-${repo}); do
+
+gh auth login --with-token <<< $CHAVE
+for p in $(gh repo list BigLinuxAur --limit 1000 | awk '{print $1}'); do
+# for p in $(cat BigLinuxAur-${repo}); do
   pkgname=$p
   #versão do repositorio BigLinux
   verrepo=

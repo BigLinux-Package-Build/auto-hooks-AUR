@@ -325,7 +325,7 @@ gnome-network-displays
 gdm-settings
 #gnome-shell-extension-pano
 #gnome-shell-extension-blur-my-shell
-qt5-wayland-decorations
+# qt5-wayland-decorations  #moveToGit
 #qadwaitadecorations  #script-separado
 
 #---Fora-da-ISO
@@ -402,39 +402,39 @@ ignition-transport-8
 gazebo
 
 #ros2
-python-catkin_pkg
-sip4
-python-pytest-runner
+# python-catkin_pkg  #moveToGit
+# sip4  #moveToGit
+# python-pytest-runner  #moveToGit
 #python-colcon-core  #moveToGit
-python-empy3
-python-rospkg
-python-vcstool
-python-colcon-pkg-config
-python-colcon-bash
-python-rosdistro
-python-colcon-defaults
-python-colcon-recursive-crawl
-python-colcon-output
+# python-empy3  #moveToGit
+# python-rospkg  #moveToGit
+# python-vcstool  #moveToGit
+# python-colcon-pkg-config  #moveToGit
+# python-colcon-bash  #moveToGit
+# python-rosdistro  #moveToGit
+# python-colcon-defaults  #moveToGit
+# python-colcon-recursive-crawl  #moveToGit
+# python-colcon-output  #moveToGit
 #python-colcon-cd  #moveToGit
 #python-colcon-devtools  #moveToGit
-python-colcon-powershell
-python-colcon-parallel-executor
-python-colcon-python-setup-py
-python-colcon-package-selection
+# python-colcon-powershell  #moveToGit
+# python-colcon-parallel-executor  #moveToGit
+# python-colcon-python-setup-py  #moveToGit
+# python-colcon-package-selection  #moveToGit
 #python-colcon-package-information  #moveToGit
-python-colcon-metadata
+# python-colcon-metadata  #moveToGit
 #python-colcon-notification  #moveToGit
-python-colcon-zsh
-python-colcon-test-result
-python-colcon-cmake
-python-colcon-library-path
+# python-colcon-zsh  #moveToGit
+# python-colcon-test-result  #moveToGit
+# python-colcon-cmake  #moveToGit
+# python-colcon-library-path  #moveToGit
 #python-colcon-ros  #moveToGit
-python-rosdep
-python-colcon-argcomplete
-python-colcon-common-extensions
-python-pyqt5-sip4
-ros2-arch-deps
-ros2-git
+# python-rosdep  #moveToGit
+# python-colcon-argcomplete  #moveToGit
+# python-colcon-common-extensions  #moveToGit
+# python-pyqt5-sip4  #moveToGit
+# ros2-arch-deps  #moveToGit
+# ros2-git  #moveToGit
 
 #turing-smart-screen
 python-sv-ttk
