@@ -8,6 +8,7 @@ sendWebHooks() {
 echo -e "Enviando \033[01;31m$pkgname\033[0m para Package Build"
 echo " AUR ""$pkgname"="$verAurOrg"
 echo "Repo ""$pkgname"="$verRepoOrg"
+echo "Branch $branch"
 package=$pkgname
 sleep 10
 # webhooks
@@ -26,7 +27,7 @@ sleep 10
 
 
 gh auth login --with-token <<< $BigLinuxAur_TOKEN
-for p in $(gh repo list BigLinuxAur --limit 1000 | awk '{print $1}' | cut -d "/" -f2); do
+for p in $(gh repo list BigLinuxAur --limit 1000 | awk '{print $1}' | cut -d "/" -f2 | sed '/aurTemplate/d'); do
 # for p in $(cat BigLinuxAur-${repo}); do
 
   pkgname=
@@ -38,9 +39,6 @@ for p in $(gh repo list BigLinuxAur --limit 1000 | awk '{print $1}' | cut -d "/"
   if [ "$branch" = "main" ]; then
     branch=$REPO_DEV
   fi
-
-  echo "branch=$branch"
-  echo "pkgname=$pkgname"
 
   # Versão do repositorio BigLinux
   verrepo=
@@ -81,6 +79,10 @@ for p in $(gh repo list BigLinuxAur --limit 1000 | awk '{print $1}' | cut -d "/"
     verAurOrg=$veraur
   fi
 
+    # Troca + por _
+    veraur=${veraur%%+*}
+    verAurOrg=${veraur%%+*}
+
   # Vririficar se source PKGBUILD alterou o $pkgname
   if [ "$pkgname" != "$p" ]; then
     pkgname=$p
@@ -103,6 +105,7 @@ for p in $(gh repo list BigLinuxAur --limit 1000 | awk '{print $1}' | cut -d "/"
       sendWebHooks
     else
       echo -e "Versão do \033[01;31m$pkgname\033[0m é igual !"
+      echo "Branch $branch"
       sleep 1
     fi
   else
@@ -110,7 +113,8 @@ for p in $(gh repo list BigLinuxAur --limit 1000 | awk '{print $1}' | cut -d "/"
     if [ "$veraur" != "$verrepo" ]; then
       sendWebHooks
     else
-      echo "Versão do $pkgname é igual !"
+      echo -e "Versão do \033[01;31m$pkgname\033[0m é igual !"
+      echo "Branch $branch"
       sleep 1
     fi
   fi
