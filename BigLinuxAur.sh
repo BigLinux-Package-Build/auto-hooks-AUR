@@ -25,6 +25,8 @@ webhooks
 # sed -i 's/#.*$//' BigLinuxAur-${repo}
 # sed -i '/^$/d' BigLinuxAur-${repo}
 
+# Numero de pacotes verificado
+pkgNum=0
 
 gh auth login --with-token <<< $BigLinuxAur_TOKEN
 for p in $(gh repo list BigLinuxAur --limit 1000 | awk '{print $1}' | cut -d "/" -f2 | sed '/aurTemplate/d'); do
@@ -69,6 +71,9 @@ for p in $(gh repo list BigLinuxAur --limit 1000 | awk '{print $1}' | cut -d "/"
   #   # Passar para o proximo da lista
   #   continue
   # fi
+
+  # soma +1 ao pkgNum
+  pkgNum=$((pkgNum+1))
 
   #versão do AUR
   #limpa todos os $
@@ -131,6 +136,7 @@ for p in $(gh repo list BigLinuxAur --limit 1000 | awk '{print $1}' | cut -d "/"
   fi
 done
 
-
+# Print numero final de pacotes
+echo "pkgNum=$pkgNum"
 
 
