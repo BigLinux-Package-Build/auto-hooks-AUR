@@ -35,7 +35,7 @@ for p in $(gh repo list BigLinuxAur --limit 1000 | awk '{print $1}' | cut -d "/"
   pkgname=$p
 
   # Disabled List
-  if [ -n $(grep $pkgname disable-list) ];then
+  if [ -n "$(grep $pkgname disable-list)" ];then
     continue
   fi
 
