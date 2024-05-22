@@ -99,23 +99,23 @@ xsnow
 python-cinemagoer
 hypnotix
 circle-flags
-paru
-gyroflow-bin
-envycontrol
-lib32-libxpm
-inkstitch
-qdirstat
-openlens-bin
-iriunwebcam-bin
-opentofu
-lib32-faudio
+# paru  #moveToGit
+# gyroflow-bin  #moveToGit
+# envycontrol  #moveToGit
+# lib32-libxpm  #moveToGit
+# inkstitch  #moveToGit
+# qdirstat  #moveToGit
+# openlens-bin  #moveToGit
+# iriunwebcam-bin  #moveToGit
+# opentofu  #moveToGit
+# lib32-faudio  #moveToGit
 #python-sysv_ipc  #moveToGit
-stl-thumb
-stl-thumb-kde
-faudio
-lib32-faudio
-clipboard-sync
-openboard
+# stl-thumb  #moveToGit
+# stl-thumb-kde  #moveToGit
+# faudio  #moveToGit
+# lib32-faudio  #moveToGit
+# clipboard-sync  #moveToGit
+# openboard  #moveToGit
 
 
 
@@ -138,75 +138,75 @@ openboard
 # plasma6-applets-window-buttons   #moveToGit
 
 
-#bigstore-categorias
-syncthing-gtk
-fotoxx
-mailspring
-sylpheed
-abuse
-acetoneiso2
-gamehub
-perl-alien-sdl
-radiotray-ng
-sdl_pango
-streamtuner2
-cudatext-gtk2-bin
-cudatext-qt5-bin
-mongodb-tools
-wings3d
-trojita
-balena-etcher-appimage
-shortwave
-libsearpc
-seafile
-seafile-client
-cloudcross
-pythonqt
-tuner
-sdl2-gamepad-mapper
-screencloud
-sdl_pango
-perl-alien-sdl
-python-pyo
-mongodb-bin
-mongosh-bin
-cecilia
-cura-bin
-kvantum-theme-libadwaita-git
-frozen-bubble
-#perl-sdl
-sndcpy-bin
-usbaudio-git
-vdu_controls
-rakarrack-plus
-clementine
+# #bigstore-categorias   #moveToGit
+# syncthing-gtk  #moveToGit
+# fotoxx  #moveToGit
+# mailspring  #moveToGit
+# sylpheed  #moveToGit
+# abuse  #moveToGit
+# acetoneiso2  #moveToGit
+# gamehub  #moveToGit
+# perl-alien-sdl  #moveToGit
+# radiotray-ng  #moveToGit
+# sdl_pango  #moveToGit
+# streamtuner2  #moveToGit
+# cudatext-gtk2-bin  #moveToGit
+# cudatext-qt5-bin  #moveToGit
+# mongodb-tools  #moveToGit
+# wings3d  #moveToGit
+# trojita  #moveToGit
+# balena-etcher-appimage  #moveToGit
+# shortwave  #moveToGit
+# libsearpc  #moveToGit
+# seafile  #moveToGit
+# seafile-client  #moveToGit
+# cloudcross  #moveToGit
+# pythonqt  #moveToGit
+# tuner  #moveToGit
+# sdl2-gamepad-mapper  #moveToGit
+# screencloud  #moveToGit
+# sdl_pango  #moveToGit
+# perl-alien-sdl  #moveToGit
+# python-pyo  #moveToGit
+# mongodb-bin  #moveToGit
+# mongosh-bin  #moveToGit
+# cecilia  #moveToGit
+# cura-bin  #moveToGit
+# kvantum-theme-libadwaita-git  #moveToGit
+# frozen-bubble  #moveToGit
+# #perl-sdl  #moveToGit
+# sndcpy-bin  #moveToGit
+# usbaudio-git  #moveToGit
+# vdu_controls  #moveToGit
+# rakarrack-plus  #moveToGit
+# clementine  #moveToGit
 
-#udev
-usbasp-udev
-trezor-udev
-numworks-udev
-apple-superdrive-udev
-nx-udev
-xr-hardware
-keepkey-udev
-bitbox-udev
-adafruit-boards-udev
-allow-input-accelerometer-udev
-avrisp-udev
-btchip-udev
-crazyflie-udev
-crazyradio-udev
-duckypad-udev
-mooltipass-udev
-nintendo-udev
-onlykey-udev
-openrgb-udev-rules
-osc-udev-storage
-signal-hound-udev
-stadia-controller-udev
-usbtinyisp-udev
-qtwebkit
-qt4
+# #udev  #moveToGit
+# usbasp-udev  #moveToGit
+# trezor-udev  #moveToGit
+# numworks-udev  #moveToGit
+# apple-superdrive-udev  #moveToGit
+# nx-udev  #moveToGit
+# xr-hardware  #moveToGit
+# keepkey-udev  #moveToGit
+# bitbox-udev  #moveToGit
+# adafruit-boards-udev  #moveToGit
+# allow-input-accelerometer-udev  #moveToGit
+# avrisp-udev  #moveToGit
+# btchip-udev  #moveToGit
+# crazyflie-udev  #moveToGit
+# crazyradio-udev  #moveToGit
+# duckypad-udev  #moveToGit
+# mooltipass-udev  #moveToGit
+# nintendo-udev  #moveToGit
+# onlykey-udev  #moveToGit
+# openrgb-udev-rules  #moveToGit
+# osc-udev-storage  #moveToGit
+# signal-hound-udev  #moveToGit
+# stadia-controller-udev  #moveToGit
+# usbtinyisp-udev  #moveToGit
+# qtwebkit  #moveToGit
+# qt4  #moveToGit
 
 # #AI
 # questdb  #moveToGit
