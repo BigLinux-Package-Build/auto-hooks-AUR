@@ -70,7 +70,7 @@ for p in $(gh repo list BigLinuxAur --limit 1000 | awk '{print $1}' | cut -d "/"
   pkgrel=
   git clone https://aur.archlinux.org/${pkgname}.git > /dev/null 2>&1
   cd $pkgname
-  if [ -z "$(grep -q 'pkgver()' PKGBUILD)" ];then
+  if [ -z "$(grep 'pkgver()' PKGBUILD)" ];then
     source PKGBUILD
     veraur=$pkgver-$pkgrel
     verAurOrg=$veraur
@@ -84,7 +84,7 @@ for p in $(gh repo list BigLinuxAur --limit 1000 | awk '{print $1}' | cut -d "/"
     verAurOrg=$veraur
   fi
 
-    # Troca + por _
+    # Remove +...
     veraur=${veraur%%+*}
     verAurOrg=${veraur%%+*}
 

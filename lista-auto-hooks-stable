@@ -345,32 +345,32 @@ gnome-terminal-transparency
 
 
 #Community-xfce
-ocs-url
-qogir-icon-theme
-qogir-gtk-theme
-qt5-styleplugins
-
-#inkscape-git
-lib2geom-git
+# ocs-url  #moveToGit
+# qogir-icon-theme  #moveToGit
+# qogir-gtk-theme  #moveToGit
+# qt5-styleplugins  #moveToGit
+# 
+# inkscape-git  #moveToGit
+# lib2geom-git  #moveToGit
 
 #Narayan
-vosk-api
-python-srt
-python-inputs
-protonup-qt
-lact
+# vosk-api  #moveToGit
+# python-srt  #moveToGit
+# python-inputs  #moveToGit
+# protonup-qt  #moveToGit
+# lact  #moveToGit
 
 
 #Jogos
-heroic-games-launcher-bin
-extremetuxracer
-gamehub
-gtksourceview2
-dunedynasty
-dunelegacy
-freesynd
-gpu-screen-recorder-gtk-git
-gpu-screen-recorder-git
+# heroic-games-launcher-bin  #moveToGit
+# extremetuxracer  #moveToGit
+# gamehub  #moveToGit
+# gtksourceview2  #moveToGit
+# dunedynasty  #moveToGit
+# dunelegacy  #moveToGit
+# freesynd  #moveToGit
+# gpu-screen-recorder-gtk-git  #moveToGit
+# gpu-screen-recorder-git  #moveToGit
 
 
 #gazebo
@@ -386,7 +386,6 @@ ignition-transport
 ignition-msgs
 ignition-common
 ignition-fuel_tools
-
 ignition-cmake-2
 ignition-utils-1
 ogre-1.9
@@ -398,14 +397,15 @@ ignition-common-3
 ignition-msgs-5
 ignition-fuel_tools-4
 ignition-transport-8
-
 gazebo
+
+
 
 #ros2
 # python-catkin_pkg  #moveToGit
 # sip4  #moveToGit
 # python-pytest-runner  #moveToGit
-#python-colcon-core  #moveToGit
+# python-colcon-core  #moveToGit
 # python-empy3  #moveToGit
 # python-rospkg  #moveToGit
 # python-vcstool  #moveToGit
@@ -415,20 +415,20 @@ gazebo
 # python-colcon-defaults  #moveToGit
 # python-colcon-recursive-crawl  #moveToGit
 # python-colcon-output  #moveToGit
-#python-colcon-cd  #moveToGit
-#python-colcon-devtools  #moveToGit
+# python-colcon-cd  #moveToGit
+# python-colcon-devtools  #moveToGit
 # python-colcon-powershell  #moveToGit
 # python-colcon-parallel-executor  #moveToGit
 # python-colcon-python-setup-py  #moveToGit
 # python-colcon-package-selection  #moveToGit
-#python-colcon-package-information  #moveToGit
+# python-colcon-package-information  #moveToGit
 # python-colcon-metadata  #moveToGit
-#python-colcon-notification  #moveToGit
+# python-colcon-notification  #moveToGit
 # python-colcon-zsh  #moveToGit
 # python-colcon-test-result  #moveToGit
 # python-colcon-cmake  #moveToGit
 # python-colcon-library-path  #moveToGit
-#python-colcon-ros  #moveToGit
+# python-colcon-ros  #moveToGit
 # python-rosdep  #moveToGit
 # python-colcon-argcomplete  #moveToGit
 # python-colcon-common-extensions  #moveToGit
