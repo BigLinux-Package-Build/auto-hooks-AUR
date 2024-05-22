@@ -115,14 +115,12 @@ for p in $(gh repo list BigLinuxAur --limit 1000 | awk '{print $1}' | cut -d "/"
   cd ..
   rm -r $pkgname
 
-  echo "pkgname=$pkgname"
-
   # MSG de ERRO
   if [ -z "$veraur" ];then
     echo -e '\033[01;31m!!!ERRRRRO!!!\033[0m' $pkgname não encontrado '\033[01;31m!!!ERRRRRO!!!\033[0m'
     continue
   # se contiver apenas numeros ou se for com hash
-  elif [[ $veraur =~ ^[0-9]+$ ]]; then
+  elif [[ $veraur =~ ^[0-9]+$ ]] || [[ $verrepo =~ ^[0-9]+$ ]]; then
     if [ "$veraur" -gt "$verrepo" ]; then
       sendWebHooks
     else
