@@ -215,54 +215,54 @@ qt4
 # python-onnxruntime  #moveToGit
 # python-onnx  #moveToGit
 
-#dependencias-obs-studio-tytan652
-obs-studio-tytan652
-libajantv2
-cef-minimal-obs-bin
-ftl-sdk
-librist
-#flac-git #usando-bin-script
-vlc-luajit
-pod2man
-#ffmpeg-obs #portado-para-o-repo
-obs-streamfx-git
-libdatachannel-nice
-plog
-libusrsctp
-qrcodegen-cmake
-chromaprint-fftw
-celt
-davs2
-flite1 #
-libklvanc
-lensfun-git
-shine
-uavs3d-git
-vo-amrwbenc
-xavs
-xavs2
-rockchip-mpp
-libaribcaption
-opencv2
+# #dependencias-obs-studio-tytan652
+# obs-studio-tytan652  #moveToGit
+# libajantv2  #moveToGit
+# cef-minimal-obs-bin  #moveToGit
+# ftl-sdk  #moveToGit
+# librist  #moveToGit
+# #flac-git #usando-bin-script  #moveToGit
+# vlc-luajit  #moveToGit
+# pod2man  #moveToGit
+# #ffmpeg-obs #portado-para-o-repo  #moveToGit
+# obs-streamfx-git  #moveToGit
+# libdatachannel-nice  #moveToGit
+# plog  #moveToGit
+# libusrsctp  #moveToGit
+# qrcodegen-cmake  #moveToGit
+# chromaprint-fftw  #moveToGit
+# celt  #moveToGit
+# davs2  #moveToGit
+# flite1  #moveToGit
+# libklvanc  #moveToGit
+# lensfun-git  #moveToGit
+# shine  #moveToGit
+# uavs3d-git  #moveToGit
+# vo-amrwbenc  #moveToGit
+# xavs  #moveToGit
+# xavs2  #moveToGit
+# rockchip-mpp  #moveToGit
+# libaribcaption  #moveToGit
+# opencv2  #moveToGit
 
 
 
 
-#Proton-GE/K-dependencias
-python-booleanoperations
-python-defcon
-python-fontmath
-python-fontparts
-python-fontpens
-python-ufonormalizer
-python-ufoprocessor
-python-pyclipper
-python-mutatormath
-mingw-w64-tools
-psautohint
-lib32-lzo
-vkbasalt
-proton-ge-custom-bin
+# #Proton-GE/K-dependencias  #moveToGit
+# python-booleanoperations  #moveToGit
+# python-defcon  #moveToGit
+# python-fontmath  #moveToGit
+# python-fontparts  #moveToGit
+# python-fontpens  #moveToGit
+# python-ufonormalizer  #moveToGit
+# python-ufoprocessor  #moveToGit
+# python-pyclipper  #moveToGit
+# python-mutatormath  #moveToGit
+# mingw-w64-tools  #moveToGit
+# psautohint  #moveToGit
+# lib32-lzo  #moveToGit
+# vkbasalt  #moveToGit
+# proton-ge-custom-bin  #moveToGit
 
 #Kernel
 #linux-xanmod#usando-bin-script
@@ -282,14 +282,14 @@ linux-zen-versioned-bin
 linux-amd
 
 #gimp-plugin-resynthesizer-git
-python2-setuptools
-cython2
-python2-numpy
-libglade
-python2-gobject2
-pygtk
-python2-gimp
-gimp-plugin-resynthesizer-git
+# python2-setuptools  #moveToGit
+# cython2  #moveToGit
+# python2-numpy  #moveToGit
+# libglade  #moveToGit
+# python2-gobject2  #moveToGit
+# pygtk  #moveToGit
+# python2-gimp  #moveToGit
+# gimp-plugin-resynthesizer-git  #moveToGit
 
 
 #Community-Window-Maker

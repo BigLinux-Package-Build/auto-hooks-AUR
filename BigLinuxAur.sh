@@ -10,7 +10,7 @@ echo " AUR ""$pkgname"="$verAurOrg"
 echo "Repo ""$pkgname"="$verRepoOrg"
 echo "Branch $branch"
 package=$pkgname
-sleep 10
+sleep 1
 webhooks
 }
 
@@ -51,6 +51,12 @@ for p in $(gh repo list BigLinuxAur --limit 1000 | awk '{print $1}' | cut -d "/"
   verrepo=$(pacman -Ss $pkgname | grep biglinux-$branch | grep -v "$pkgname-" | grep -v "\-$pkgname" | grep "$pkgname" | cut -d "/" -f2 | grep -w $pkgname | cut -d " " -f2 | cut -d ":" -f2)
   verRepoOrg=$verrepo
   verrepo=${verrepo//[-.]}
+
+  # Enviar caso não encontre no repo
+  if [ -z "$verrepo" ];then
+    sendWebHooks
+    continue
+  fi
 
   # Verificar se repo existe no BigLinuxAur
   # if [ "$(curl -s -o /dev/null -w "%{http_code}" https://api.github.com/repos/BigLinuxAur/$pkgname)" != "200" ];then
@@ -104,9 +110,6 @@ for p in $(gh repo list BigLinuxAur --limit 1000 | awk '{print $1}' | cut -d "/"
   if [ -z "$veraur" ];then
     echo -e '\033[01;31m!!!ERRRRRO!!!\033[0m' $pkgname não encontrado '\033[01;31m!!!ERRRRRO!!!\033[0m'
     continue
-  # Enviar caso não encontre no repo
-  elif [ -z "$verrepo" ];then
-    sendWebHooks
   # se contiver apenas numeros ou se for com hash
   elif [[ $veraur =~ ^[0-9]+$ ]]; then
     if [ "$veraur" -gt "$verrepo" ]; then
