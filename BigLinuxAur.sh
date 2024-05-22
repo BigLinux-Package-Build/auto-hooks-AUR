@@ -49,7 +49,6 @@ for p in $(gh repo list BigLinuxAur --limit 1000 | awk '{print $1}' | cut -d "/"
   verrepo=
   verrepo=$(pacman -Ss $pkgname | grep biglinux-$branch | grep -v "$pkgname-" | grep -v "\-$pkgname" | grep "$pkgname" | cut -d "/" -f2 | grep -w $pkgname | cut -d " " -f2 | cut -d ":" -f2)
   verRepoOrg=$verrepo
-  verrepo=${verrepo//[-.]}
 
   # Verificar se repo existe no BigLinuxAur
   # if [ "$(curl -s -o /dev/null -w "%{http_code}" https://api.github.com/repos/BigLinuxAur/$pkgname)" != "200" ];then
@@ -74,7 +73,6 @@ for p in $(gh repo list BigLinuxAur --limit 1000 | awk '{print $1}' | cut -d "/"
     source PKGBUILD
     veraur=$pkgver-$pkgrel
     verAurOrg=$veraur
-    veraur=${veraur//[.-]}
   else
     chmod 777 -R ../$pkgname
     sudo -u builduser bash -c 'makepkg -so --noconfirm --skippgpcheck --needed > /dev/null 2>&1'
@@ -108,6 +106,8 @@ for p in $(gh repo list BigLinuxAur --limit 1000 | awk '{print $1}' | cut -d "/"
   # se contiver apenas numeros ou se for com hash
   elif [[ $veraur =~ ^[0-9]+$ ]]; then
     echo "3"
+    veraur=${veraur//[.-]}
+    verrepo=${verrepo//[-.]}
     if [ "$veraur" -gt "$verrepo" ]; then
       echo "4"
       sendWebHooks
@@ -120,10 +120,10 @@ for p in $(gh repo list BigLinuxAur --limit 1000 | awk '{print $1}' | cut -d "/"
   else
     echo "6"
     # Enviar hooks
-    if [ "$veraur" != "$verRepoOrg" ]; then
+    if [ "$veraur" != "$verrepo" ]; then
       echo "7"
       echo "$veraur"
-      echo "$verRepoOrg"
+      echo "$verrepo"
       sendWebHooks
     else
       echo "8"
