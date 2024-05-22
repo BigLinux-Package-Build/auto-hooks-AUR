@@ -130,12 +130,12 @@ openboard
 #plasma5-applets-window-title
 
 
-##Plasma##
-plasma6-applets-window-title
-plasma6-applets-netspeed
-plasma6-applets-resources-monitor
-plasma6-applets-panel-colorizer
-plasma6-applets-window-buttons
+# ##Plasma##   #moveToGit
+# plasma6-applets-window-title   #moveToGit
+# plasma6-applets-netspeed   #moveToGit
+# plasma6-applets-resources-monitor   #moveToGit
+# plasma6-applets-panel-colorizer   #moveToGit
+# plasma6-applets-window-buttons   #moveToGit
 
 
 #bigstore-categorias
@@ -208,12 +208,12 @@ usbtinyisp-udev
 qtwebkit
 qt4
 
-#AI
-questdb
-openvino
-#python-paddlepaddle
-python-onnxruntime
-python-onnx
+# #AI
+# questdb  #moveToGit
+# openvino  #moveToGit
+# #python-paddlepaddle  #moveToGit
+# python-onnxruntime  #moveToGit
+# python-onnx  #moveToGit
 
 #dependencias-obs-studio-tytan652
 obs-studio-tytan652
