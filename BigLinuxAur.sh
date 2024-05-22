@@ -33,12 +33,12 @@ for p in $(gh repo list BigLinuxAur --limit 1000 | awk '{print $1}' | cut -d "/"
   pkgname=
   # declara nome do pacote
   pkgname=$p
-  
+
   # Disabled List
-  if [ -n $(grep $package disable-list) ];then
+  if [ -n $(grep $pkgname disable-list) ];then
     continue
   fi
-  
+
   # Define o branch
   branch=$(gh repo view BigLinuxAur/$pkgname --json defaultBranchRef -q .defaultBranchRef.name)
   if [ "$branch" = "main" ]; then
