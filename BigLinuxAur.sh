@@ -86,7 +86,7 @@ for p in $(gh repo list BigLinuxAur --limit 1000 | awk '{print $1}' | cut -d "/"
 
     # Remove +...
     veraur=${veraur%%+*}
-    verAurOrg=${veraur%%+*}
+    verAurOrg=${verAurOrg%%+*}
 
   # Vririficar se source PKGBUILD alterou o $pkgname
   if [ "$pkgname" != "$p" ]; then
