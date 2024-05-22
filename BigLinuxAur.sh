@@ -47,8 +47,10 @@ for p in $(gh repo list BigLinuxAur --limit 1000 | awk '{print $1}' | cut -d "/"
 
   # Versão do repositorio BigLinux
   verrepo=
+  verRepoOrg=
   verrepo=$(pacman -Ss $pkgname | grep biglinux-$branch | grep -v "$pkgname-" | grep -v "\-$pkgname" | grep "$pkgname" | cut -d "/" -f2 | grep -w $pkgname | cut -d " " -f2 | cut -d ":" -f2)
   verRepoOrg=$verrepo
+  verrepo=${verrepo//[-.]}
 
   # Verificar se repo existe no BigLinuxAur
   # if [ "$(curl -s -o /dev/null -w "%{http_code}" https://api.github.com/repos/BigLinuxAur/$pkgname)" != "200" ];then
@@ -65,6 +67,7 @@ for p in $(gh repo list BigLinuxAur --limit 1000 | awk '{print $1}' | cut -d "/"
   #versão do AUR
   #limpa todos os $
   veraur=
+  verAurOrg=
   pkgver=
   pkgrel=
   git clone https://aur.archlinux.org/${pkgname}.git > /dev/null 2>&1
@@ -81,10 +84,12 @@ for p in $(gh repo list BigLinuxAur --limit 1000 | awk '{print $1}' | cut -d "/"
     veraur=$pkgver-$pkgrel
     verAurOrg=$veraur
   fi
+  veraur=${veraur//[.-]}
 
-    # Remove +...
-    veraur=${veraur%%+*}
-    verAurOrg=${verAurOrg%%+*}
+
+  # Remove +...
+  veraur=${veraur%%+*}
+  verAurOrg=${verAurOrg%%+*}
 
   # Vririficar se source PKGBUILD alterou o $pkgname
   if [ "$pkgname" != "$p" ]; then
@@ -106,8 +111,6 @@ for p in $(gh repo list BigLinuxAur --limit 1000 | awk '{print $1}' | cut -d "/"
   # se contiver apenas numeros ou se for com hash
   elif [[ $veraur =~ ^[0-9]+$ ]]; then
     echo "3"
-    veraur=${veraur//[.-]}
-    verrepo=${verrepo//[-.]}
     if [ "$veraur" -gt "$verrepo" ]; then
       echo "4"
       sendWebHooks
