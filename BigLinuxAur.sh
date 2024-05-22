@@ -120,10 +120,10 @@ for p in $(gh repo list BigLinuxAur --limit 1000 | awk '{print $1}' | cut -d "/"
   else
     echo "6"
     # Enviar hooks
-    if [ "$veraur" != "$verrepo" ]; then
+    if [ "$veraur" != "$verRepoOrg" ]; then
       echo "7"
       echo "$veraur"
-      echo "$verrepo"
+      echo "$verRepoOrg"
       sendWebHooks
     else
       echo "8"
