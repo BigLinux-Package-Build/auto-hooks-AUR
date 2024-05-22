@@ -349,7 +349,7 @@ gnome-terminal-transparency
 # qogir-icon-theme  #moveToGit
 # qogir-gtk-theme  #moveToGit
 # qt5-styleplugins  #moveToGit
-# 
+
 # inkscape-git  #moveToGit
 # lib2geom-git  #moveToGit
 
@@ -436,20 +436,20 @@ gazebo
 # ros2-arch-deps  #moveToGit
 # ros2-git  #moveToGit
 
-#turing-smart-screen
-python-sv-ttk
-python-pystray
-python-gputil
+# #turing-smart-screen
+# python-sv-ttk
+# python-pystray
+# python-gputil
 
 
-#oci-cli
-python-circuitbreaker
-python-terminaltables
-python-oci
-oci-cli
+# #oci-cli  #moveToGit
+# python-circuitbreaker  #moveToGit
+# python-terminaltables  #moveToGit
+# python-oci  #moveToGit
+# oci-cli  #moveToGit
 
 
 
-#XIVAStudio
-tubeamp-designer-git
-musescore3
+# #XIVAStudio  #moveToGit
+# tubeamp-designer-git  #moveToGit
+# musescore3  #moveToGit
