@@ -115,6 +115,13 @@ for p in $(gh repo list BigLinuxAur --limit 1000 | awk '{print $1}' | cut -d "/"
   cd ..
   rm -r $pkgname
 
+  echo "..."
+  echo "pkgname=$pkgname"
+  echo "veraur=$veraur"
+  echo "verAurOrg=$verAurOrg"
+  echo "verrepo=$verrepo"
+  echo "verRepoOrg=$verRepoOrg"
+
   # MSG de ERRO
   if [ -z "$veraur" ];then
     echo -e '\033[01;31m!!!ERRRRRO!!!\033[0m' $pkgname não encontrado '\033[01;31m!!!ERRRRRO!!!\033[0m'

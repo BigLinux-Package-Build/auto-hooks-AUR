@@ -277,7 +277,8 @@ linux-cachyos-tt
 linux-cachyos-bmq
 linux-cachyos-pds
 linux-cachyos-cfs
-linux-zen-515lts
+linux-cachyos-lts
+# linux-zen-515lts
 linux-zen-versioned-bin
 linux-amd
 
@@ -315,7 +316,7 @@ i3lock-color
 
 #LXQt
 #lxqt-arc-dark-theme-git
-qps
+# qps
 
 
 ##COMMUNITY-GNOME
@@ -373,31 +374,31 @@ gnome-terminal-transparency
 # gpu-screen-recorder-git  #moveToGit
 
 
-#gazebo
-ignition-cmake
-ignition-utils
-ignition-tools
-ignition-math
-urdfdom-headers
-console-bridge
-urdfdom
-#sdformat
-ignition-transport
-ignition-msgs
-ignition-common
-ignition-fuel_tools
-ignition-cmake-2
-ignition-utils-1
-ogre-1.9
-libccd
-ignition-tools-1
-ignition-math-6
-sdformat-9
-ignition-common-3
-ignition-msgs-5
-ignition-fuel_tools-4
-ignition-transport-8
-gazebo
+# #gazebo
+# ignition-cmake  #moveToGit
+# ignition-utils  #moveToGit
+# ignition-tools  #moveToGit
+# ignition-math  #moveToGit
+# urdfdom-headers  #moveToGit
+# console-bridge  #moveToGit
+# urdfdom  #moveToGit
+# #sdformat  #moveToGit
+# ignition-transport  #moveToGit
+# ignition-msgs  #moveToGit
+# ignition-common  #moveToGit
+# ignition-fuel_tools  #moveToGit
+# ignition-cmake-2  #moveToGit
+# ignition-utils-1  #moveToGit
+# ogre-1.9  #moveToGit
+# libccd  #moveToGit
+# ignition-tools-1  #moveToGit
+# ignition-math-6  #moveToGit
+# sdformat-9  #moveToGit
+# ignition-common-3  #moveToGit
+# ignition-msgs-5  #moveToGit
+# ignition-fuel_tools-4v
+# ignition-transport-8  #moveToGit
+# gazebo  #moveToGit
 
 
 
