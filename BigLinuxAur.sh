@@ -115,12 +115,12 @@ for p in $(gh repo list BigLinuxAur --limit 1000 | awk '{print $1}' | cut -d "/"
   cd ..
   rm -r $pkgname
 
-  echo "..."
-  echo "pkgname=$pkgname"
-  echo "veraur=$veraur"
-  echo "verAurOrg=$verAurOrg"
-  echo "verrepo=$verrepo"
-  echo "verRepoOrg=$verRepoOrg"
+  # echo "..."
+  # echo "pkgname=$pkgname"
+  # echo "veraur=$veraur"
+  # echo "verAurOrg=$verAurOrg"
+  # echo "verrepo=$verrepo"
+  # echo "verRepoOrg=$verRepoOrg"
 
   # MSG de ERRO
   if [ -z "$veraur" ];then
