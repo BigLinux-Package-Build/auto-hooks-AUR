@@ -270,17 +270,17 @@
 #linux-xanmod-lts#usando-bin-script
 #linux-xanmod-rt#usando-bin-script
 #linux-xanmod-tt#usando-bin-script
-linux-cachyos
-linux-cachyos-bore
-linux-cachyos-tt
-#linux-cachyos-cacule
-linux-cachyos-bmq
-linux-cachyos-pds
-linux-cachyos-cfs
-linux-cachyos-lts
-# linux-zen-515lts
-linux-zen-versioned-bin
-linux-amd
+# linux-cachyos  #moveToGit
+# linux-cachyos-bore  #moveToGit
+# linux-cachyos-tt  #moveToGit
+# #linux-cachyos-cacule   #REMOVED
+# linux-cachyos-bmq  #moveToGit
+# linux-cachyos-pds  #moveToGit
+# linux-cachyos-cfs  #moveToGit
+# linux-cachyos-lts  #moveToGit
+# # linux-zen-515lts   #REMOVED
+# linux-zen-versioned-bin  #moveToGit
+# linux-amd  #moveToGit
 
 #gimp-plugin-resynthesizer-git
 # python2-setuptools  #moveToGit
