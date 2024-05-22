@@ -76,7 +76,7 @@ for p in $(gh repo list BigLinuxAur --limit 1000 | awk '{print $1}' | cut -d "/"
     verAurOrg=$veraur
     veraur=${veraur//[.-]}
   else
-    chmod 777 -R $pkgname
+    chmod 777 -R ../$pkgname
     sudo -u builduser bash -c 'makepkg -so --noconfirm --skippgpcheck --needed'
     sleep 5
     source PKGBUILD
