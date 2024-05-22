@@ -1,10 +1,14 @@
+#fixName
 qadwaitadecorations
 qt5-wayland-decorations
 cef-minimal-obs-bin
 
 
-
-
+#errorBuild
+python2-gimp
+vosk-api
+dsnote
+ros2-git
 
 
 
