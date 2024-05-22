@@ -1,105 +1,105 @@
-ananicy-cpp
-#audacity-wxgtk2
-auto-cpufreq
-cfs-zen-tweaks
-classik
-cpu-x
-gconf
-gnome-alsamixer
-hardinfo-gtk3
-hunspell-pt-br
-hw-probe
-icu55
-ideviceinstaller
-jamesdsp
-jdownloader2
-kazam
-libkipi
-libreoffice-extension-vero
-lightly-git
-mawk
-ocrmypdf
-openrgb
-pymobiledevice-git
-python-bpylist2
-python-coloredlogs
+# ananicy-cpp  #moveToGit
+# #audacity-wxgtk2  #removed
+# auto-cpufreq  #moveToGit
+# cfs-zen-tweaks  #moveToGit
+# classik  #moveToGit
+# cpu-x  #moveToGit
+# gconf  #moveToGit
+# gnome-alsamixer  #moveToGit
+# hardinfo-gtk3  #moveToGit
+# hunspell-pt-br  #moveToGit
+# hw-probe  #moveToGit
+# icu55  #moveToGit
+# ideviceinstaller  #moveToGit
+# jamesdsp  #moveToGit
+# jdownloader2  #moveToGit
+# kazam  #moveToGit
+# libkipi  #moveToGit
+# libreoffice-extension-vero  #moveToGit
+# lightly-git  #moveToGit
+# mawk  #moveToGit
+# ocrmypdf  #moveToGit
+# openrgb  #moveToGit
+# pymobiledevice-git  #moveToGit
+# python-bpylist2  #moveToGit
+# python-coloredlogs  #moveToGit
 #python-pyclip #script-separado
-sc-controller
-start-stop-daemon
-systemd-oomd-defaults
-vmtouch
-android-studio
-insync
-insync-dolphin
-#linux515-nvidia-340xx
-#linux-hardened-nvidia-340xx
-#lib32-nvidia-340xx-utils
-#nvidia-340xx-utils
-goverlay-bin
-taglib-extras
-amarok
-rtapp
-youtube-dl-gui
-aether.lv2
-kxstitch
-lightzone
-rgb2cmyk
-makehuman
-gb-studio-bin
-brlcad
-linux-lqx
-wxwidgets-gtk2
-wxgtk2.8
-losslesscut-bin
-natron-bin
-cinelerra-gg
-stremio
-webtorrent-desktop-bin
-freetube-bin
-deadbeef
-great-little-radio-player
-goodvibes
-butt
-jellyfin
-jellyfin-media-player
-grapejuice
-libglibutil
-libgbinder
-python-gbinder
-kde-snap-assist
-psautohint
-python2
-kwin-scripts-forceblur
-qtscrcpy
-guiscrcpy
-python-pynput
-qpdfview
-whatsie
-featherpad-qt5
-ly
-nsync
-python-mediapipe
-python-playsound
-uresourced
-64gram-desktop
-breeze-extended
-kdenlive-appimage
-qt5-webkit
-waydroid
-wine-lol-bin
-macast-bin
-linux-wifi-hotspot
-python-steam
-python-vdf
-simplescreenrecorder
-yay
-gkrellm-themes
-bootstrap
-xsnow
-python-cinemagoer
-hypnotix
-circle-flags
-# paru  #moveToGit
+# sc-controller  #moveToGit
+# start-stop-daemon  #moveToGit
+# systemd-oomd-defaults  #moveToGit
+# vmtouch  #moveToGit
+# android-studio  #moveToGit
+# insync  #moveToGit
+# insync-dolphin  #moveToGit
+# # #linux515-nvidia-340xx
+# # #linux-hardened-nvidia-340xx
+# # #lib32-nvidia-340xx-utils
+# # #nvidia-340xx-utils
+# goverlay-bin  #moveToGit
+# taglib-extras  #moveToGit
+# amarok  #moveToGit
+# rtapp  #moveToGit
+# youtube-dl-gui  #moveToGit
+# aether.lv2  #moveToGit
+# kxstitch  #moveToGit
+# lightzone  #moveToGit
+# rgb2cmyk  #moveToGit
+# makehuman  #moveToGit
+# gb-studio-bin  #moveToGit
+# brlcad  #moveToGit
+# linux-lqx  #moveToGit
+# wxwidgets-gtk2  #moveToGit
+# wxgtk2.8  #moveToGit
+# losslesscut-bin  #moveToGit
+# natron-bin  #moveToGit
+# cinelerra-gg  #moveToGit
+# stremiov  #moveToGit
+# webtorrent-desktop-bin  #moveToGit
+# freetube-bin  #moveToGit
+# deadbeef  #moveToGit
+# great-little-radio-player  #moveToGit
+# goodvibes  #moveToGit
+# butt  #moveToGit
+# jellyfin  #moveToGit
+# jellyfin-media-player  #moveToGit
+# grapejuice  #moveToGit
+# libglibutil  #moveToGit
+# libgbinder  #moveToGit
+# python-gbinder  #moveToGit
+# kde-snap-assist  #moveToGit
+# psautohint  #moveToGit
+# python2  #moveToGit
+# kwin-scripts-forceblur  #moveToGit
+# qtscrcpy  #moveToGit
+# guiscrcpy  #moveToGit
+# python-pynput  #moveToGit
+# qpdfview  #moveToGit
+# whatsie  #moveToGit
+# featherpad-qt5  #moveToGit
+# ly  #moveToGit
+# nsync  #moveToGit
+# python-mediapipe  #moveToGit
+# python-playsound  #moveToGit
+# uresourced  #moveToGit
+# 64gram-desktop  #moveToGit
+# breeze-extended  #moveToGit
+# kdenlive-appimage  #moveToGit
+# qt5-webkit  #moveToGit
+# waydroid  #moveToGit
+# wine-lol-bin  #moveToGit
+# macast-bin  #moveToGit
+# linux-wifi-hotspot  #moveToGit
+# python-steam  #moveToGit
+# python-vdf  #moveToGit
+# simplescreenrecorder  #moveToGit
+# yay  #moveToGit
+# gkrellm-themes  #moveToGit
+# bootstrap  #moveToGit
+# xsnow  #moveToGit
+# python-cinemagoer  #moveToGit
+# hypnotixv  #moveToGit
+# circle-flags  #moveToGit
+# paru  #moveToGit  #moveToGit
 # gyroflow-bin  #moveToGit
 # envycontrol  #moveToGit
 # lib32-libxpm  #moveToGit

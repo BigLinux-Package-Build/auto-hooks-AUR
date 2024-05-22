@@ -15,7 +15,11 @@ webhooks
 }
 
 # newRepo(){
+# Create
 # curl -sH "Authorization: token $CHAVE" -H "Accept: application/vnd.github.baptiste-preview+json" --data '{"owner":"BigLinuxAur","name":"'$pkgname'"}' https://api.github.com/repos/BigLinuxAur/aurTemplate/generate > /dev/null
+
+# Rename branch main to stable
+# for i in ${lista[@]}; do curl -X POST -H "Authorization: token $BigLinuxAur_TOKEN" -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/BigLinuxAur/$i/branches/main/rename -d '{"new_name":"stable"}' > /dev/null 2>&1 ; done
 # }
 
 # echo '...'
