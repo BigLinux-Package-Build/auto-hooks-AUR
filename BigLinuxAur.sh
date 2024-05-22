@@ -103,21 +103,28 @@ for p in $(gh repo list BigLinuxAur --limit 1000 | awk '{print $1}' | cut -d "/"
     continue
   # Enviar caso não encontre no repo
   elif [ -z "$verrepo" ];then
+    echo "2"
     sendWebHooks
   # se contiver apenas numeros ou se for com hash
   elif [[ $veraur =~ ^[0-9]+$ ]]; then
+    echo "3"
     if [ "$veraur" -gt "$verrepo" ]; then
+      echo "4"
       sendWebHooks
     else
+      echo "5"
       echo -e "Versão do \033[01;31m$pkgname\033[0m é igual !"
       echo "Branch $branch"
       sleep 1
     fi
   else
+    echo "6"
     # Enviar hooks
     if [ "$veraur" != "$verrepo" ]; then
+      echo "7"
       sendWebHooks
     else
+      echo "8"
       echo -e "Versão do \033[01;31m$pkgname\033[0m é igual !"
       echo "Branch $branch"
       sleep 1
