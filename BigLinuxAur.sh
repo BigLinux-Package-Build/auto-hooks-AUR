@@ -22,12 +22,9 @@ sleep 1
 # for i in ${lista[@]}; do curl -X POST -H "Authorization: token $BigLinuxAur_TOKEN" -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/BigLinuxAur/$i/branches/main/rename -d '{"new_name":"stable"}' > /dev/null 2>&1 ; done
 # }
 
-# echo '...'
-# echo -e "\033[01;31mEXCUÇÃO no BRANCH $repo\033[0m"
-# echo '...'
-
-# sed -i 's/#.*$//' BigLinuxAur-${repo}
-# sed -i '/^$/d' BigLinuxAur-${repo}
+# Limpa disable-list
+sed -i 's/#.*$//' disable-list
+sed -i '/^$/d' disable-list
 
 # Numero de pacotes verificado
 pkgNum=0
