@@ -17,15 +17,15 @@ perl-sdl
 
 
 
-linux-cachyos
-linux-cachyos-bore
-linux-cachyos-tt
-linux-cachyos-bmq
-linux-cachyos-pds
-linux-cachyos-cfs
-linux-cachyos-lts
-linux-zen-versioned-bin
-linux-amd
+# linux-cachyos
+# linux-cachyos-bore
+# linux-cachyos-tt
+# linux-cachyos-bmq
+# linux-cachyos-pds
+# linux-cachyos-cfs
+# linux-cachyos-lts
+# linux-zen-versioned-bin
+# linux-amd
 
 
 
