@@ -11,7 +11,7 @@ echo "Repo ""$pkgname"="$verRepoOrg"
 echo "Branch $branch"
 package=$pkgname
 sleep 1
-webhooks
+# webhooks
 }
 
 # newRepo(){

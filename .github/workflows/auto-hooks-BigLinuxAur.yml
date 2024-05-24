@@ -1,11 +1,9 @@
 name: BigLinux Hooks BigLinuxAur
 
-# Controls when the workflow will run
 on:
-  # schedule:
-  #   - cron:  '30 2 * * *'
+  schedule:
+    - cron:  '30 2 * * *'
 
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
     inputs:
       debug_enabled:
@@ -25,10 +23,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      
-      # - name: Setup tmate session
-      #   uses: mxschmitt/action-tmate@v3
-      
       # - name: Clean System
       #   shell: bash -O extglob {0}
       #   run: |
@@ -60,7 +54,7 @@ jobs:
       #     /lixo/usr/share/dotnet
       #     echo "End Clean System"
       #     df -h
-        
+
       - name: Install Dependencies
         shell: bash
         run: |
@@ -163,7 +157,7 @@ jobs:
           zlib \
           zram-generator \
           zstd
-          
+
       - name: Add BigLinux Repo and Key
         shell: bash
         run: |
@@ -172,12 +166,10 @@ jobs:
           [biglinux-'${{ secrets.REPO_DEV }}']
           SigLevel = PackageRequired
           Server = https://'${{ secrets.REPO_MIRROR }}'.biglinux.com.br/'${{ secrets.REPO_DEV }}'/$arch' | tee -a /etc/pacman.conf
-          
           echo '
           [biglinux-testing]
           SigLevel = PackageRequired
           Server = https://'${{ secrets.REPO_MIRROR }}'.biglinux.com.br/testing/$arch' | tee -a /etc/pacman.conf
-          
           echo '
           [biglinux-stable]
           SigLevel = PackageRequired
@@ -198,11 +190,11 @@ jobs:
           pacman-key --populate archlinux biglinux
         
           pacman -Sy
-        
+
       - name: Setup tmate session
         uses: mxschmitt/action-tmate@v3
         if: ${{ github.event_name == 'workflow_dispatch' && inputs.debug_enabled }}
-          
+
       - name: Teste, Makepkg and WebHooks
         shell: bash
         env:
@@ -213,15 +205,6 @@ jobs:
           useradd builduser -m
           passwd -d builduser
           printf 'builduser ALL=(ALL) ALL\n' | tee -a /etc/sudoers
-          
-          # gitfolder=$(find -type f -name PKGBUILD | sed 's/PKGBUILD//')
-          # chmod 777 $gitfolder
-          # cd $gitfolder
-          # sudo -u builduser bash -c 'makepkg -sc --noconfirm --skippgpcheck'
-          
-          # bash lista-aur-stable-arch-container.sh
           sudo pacman -Syy
           bash BigLinuxAur.sh
-          # for i in stable testing development; do
-          #   bash BigLinuxAur.sh $i
-          # done
+

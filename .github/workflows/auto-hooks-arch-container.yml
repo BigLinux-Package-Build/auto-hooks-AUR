@@ -2,8 +2,8 @@ name: BigLinux Hooks Arch Container
 
 # Controls when the workflow will run
 on:
-  # schedule:
-  #   - cron:  '30 2 * * *'
+  schedule:
+    - cron:  '30 2 * * *'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -208,6 +208,6 @@ jobs:
           
           # bash lista-aur-stable-arch-container.sh
           sudo pacman -Syy
-          bash lista-aur-stable-arch-container stable
-          bash lista-aur-stable-arch-container testing
-          for r in *.sh; do bash $r; done
+          # bash lista-aur-stable-arch-container stable
+          # bash lista-aur-stable-arch-container testing
+          for r in *.sh; do if [ "$r" != "BigLinuxAur.sh" ]; then bash $r; fi; done
