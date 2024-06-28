@@ -163,9 +163,9 @@ jobs:
         run: |
           #add biglinux testing repository
           echo '
-          [biglinux-'${{ secrets.REPO_DEV }}']
+          [bigiborg-'"${{ secrets.REPO_UNSTABLE }}"']
           SigLevel = PackageRequired
-          Server = https://'${{ secrets.REPO_MIRROR }}'.biglinux.com.br/'${{ secrets.REPO_DEV }}'/$arch' | tee -a /etc/pacman.conf
+          Server = https://'"${{ secrets.MIRROR_UNSTABLE }}"'/$arch' | tee -a /etc/pacman.conf
           echo '
           [biglinux-testing]
           SigLevel = PackageRequired
