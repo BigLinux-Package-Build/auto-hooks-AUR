@@ -46,12 +46,15 @@ for p in $(gh repo list BigLinuxAur --limit 1000 | awk '{print $1}' | cut -d "/"
   branch=$(gh repo view BigLinuxAur/$pkgname --json defaultBranchRef -q .defaultBranchRef.name)
   if [ "$branch" = "main" ]; then
     branch=$REPO_DEV
+    repo='bigiborg'
+  else
+    repo='biglinux'
   fi
 
   # Versão do repositorio BigLinux
   verrepo=
   verRepoOrg=
-  verrepo=$(pacman -Ss $pkgname | grep biglinux-$branch | grep -v "$pkgname-" | grep -v "\-$pkgname" | grep "$pkgname" | cut -d "/" -f2 | grep -w $pkgname | cut -d " " -f2 | cut -d ":" -f2)
+  verrepo=$(pacman -Ss $pkgname | grep $repo-$branch | grep -v "$pkgname-" | grep -v "\-$pkgname" | grep "$pkgname" | cut -d "/" -f2 | grep -w $pkgname | cut -d " " -f2 | cut -d ":" -f2)
   verRepoOrg=$verrepo
   verrepo=${verrepo//[-.]}
 
