@@ -123,12 +123,16 @@ for p in $(gh repo list BigLinuxAur --limit 1000 | awk '{print $1}' | cut -d "/"
 
   #apagar diretorio do git
   cd ..
-  rm -r $pkgname
-
-  # if linux-xanmod revert rename
   if [ "$(grep "linux-xanmod" <<< $pkgname)" ];then
-    pkgname=$(sed 's/-linux-bin//' <<< $pkgname)
+    rm -r linux-xanmod*
+  else
+    rm -r $pkgname
   fi
+
+  # # if linux-xanmod revert rename
+  # if [ "$(grep "linux-xanmod" <<< $pkgname)" ];then
+  #   pkgname=$(sed 's/-linux-bin//' <<< $pkgname)
+  # fi
 
   # echo "..."
   # echo "pkgname=$pkgname"
