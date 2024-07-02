@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 webhooks() {
-curl -X POST -H "Accept: application/json" -H "Authorization: token $CHAVE" --data '{"event_type": "clone", "client_payload": { "branch": "'$repo'", "pkgver": "'$verAurOrg'"}}' https://api.github.com/repos/BigLinuxAur/$package/dispatches
+curl -X POST -H "Accept: application/json" -H "Authorization: token $CHAVE" --data '{"event_type": "clone", "client_payload": { "branch": "'$branch'", "pkgver": "'$verAurOrg'"}}' https://api.github.com/repos/BigLinuxAur/$package/dispatches
 }
 
 sendWebHooks() {
@@ -54,7 +54,9 @@ for p in $(gh repo list BigLinuxAur --limit 1000 | awk '{print $1}' | cut -d "/"
   # Versão do repositorio BigLinux
   verrepo=
   verRepoOrg=
-  verrepo=$(pacman -Ss $pkgname | grep $repo-$branch | grep -v "$pkgname-" | grep -v "\-$pkgname" | grep "$pkgname" | cut -d "/" -f2 | grep -w $pkgname | cut -d " " -f2 | cut -d ":" -f2)
+  # verrepo=$(pacman -Ss $pkgname | grep $repo-$branch | grep -v "$pkgname-" | grep -v "\-$pkgname" | grep "$pkgname" | cut -d "/" -f2 | grep -w $pkgname | cut -d " " -f2 | cut -d ":" -f2)
+  verrepo=$(pacman -Sl $repo-$branch | grep ' $pkgname ' | awk '{print $3}' | cut -d ":" -f2)
+
   verRepoOrg=$verrepo
   verrepo=${verrepo//[-.]}
 
