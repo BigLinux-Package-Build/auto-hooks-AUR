@@ -11,7 +11,7 @@ echo "Repo ""$pkgname"="$verRepoOrg"
 echo "Branch $branch"
 package=$pkgname
 sleep 1
-webhooks
+# webhooks
 }
 
 # newRepo(){
@@ -56,6 +56,8 @@ for p in $(gh repo list BigLinuxAur --limit 1000 | awk '{print $1}' | cut -d "/"
   verRepoOrg=
   # verrepo=$(pacman -Ss $pkgname | grep $repo-$branch | grep -v "$pkgname-" | grep -v "\-$pkgname" | grep "$pkgname" | cut -d "/" -f2 | grep -w $pkgname | cut -d " " -f2 | cut -d ":" -f2)
   verrepo=$(pacman -Sl $repo-$branch | grep ' $pkgname ' | awk '{print $3}' | cut -d ":" -f2)
+
+  echo "verrepo=$verrepo"
 
   verRepoOrg=$verrepo
   verrepo=${verrepo//[-.]}
