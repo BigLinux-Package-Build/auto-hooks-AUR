@@ -87,6 +87,14 @@ for p in $(gh repo list BigLinuxAur --limit 1000 | awk '{print $1}' | cut -d "/"
   verAurOrg=
   pkgver=
   pkgrel=
+
+  # if Linux Xanmod rename
+  if [ "$(grep "linux-xanmod" <<< $pkgname | grep -v "lts")" ];then
+    pkgname=$(sed 's/linux-xanmod/linux-xanmod-linux-bin/' <<< $pkgname)
+  elif [ "$(grep "linux-xanmod-lts" <<< $pkgname)" ];then
+    pkgname=$(sed 's/linux-xanmod-lts/linux-xanmod-lts-linux-bin/' <<< $pkgname)
+  fi
+
   git clone https://aur.archlinux.org/${pkgname}.git > /dev/null 2>&1
   cd $pkgname
   if [ -z "$(grep 'pkgver()' PKGBUILD)" ];then
@@ -116,6 +124,11 @@ for p in $(gh repo list BigLinuxAur --limit 1000 | awk '{print $1}' | cut -d "/"
   #apagar diretorio do git
   cd ..
   rm -r $pkgname
+
+  # if linux-xanmod revert rename
+  if [ "$(grep "linux-xanmod" <<< $pkgname)" ];then
+    pkgname=$(sed 's/-linux-bin//' <<< $pkgname)
+  fi
 
   # echo "..."
   # echo "pkgname=$pkgname"
