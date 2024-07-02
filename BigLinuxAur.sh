@@ -11,7 +11,7 @@ echo "Repo ""$pkgname"="$verRepoOrg"
 echo "Branch $branch"
 package=$pkgname
 sleep 1
-# webhooks
+webhooks
 }
 
 # newRepo(){
@@ -128,11 +128,6 @@ for p in $(gh repo list BigLinuxAur --limit 1000 | awk '{print $1}' | cut -d "/"
   else
     rm -r $pkgname
   fi
-
-  # # if linux-xanmod revert rename
-  # if [ "$(grep "linux-xanmod" <<< $pkgname)" ];then
-  #   pkgname=$(sed 's/-linux-bin//' <<< $pkgname)
-  # fi
 
   # echo "..."
   # echo "pkgname=$pkgname"
