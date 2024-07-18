@@ -25,7 +25,7 @@ curl -X POST -H "Accept: application/json" -H "Authorization: token $CHAVE" --da
 pkgname=mesa-tkg-git
 
 #só rodar terça e sexta feira
-if [ "$(date +%u)" = "2" -o "$(date +%u)" = "5" ];then
+if [ "$(date +%u)" = "2" -o "$(date +%u)" = "4" ];then
     #clona, verifica a versão do patch e declara o vergit
     git clone https://gitlab.freedesktop.org/mesa/mesa.git
     pkgver() {
