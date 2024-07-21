@@ -9,11 +9,13 @@ echo -e "Enviando \033[01;31m$pkgname\033[0m para Package Build"
 echo " AUR ""$pkgname"="$verAurOrg"
 echo "Repo ""$pkgname"="$verRepoOrg"
 echo "Branch $branch"
-echo "Base $base"
+echo -e "Base ${cor}${base}${std}"
 package=$pkgname
 sleep 1
 # webhooks
 }
+
+std='\e[m'
 
 # newRepo(){
 # Create
@@ -62,11 +64,17 @@ for p in $(gh repo list BigLinuxAur --limit 1000 | awk '{print $1}' | cut -d "/"
     # Versão do repositorio BigLinux
     verrepo=
     verRepoOrg=
+    veraur=
+    verAurOrg=
+    pkgver=
+    pkgrel=
     if [ "$base" = "manjaro" ];then
       # verrepo=$(pacman -Ss $pkgname | grep $repo-$branch | grep -v "$pkgname-" | grep -v "\-$pkgname" | grep "$pkgname" | cut -d "/" -f2 | grep -w $pkgname | cut -d " " -f2 | cut -d ":" -f2)
       verrepo=$(pacman -Sl $repo-$branch | grep " $pkgname " | awk '{print $3}' | cut -d ":" -f2)
+      cor='\e[32;1m'
     elif [ "$base" = "archlinux" ]; then
       verrepo=$(pacman -Sl $repo-$base | grep " $pkgname " | awk '{print $3}' | cut -d ":" -f2)
+      cor='\e[34;1m'
     fi
 
     verRepoOrg=$verrepo
@@ -159,7 +167,7 @@ for p in $(gh repo list BigLinuxAur --limit 1000 | awk '{print $1}' | cut -d "/"
       else
         echo -e "Versão do \033[01;31m$pkgname\033[0m é igual !"
         echo "Branch $branch"
-        echo "Base $base"
+        echo -e "Base ${cor}${base}${std}"
         sleep 1
       fi
     else
@@ -169,7 +177,7 @@ for p in $(gh repo list BigLinuxAur --limit 1000 | awk '{print $1}' | cut -d "/"
       else
         echo -e "Versão do \033[01;31m$pkgname\033[0m é igual !"
         echo "Branch $branch"
-        echo "Base $base"
+        echo -e "Base ${cor}${base}${std}"
         sleep 1
       fi
     fi
