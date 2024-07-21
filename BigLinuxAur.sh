@@ -55,9 +55,6 @@ for base in ${bases[@]}; do
     if [ "$branch" = "main" -a "$base" = "manjaro" ]; then
       branch=$REPO_DEV
       repo='bigiborg'
-    elif [ "$base" = "archlinux" ]; then
-      repo='biglinux'
-      branch='archlinux'
     else
       repo='biglinux'
     fi
@@ -65,8 +62,12 @@ for base in ${bases[@]}; do
     # Versão do repositorio BigLinux
     verrepo=
     verRepoOrg=
-    # verrepo=$(pacman -Ss $pkgname | grep $repo-$branch | grep -v "$pkgname-" | grep -v "\-$pkgname" | grep "$pkgname" | cut -d "/" -f2 | grep -w $pkgname | cut -d " " -f2 | cut -d ":" -f2)
-    verrepo=$(pacman -Sl $repo-$branch | grep " $pkgname " | awk '{print $3}' | cut -d ":" -f2)
+    if [ "$base" = "manjaro" ];then
+      # verrepo=$(pacman -Ss $pkgname | grep $repo-$branch | grep -v "$pkgname-" | grep -v "\-$pkgname" | grep "$pkgname" | cut -d "/" -f2 | grep -w $pkgname | cut -d " " -f2 | cut -d ":" -f2)
+      verrepo=$(pacman -Sl $repo-$branch | grep " $pkgname " | awk '{print $3}' | cut -d ":" -f2)
+    elif [ "$base" = "archlinux" ]; then
+      verrepo=$(pacman -Sl $repo-$base | grep " $pkgname " | awk '{print $3}' | cut -d ":" -f2)
+    fi
 
     verRepoOrg=$verrepo
     verrepo=${verrepo//[-.]}
