@@ -37,8 +37,8 @@ manjaro
 arch=x86_64
 
 gh auth login --with-token <<< $BigLinuxAur_TOKEN
-for base in ${bases[@]}; do
-  for p in $(gh repo list BigLinuxAur --limit 1000 | awk '{print $1}' | cut -d "/" -f2 | sed '/aurTemplate/d'); do
+for p in $(gh repo list BigLinuxAur --limit 1000 | awk '{print $1}' | cut -d "/" -f2 | sed '/aurTemplate/d'); do
+  for base in ${bases[@]}; do
   # for p in $(cat BigLinuxAur-${repo}); do
 
     pkgname=
@@ -159,6 +159,7 @@ for base in ${bases[@]}; do
       else
         echo -e "Versão do \033[01;31m$pkgname\033[0m é igual !"
         echo "Branch $branch"
+        echo "Base $base"
         sleep 1
       fi
     else
@@ -168,6 +169,7 @@ for base in ${bases[@]}; do
       else
         echo -e "Versão do \033[01;31m$pkgname\033[0m é igual !"
         echo "Branch $branch"
+        echo "Base $base"
         sleep 1
       fi
     fi
