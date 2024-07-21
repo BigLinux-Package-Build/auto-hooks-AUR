@@ -33,8 +33,8 @@ sed -i '/^$/d' disable-list
 pkgNum=0
 
 bases=(
-archlinux
 manjaro
+archlinux
 )
 arch=x86_64
 
