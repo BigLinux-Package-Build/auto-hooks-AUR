@@ -174,6 +174,9 @@ jobs:
           [biglinux-stable]
           SigLevel = PackageRequired
           Server = https://'${{ secrets.REPO_MIRROR }}'.biglinux.com.br/stable/$arch' | tee -a /etc/pacman.conf
+          [biglinux-archlinux]
+          SigLevel = PackageRequired
+          Server = https://'${{ secrets.REPO_MIRROR }}'.biglinux.com.br/archlinux/$arch' | tee -a /etc/pacman.conf
           
           sed -i '/PACKAGER=/s/.*/\PACKAGER="BigLinux Package Build <bigbruno@gmail.com>\"/' /etc/makepkg.conf
           
