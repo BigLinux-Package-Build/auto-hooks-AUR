@@ -6,10 +6,10 @@ curl -X POST -H "Accept: application/json" -H "Authorization: token $CHAVE" --da
 
 sendWebHooks() {
 echo -e "Enviando \033[01;31m$pkgname\033[0m para Package Build"
+echo -e "Base ${cor}${base}${std}"
 echo " AUR ""$pkgname"="$verAurOrg"
 echo "Repo ""$pkgname"="$verRepoOrg"
 echo "Branch $branch"
-echo -e "Base ${cor}${base}${std}"
 package=$pkgname
 sleep 1
 # webhooks
@@ -39,7 +39,7 @@ manjaro
 arch=x86_64
 
 gh auth login --with-token <<< $BigLinuxAur_TOKEN
-for p in $(gh repo list BigLinuxAur --limit 1000 | awk '{print $1}' | cut -d "/" -f2 | sed '/aurTemplate/d'); do
+for p in $(gh repo list BigLinuxAur --limit 1000 | awk '{print $1}' | cut -d "/" -f2 | sed '/aurTemplate/d' | sort); do
   for base in ${bases[@]}; do
   # for p in $(cat BigLinuxAur-${repo}); do
 
@@ -166,8 +166,8 @@ for p in $(gh repo list BigLinuxAur --limit 1000 | awk '{print $1}' | cut -d "/"
         sendWebHooks
       else
         echo -e "Versão do \033[01;31m$pkgname\033[0m é igual !"
-        echo "Branch $branch"
         echo -e "Base ${cor}${base}${std}"
+        echo "Branch $branch"
         sleep 1
       fi
     else
@@ -176,8 +176,8 @@ for p in $(gh repo list BigLinuxAur --limit 1000 | awk '{print $1}' | cut -d "/"
         sendWebHooks
       else
         echo -e "Versão do \033[01;31m$pkgname\033[0m é igual !"
-        echo "Branch $branch"
         echo -e "Base ${cor}${base}${std}"
+        echo "Branch $branch"
         sleep 1
       fi
     fi
