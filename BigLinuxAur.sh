@@ -174,6 +174,7 @@ for p in $(gh repo list BigLinuxAur --limit 1000 | awk '{print $1}' | cut -d "/"
       fi
     fi
   done
+  echo '---'
 done
 
 # Print numero final de pacotes
