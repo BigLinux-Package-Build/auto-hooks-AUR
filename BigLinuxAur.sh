@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 webhooks() {
-curl -X POST -H "Accept: application/json" -H "Authorization: token $CHAVE" --data '{"event_type": "clone", "client_payload": { "branch": "'$branch'", "base": "'$base'", "pkgver": "'$verAurOrg'"}}' https://api.github.com/repos/BigLinuxAur/$package/dispatches
+curl -X POST -H "Accept: application/json" -H "Authorization: token $CHAVE" --data '{"event_type": "clone", "client_payload": { "branch": "'$branch'", "base": "'$base'", "pkgver": "'$verAurOrg'", "arch": "'$arch'"}}' https://api.github.com/repos/BigLinuxAur/$package/dispatches
 }
 
 sendWebHooks() {
@@ -34,14 +34,14 @@ pkgNum=0
 
 bases=(
 manjaro
-archlinux
 )
+# archlinux
+
 arch=x86_64
 
 gh auth login --with-token <<< $BigLinuxAur_TOKEN
 for p in $(gh repo list BigLinuxAur --limit 1000 | awk '{print $1}' | cut -d "/" -f2 | sed '/aurTemplate/d' | sort); do
   for base in ${bases[@]}; do
-  # for p in $(cat BigLinuxAur-${repo}); do
 
     pkgname=
     # declara nome do pacote
