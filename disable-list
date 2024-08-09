@@ -4,6 +4,11 @@ qt5-wayland-decorations
 cef-minimal-obs-bin
 
 
+# arrumar automato de gerar pkgbuild
+rustdesk-bin
+
+
+
 #errorBuild
 python2-gimp
 vosk-api
