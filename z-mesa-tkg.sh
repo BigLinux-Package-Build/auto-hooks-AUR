@@ -18,7 +18,7 @@ AUR=
 # ##### NÃO Editar End #####
 
 webhooks() {
-curl -X POST -H "Accept: application/json" -H "Authorization: token $CHAVE" --data '{"event_type": "clone", "client_payload": { "branch": "'$branch'", "pkgver": "'$verAurOrg'"}}' https://api.github.com/repos/BigLinuxAur/$package/dispatches
+curl -X POST -H "Accept: application/json" -H "Authorization: token $CHAVE" --data '{"event_type": "TKG/mesa-tkg-git", "client_payload": { "branch": "'$branch'", "pkgver": "'$verAurOrg'"}}' https://api.github.com/repos/BigLinuxAur/$package/dispatches
 }
 
 #nome do programa como está no pacman
