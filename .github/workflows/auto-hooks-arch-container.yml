@@ -210,4 +210,4 @@ jobs:
           sudo pacman -Syy
           # bash lista-aur-stable-arch-container stable
           # bash lista-aur-stable-arch-container testing
-          for r in *.sh; do if [ "$r" != "BigLinuxAur.sh" ]; then bash $r; fi; done
+          for r in *.sh; do if [ "$r" != "BigLinuxAur.sh" ]; then echo '---'; echo $r; bash $r; echo '---'; fi; done
