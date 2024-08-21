@@ -78,12 +78,12 @@ for p in $(gh repo list BigLinuxAur --limit 1000 | awk '{print $1}' | cut -d "/"
     fi
 
     if [ -n "$(grep xanmod <<< $pkgname)" ];then
+      verRepoOrg=$verrepo
       #add 0 no 2º numero da versão
       verrepo=$(echo "$verrepo" | awk -F'.' '{ split($3, a, "-"); if (length($2) == 1) $2 = "0"$2; print $1"."$2"."a[1]"-"a[2]}')
       #add 0 no 3º numero da versão
       verrepo=$(echo "$verrepo" | awk -F'.' '{ split($3, a, "-"); if (length(a[1]) == 1) a[1] = "0"a[1]; print $1"."$2"."a[1]"-"a[2] }')
       #remove . e -
-      verRepoOrg=$verrepo
       verrepo=${verrepo//[-.]}
     else
       verRepoOrg=$verrepo
