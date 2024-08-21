@@ -77,8 +77,17 @@ for p in $(gh repo list BigLinuxAur --limit 1000 | awk '{print $1}' | cut -d "/"
       cor='\e[34;1m'
     fi
 
-    verRepoOrg=$verrepo
-    verrepo=${verrepo//[-.]}
+    if [ -n "$(grep xanmod <<< $pkgname)" ];then
+      #add 0 no 2º numero da versão
+      verrepo=$(echo "$verrepo" | awk -F'.' '{ split($3, a, "-"); if (length($2) == 1) $2 = "0"$2; print $1"."$2"."a[1]"-"a[2]}')
+      #add 0 no 3º numero da versão
+      verrepo=$(echo "$verrepo" | awk -F'.' '{ split($3, a, "-"); if (length(a[1]) == 1) a[1] = "0"a[1]; print $1"."$2"."a[1]"-"a[2] }')
+      #remove . e -
+      verrepo=${verrepo//[-.]}
+    else
+      verRepoOrg=$verrepo
+      verrepo=${verrepo//[-.]}
+    fi
 
     # Enviar caso não encontre no repo
     if [ -z "$verrepo" ];then
@@ -129,7 +138,17 @@ for p in $(gh repo list BigLinuxAur --limit 1000 | awk '{print $1}' | cut -d "/"
       veraur=$pkgver-$pkgrel
       verAurOrg=$veraur
     fi
-    veraur=${veraur//[.-]}
+
+    if [ -n "$(grep xanmod <<< $pkgname)" ];then
+      #add 0 no 2º numero da versão
+      veraur=$(echo "$veraur" | awk -F'.' '{ split($3, a, "-"); if (length($2) == 1) $2 = "0"$2; print $1"."$2"."a[1]"-"a[2]}')
+      #add 0 no 3º numero da versão
+      veraur=$(echo "$veraur" | awk -F'.' '{ split($3, a, "-"); if (length(a[1]) == 1) a[1] = "0"a[1]; print $1"."$2"."a[1]"-"a[2] }')
+      #remove . e -
+      veraur=${veraur//[.-]}
+    else
+      veraur=${veraur//[.-]}
+    fi
 
 
     # Remove +...
