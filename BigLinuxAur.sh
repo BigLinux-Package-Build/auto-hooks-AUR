@@ -109,9 +109,9 @@ for p in $(gh repo list BigLinuxAur --limit 1000 | awk '{print $1}' | cut -d "/"
     pkgrel=
 
     # if Linux Xanmod rename
-    if [ "$(grep "linux-xanmod" <<< $pkgname | grep -v "lts")" ];then
+    if [ -n "$(grep "linux-xanmod" <<< $pkgname | grep -v "lts")" ];then
       pkgname=$(sed 's/linux-xanmod/linux-xanmod-linux-bin/' <<< $pkgname)
-    elif [ "$(grep "linux-xanmod-lts" <<< $pkgname)" ];then
+    elif [ -n "$(grep "linux-xanmod-lts" <<< $pkgname)" ];then
       pkgname=$(sed 's/linux-xanmod-lts/linux-xanmod-lts-linux-bin/' <<< $pkgname)
     fi
 
