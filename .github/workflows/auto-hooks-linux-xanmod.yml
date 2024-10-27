@@ -33,9 +33,9 @@ jobs:
           sudo sed -i '/\[core\]/{h;s/.*/Server = https:\/\/repo.biglinux.com.br\/update-stable\/$arch/;p;x;}' /etc/pacman.conf
           sudo sed -i '/\[core\]/{h;s/.*//;p;x;}' /etc/pacman.conf
           echo '
-          [bigiborg-'"${repo_dev}"']
+          [bigiborg-'"${{ secrets.REPO_UNSTABLE }}"']
           SigLevel = PackageRequired
-          Server = https://'"$mirror_unstable"'/$arch' | sudo tee -a /etc/pacman.conf
+          Server = https://'"${{ secrets.MIRROR_UNSTABLE }}"'/$arch' | sudo tee -a /etc/pacman.conf
           # echo '
           # [biglinux-testing]
           # SigLevel = PackageRequired
