@@ -33,14 +33,18 @@ jobs:
           sudo sed -i '/\[core\]/{h;s/.*/Server = https:\/\/repo.biglinux.com.br\/update-stable\/$arch/;p;x;}' /etc/pacman.conf
           sudo sed -i '/\[core\]/{h;s/.*//;p;x;}' /etc/pacman.conf
           echo '
-          [biglinux-testing]
+          [bigiborg-'"${repo_dev}"']
           SigLevel = PackageRequired
-          Server = https://'${{ secrets.REPO_DEV }}'.biglinux.com.br/testing/$arch
-          Server = https://repo.biglinux.com.br/testing/$arch' | sudo tee -a /etc/pacman.conf
+          Server = https://'"$mirror_unstable"'/$arch' | sudo tee -a /etc/pacman.conf
+          # echo '
+          # [biglinux-testing]
+          # SigLevel = PackageRequired
+          # #Server = https://'${{ secrets.REPO_DEV }}'.biglinux.com.br/testing/$arch
+          # Server = https://repo.biglinux.com.br/testing/$arch' | sudo tee -a /etc/pacman.conf
           echo '
           [biglinux-stable]
           SigLevel = PackageRequired
-          Server = https://'${{ secrets.REPO_DEV }}'.biglinux.com.br/stable/$arch
+          #Server = https://'${{ secrets.REPO_DEV }}'.biglinux.com.br/stable/$arch
           Server = https://repo.biglinux.com.br/stable/$arch' | sudo tee -a /etc/pacman.conf
           
           sudo git clone --depth 1 https://github.com/biglinux/biglinux-keyring.git
