@@ -5,7 +5,7 @@ cef-minimal-obs-bin
 
 
 # arrumar automato de gerar pkgbuild
-rustdesk-bin
+#rustdesk-bin
 
 # obs tytan
 obs-studio-tytan652
@@ -20,7 +20,7 @@ vosk-api
 dsnote
 ros2-git
 gazebo
-
+frozen-bubble
 
 #estavaDesabilitadoAntes
 perl-sdl
